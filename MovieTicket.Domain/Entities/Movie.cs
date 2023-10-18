@@ -10,18 +10,18 @@ public sealed class Movie : Entity
     public string Director { get; private set; }
     public string BannerUrl { get; private set; }
 
-    public Movie( string gender, string synopsis, string title, string director, string bannerUrl)
+    public Movie( string gender, string synopsis, string title, string director, string bannerUrl )
     {
-        this.ValidateDomain(gender, synopsis, title, director, bannerUrl);
+        this.ValidateDomain( gender, synopsis, title, director, bannerUrl );
     }
 
-    public Movie(int id, string gender, string synopsis, string title, string director, string bannerUrl)
+    public Movie( int id, string gender, string synopsis, string title, string director, string bannerUrl )
     {
-        this.ValidateDomain(gender, synopsis, title, director, bannerUrl);
+        this.ValidateDomain( gender, synopsis, title, director, bannerUrl );
         DomainExceptionValidation.When( id < 0, "Invalid Id value" );
         this.Id = id;
     }
-    
+
     private void ValidateDomain( string gender, string synopsis, string title, string director, string bannerUrl )
     {
         DomainExceptionValidation.When( string.IsNullOrEmpty( gender ),
@@ -29,32 +29,32 @@ public sealed class Movie : Entity
 
         DomainExceptionValidation.When( gender.Length < 3,
             "Invalid gender. Too short, minimum 3 characters" );
-        
+
         DomainExceptionValidation.When( string.IsNullOrEmpty( synopsis ),
             "Invalid synopsis. Synopsis is required" );
-        
+
         DomainExceptionValidation.When( synopsis.Length < 3,
             "Invalid synopsis. Too short, minimum 3 characters" );
-        
+
         DomainExceptionValidation.When( string.IsNullOrEmpty( title ),
             "Invalid title. Title is required" );
-        
+
         DomainExceptionValidation.When( title.Length < 3,
             "Invalid title. Too short, minimum 3 characters" );
-            
+
         DomainExceptionValidation.When( string.IsNullOrEmpty( director ),
             "Invalid director. Director is required" );
-        
+
         DomainExceptionValidation.When( director.Length < 3,
             "Invalid director. Too short, minimum 3 characters" );
-        
+
         DomainExceptionValidation.When( string.IsNullOrEmpty( bannerUrl ),
             "Invalid banner url. Banner url is required" );
-        
+
         DomainExceptionValidation.When( bannerUrl.Length > 255,
             "Invalid banner url. Too long, maximum 255 characters" );
-        
-        this.Gender = Gender;
+
+        this.Gender = this.Gender;
         this.Synopsis = synopsis;
         this.Title = title;
         this.Director = director;

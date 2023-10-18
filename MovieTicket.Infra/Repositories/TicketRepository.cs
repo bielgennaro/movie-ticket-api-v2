@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -10,9 +6,9 @@ using MovieTicket.Infra.Data.Context;
 
 namespace MovieTicket.Infra.Data.Repositories
 {
-    internal class TicketRepository : ITicketRepository
+    public class TicketRepository : ITicketRepository
     {
-        ApplicationDbContext _ticketContext;
+        private readonly ApplicationDbContext _ticketContext;
 
         public TicketRepository( ApplicationDbContext ticketContext )
         {
@@ -21,47 +17,47 @@ namespace MovieTicket.Infra.Data.Repositories
 
         public async Task<Ticket> DeleteTicketAsync( Ticket ticket )
         {
-            _ticketContext.Remove( ticket );
-            await _ticketContext.SaveChangesAsync();
+            this._ticketContext.Remove( ticket );
+            await this._ticketContext.SaveChangesAsync();
             return ticket;
         }
 
         public async Task<Ticket> GetTicketByIdAsync( int id )
         {
-            throw new NotImplementedException();
+            return await this._ticketContext.Tickets.FindAsync( id );
         }
 
         public async Task<IEnumerable<Ticket>> GetTicketsAsync()
         {
-            throw new NotImplementedException();
+            return await this._ticketContext.Tickets.ToListAsync();
         }
 
         public async Task<IEnumerable<Ticket>> GetTicketsBySessionIdAsync( int sessionId )
         {
-            throw new NotImplementedException();
+            return await this._ticketContext.Tickets.Where( t => t.SessionId == sessionId ).ToListAsync();
         }
 
         public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAndSessionIdAsync( int userId, int sessionId )
         {
-            throw new NotImplementedException();
+            return await this._ticketContext.Tickets.Where( t => t.UserId == userId && t.SessionId == sessionId ).ToListAsync();
         }
 
         public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync( int userId )
         {
-            
+            return await this._ticketContext.Tickets.Where( t => t.UserId == userId ).ToListAsync();
         }
 
         public async Task<Ticket> InsertTicketAsync( Ticket ticket )
         {
-            _ticketContext.Add( ticket );
-            await _ticketContext.SaveChangesAsync();
+            this._ticketContext.Add( ticket );
+            await this._ticketContext.SaveChangesAsync();
             return ticket;
         }
 
         public async Task<Ticket> UpdateTicketAsync( Ticket ticket )
         {
-            _ticketContext.Update( ticket );
-            await _ticketContext.SaveChangesAsync();
+            this._ticketContext.Update( ticket );
+            await this._ticketContext.SaveChangesAsync();
             return ticket;
         }
     }

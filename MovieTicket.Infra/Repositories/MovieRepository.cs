@@ -6,7 +6,7 @@ using MovieTicket.Infra.Data.Context;
 
 namespace MovieTicket.Infra.Data.Repositories
 {
-    internal class MovieRepository : IMovieRepository
+    public class MovieRepository : IMovieRepository
     {
         ApplicationDbContext _movieContext;
 
