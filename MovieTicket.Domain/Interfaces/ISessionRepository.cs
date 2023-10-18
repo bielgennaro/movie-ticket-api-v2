@@ -1,0 +1,18 @@
+﻿using MovieTicket.Domain.Entities;
+
+namespace MovieTicket.Domain.Interfaces;
+
+public interface ISessionRepository
+{
+    Task<IEnumerable<Session>> GetSessionsAsync();
+    
+    Task<Session> GetSessionByIdAsync( int id );
+    
+    Task<Session> InsertSessionAsync( Session session );
+    
+    Task<Session> UpdateSessionAsync( Session session );
+    
+    Task<bool> DeleteSessionAsync( int id );
+    
+    Task<IEnumerable<Session>> GetSessionsByMovieIdAsync( int movieId );
+}
