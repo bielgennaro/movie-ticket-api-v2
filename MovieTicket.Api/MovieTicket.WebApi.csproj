@@ -15,4 +15,8 @@
       <ProjectReference Include="..\MovieTicket.Infra.IoC\MovieTicket.Infra.IoC.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+    </ItemGroup>
+
 </Project>

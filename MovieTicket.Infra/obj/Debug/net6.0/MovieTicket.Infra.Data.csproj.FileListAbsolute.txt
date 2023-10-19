@@ -1,0 +1,17 @@
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.csproj.AssemblyReference.cache
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.AssemblyInfoInputs.cache
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.AssemblyInfo.cs
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.csproj.CoreCompileInputs.cache
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Infra.Data.deps.json
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Infra.Data.runtimeconfig.json
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Infra.Data.dll
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Infra.Data.pdb
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Domain.dll
+C:\MovieTicket\MovieTicket.Infra\bin\Debug\net6.0\MovieTicket.Domain.pdb
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.csproj.CopyComplete
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.dll
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\refint\MovieTicket.Infra.Data.dll
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.pdb
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\MovieTicket.Infra.Data.genruntimeconfig.cache
+C:\MovieTicket\MovieTicket.Infra\obj\Debug\net6.0\ref\MovieTicket.Infra.Data.dll

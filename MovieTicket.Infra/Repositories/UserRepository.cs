@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -14,7 +10,7 @@ namespace MovieTicket.Infra.Data.Repositories
     {
         private readonly ApplicationDbContext _userContext;
 
-        public UserRepository(ApplicationDbContext userContext)
+        public UserRepository( ApplicationDbContext userContext )
         {
             this._userContext = userContext;
         }
@@ -24,45 +20,46 @@ namespace MovieTicket.Infra.Data.Repositories
             return await this._userContext.Users.ToListAsync();
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync( int id )
         {
-            return await this._userContext.Users.FindAsync(id);
+            return await this._userContext.Users.FindAsync( id );
         }
 
-        public async Task<User> GetUserByEmailAsync(string email)
+        public async Task<User> GetUserByEmailAsync( string email )
         {
-            return await this._userContext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            return await this._userContext.Users.Where( u => u.Email == email ).FirstOrDefaultAsync();
         }
 
-        public async Task<User> InsertUserAsync(User user)
+        public async Task<User> InsertUserAsync( User user )
         {
-            _userContext.Add(user);
-            await _userContext.SaveChangesAsync();
+            this._userContext.Add( user );
+            await this._userContext.SaveChangesAsync();
             return user;
         }
 
-        public async Task<User> UpdateUserAsync(User user)
+        public async Task<User> UpdateUserAsync( User user )
         {
-            _userContext.Update(user);
-            await _userContext.SaveChangesAsync();
+            this._userContext.Update( user );
+            await this._userContext.SaveChangesAsync();
             return user;
         }
 
-        public async Task<User> DeleteUserAsync(User user)
+        public async Task<User> DeleteUserAsync( User user )
         {
-            _userContext.Remove(user);
-            await _userContext.SaveChangesAsync();
+            this._userContext.Remove( user );
+            await this._userContext.SaveChangesAsync();
             return user;
         }
 
         //TODO implement this
-        public async Task<bool> VerifyPasswordAsync(string password, string hashedPassword)
+        public async Task<User> VerifyPasswordAsync( User user, string password, string hashedPassword )
         {
-            throw new NotImplementedException();
+            this._userContext.Users.Where( u => u.Password == password );
+            return await this._userContext.Users.FindAsync( user );
         }
 
         //TODO implement this
-        public async Task<string> HashPasswordAsync(string password)
+        public async Task<string> HashPasswordAsync( string password )
         {
             throw new NotImplementedException();
         }

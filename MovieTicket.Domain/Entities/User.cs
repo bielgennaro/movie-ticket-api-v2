@@ -1,9 +1,12 @@
-﻿using MovieTicket.Domain.Validation;
+﻿using System.ComponentModel.DataAnnotations;
+
+using MovieTicket.Domain.Validation;
 
 namespace MovieTicket.Domain.Entities;
 
-public class User : Entity
+public sealed class User : Entity
 {
+    [EmailAddress]
     public string Email { get; private set; }
     public string Password { get; private set; }
     public bool IsAdmin { get; private set; }
@@ -13,6 +16,8 @@ public class User : Entity
     {
         this.ValidateDomain( email, password );
         this.IsAdmin = isAdmin;
+        this.Email = email;
+        this.Password = password;
     }
 
     public User( int id, string email, string password, bool isAdmin, string hashedPassword )
@@ -37,6 +42,9 @@ public class User : Entity
 
         DomainExceptionValidation.When( password.Length < 8,
             "Invalid password. Too short, minimum 8 characters" );
+
+        DomainExceptionValidation.When( password.Length > 16,
+            "Invalid password. Too long, maximum 16 characters" );
 
         this.Email = email;
         this.Password = password;

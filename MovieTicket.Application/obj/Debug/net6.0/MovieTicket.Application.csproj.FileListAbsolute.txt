@@ -1,0 +1,15 @@
+C:\MovieTicket\MovieTicket.Application\bin\Debug\net6.0\MovieTicket.Application.deps.json
+C:\MovieTicket\MovieTicket.Application\bin\Debug\net6.0\MovieTicket.Application.dll
+C:\MovieTicket\MovieTicket.Application\bin\Debug\net6.0\MovieTicket.Application.pdb
+C:\MovieTicket\MovieTicket.Application\bin\Debug\net6.0\MovieTicket.Domain.dll
+C:\MovieTicket\MovieTicket.Application\bin\Debug\net6.0\MovieTicket.Domain.pdb
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.csproj.AssemblyReference.cache
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.AssemblyInfoInputs.cache
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.AssemblyInfo.cs
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.csproj.CoreCompileInputs.cache
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.csproj.CopyComplete
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.dll
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\refint\MovieTicket.Application.dll
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\MovieTicket.Application.pdb
+C:\MovieTicket\MovieTicket.Application\obj\Debug\net6.0\ref\MovieTicket.Application.dll

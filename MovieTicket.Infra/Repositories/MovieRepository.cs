@@ -8,7 +8,7 @@ namespace MovieTicket.Infra.Data.Repositories
 {
     public class MovieRepository : IMovieRepository
     {
-        ApplicationDbContext _movieContext;
+        readonly ApplicationDbContext _movieContext;
 
         public MovieRepository( ApplicationDbContext movieContext )
         {

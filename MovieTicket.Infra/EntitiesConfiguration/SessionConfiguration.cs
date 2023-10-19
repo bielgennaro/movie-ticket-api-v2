@@ -15,11 +15,12 @@ namespace MovieTicket.Infra.Data.EntitiesConfiguration
 
             builder.Property( s => s.Id ).HasColumnName( "id" );
 
-            builder.Property( s => s.Room ).HasColumnName( "room" ).HasMaxLength( 50 );
+            builder.Property( s => s.Room ).HasColumnName( "room" );
 
             builder.Property( s => s.Date ).HasColumnName( "date" );
 
-            builder.Property( s => s.Price ).HasColumnName( "price" );
+            builder.Property( s => s.Price )
+                .HasColumnName( "price" );
 
             builder.Property( s => s.AvailableTickets ).HasColumnName( "available_tickets" );
 

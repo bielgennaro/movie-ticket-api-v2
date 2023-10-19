@@ -1,4 +1,4 @@
-namespace MovieTicket.Api;
+namespace MovieTicket.WebApi;
 
 public class WeatherForecast
 {
