@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.WebApi", "Movie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Infra.IoC", "MovieTicket.Infra.IoC\MovieTicket.Infra.IoC.csproj", "{0745266C-0128-4ADA-B5F3-6EB55BC51B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTicket.Domain.Tests", "MovieTicket.Tests\MovieTicket.Domain.Tests.csproj", "{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Domain.Tests", "MovieTicket.Tests\MovieTicket.Domain.Tests.csproj", "{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3ADE3469-9997-4275-9EDC-C2496E42EAB0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

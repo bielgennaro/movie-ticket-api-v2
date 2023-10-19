@@ -21,7 +21,7 @@ namespace MovieTicket.Domain.Tests
             Action action = () => new User( "te", "testesenha", true );
             action.Should()
                 .Throw<Validation.DomainExceptionValidation>()
-                .WithMessage( "Invalid email. Too short, minimum 3 characters" );
+                .WithMessage( "Invalid email. Please enter a valid email." );
         }
 
         [Fact( DisplayName = "Criar usuário com senha muito curta" )]
