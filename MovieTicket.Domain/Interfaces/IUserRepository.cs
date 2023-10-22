@@ -15,10 +15,4 @@ public interface IUserRepository
     Task<User> UpdateUserAsync( User user );
 
     Task<User> DeleteUserAsync( User user );
-
-    //TODO implement this
-    Task<User> VerifyPasswordAsync( User user, string password, string hashedPassword );
-
-    //TODO implement this
-    Task<string> HashPasswordAsync( string password );
 }

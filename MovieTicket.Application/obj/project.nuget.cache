@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "H7GwZVnzKyJt9EAzl65POnUiX54ysb6KiTDtBKNQ79UM9Exkht8dlxGe3646oYpXw0TotWROoW0ZI2GuDRg/kw==",
+  "dgSpecHash": "JO3T5ZMf2q/XPxlLrgvSRGk+WnWVuMzTbUp+Cec13VbH5TWnnz3ZzBUsYXVbWaesP3n8ZeK87xcS0vOh7kzcrw==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\biel\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

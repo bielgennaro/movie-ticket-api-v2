@@ -30,10 +30,16 @@ namespace MovieTicket.Domain.Entities
             DomainExceptionValidation.When( gender.Length < 3,
                 "Invalid gender. Too short, minimum 3 characters" );
 
+            DomainExceptionValidation.When( gender.Length > 100,
+                "Invalid gender. Too short, minimum 3 characters" );
+
             DomainExceptionValidation.When( string.IsNullOrEmpty( synopsis ),
                 "Invalid synopsis. Synopsis is required" );
 
             DomainExceptionValidation.When( synopsis.Length < 3,
+                "Invalid synopsis. Too short, minimum 3 characters" );
+
+            DomainExceptionValidation.When( synopsis.Length > 100,
                 "Invalid synopsis. Too short, minimum 3 characters" );
 
             DomainExceptionValidation.When( string.IsNullOrEmpty( title ),

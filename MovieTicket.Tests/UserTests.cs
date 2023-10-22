@@ -15,13 +15,13 @@ namespace MovieTicket.Domain.Tests
                 .WithMessage( "Invalid email. Email is required" );
         }
 
-        [Fact( DisplayName = "Criar usuário com email inválido" )]
+        [Fact( DisplayName = "Criar usuário com email muito curto" )]
         public void CreateUser_WithInvalidEmail()
         {
             Action action = () => new User( "te", "testesenha", true );
             action.Should()
                 .Throw<Validation.DomainExceptionValidation>()
-                .WithMessage( "Invalid email. Please enter a valid email." );
+                .WithMessage( "Invalid email. Too short, minimum 3 characters" );
         }
 
         [Fact( DisplayName = "Criar usuário com senha muito curta" )]
