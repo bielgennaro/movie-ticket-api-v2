@@ -24,6 +24,12 @@ namespace MovieTicket.Domain.Entities
             this.MovieId = movieId;
         }
 
+        public void Update( string room, int availableTickets, DateTime date, decimal price, int movieId )
+        {
+            this.ValidateDomain( this.Id, room, availableTickets, price, movieId );
+            this.Date = date;
+        }
+
         private void ValidateDomain( int id, string room, int availableTickets, decimal price, int movieId )
         {
             DomainExceptionValidation.When( string.IsNullOrEmpty( room ),

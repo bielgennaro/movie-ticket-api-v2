@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4XvltS7AE5RUtXyMLc3prjjh1xkj75jvTonfKvWqm0BM/fDfMW07UEaQM+sILLCAbc330lG6Dm9wwm9+ACSfLQ==",
+  "dgSpecHash": "AXTiRQB2UaP8vZ+4Y0SNrcALsfUJqoB3W3lxuAH5FLyVdvsn4iN7UlsdDu6yzICYwkEVEeWqjEjClSuSarqBVg==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Infra.IoC\\MovieTicket.Infra.IoC.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\biel\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

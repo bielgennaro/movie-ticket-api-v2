@@ -24,6 +24,12 @@ namespace MovieTicket.Domain.Entities
             this.IsAdmin = isAdmin;
         }
 
+        public void Update( string email, string password, bool isAdmin )
+        {
+            this.ValidateDomain( email, password );
+            this.IsAdmin = isAdmin;
+        }
+
         public void ValidateDomain( string email, string password )
         {
             DomainExceptionValidation.When( string.IsNullOrEmpty( email ),

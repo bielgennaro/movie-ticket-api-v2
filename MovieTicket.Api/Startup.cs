@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using System.Text.Json;
+
+using Microsoft.OpenApi.Models;
 
 using MovieTicket.Infra.IoC;
 
@@ -11,11 +13,16 @@ namespace MovieTicket.WebApi
             this.Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public void ConfigureServices( IServiceCollection services )
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions( options =>
+                {
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                } );
 
             services.AddInfrastructure( this.Configuration );
 
@@ -28,22 +35,19 @@ namespace MovieTicket.WebApi
         public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
         {
             app.UseSwagger();
-            app.UseSwaggerUI( c => c.SwaggerEndpoint( "/swagger/v1/swagger.json", "MovieTicket.WebApi v1" ) );
-
-            app.UseHttpsRedirection();
+            app.UseSwaggerUI( c => { c.SwaggerEndpoint( "/swagger/v1/swagger.json", "v1" ); } );
 
             app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-            app.UseAuthorization();
 
             app.UseEndpoints( endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}" );
             } );
-
-            app.UseCors( builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader() );
-
-            app.UseDeveloperExceptionPage();
         }
     }
 }

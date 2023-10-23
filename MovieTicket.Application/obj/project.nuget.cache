@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "JO3T5ZMf2q/XPxlLrgvSRGk+WnWVuMzTbUp+Cec13VbH5TWnnz3ZzBUsYXVbWaesP3n8ZeK87xcS0vOh7kzcrw==",
+  "dgSpecHash": "MYJdwBp1GxakZcq+QfBBtrcyrPhpZWEe5bZW9/lG9qq/T2KSzmNMc++QhSM9VP9xo+ZDlgV5lueqMySlDR22EA==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\biel\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\biel\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

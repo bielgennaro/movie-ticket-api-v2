@@ -22,6 +22,11 @@ namespace MovieTicket.Domain.Entities
             this.Id = id;
         }
 
+        public void Update( string gender, string synopsis, string title, string director, string bannerUrl )
+        {
+            this.ValidateDomain( gender, synopsis, title, director, bannerUrl );
+        }
+
         private void ValidateDomain( string gender, string synopsis, string title, string director, string bannerUrl )
         {
             DomainExceptionValidation.When( string.IsNullOrEmpty( gender ),
