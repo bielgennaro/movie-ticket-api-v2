@@ -1,10 +1,13 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Movies.Queries
+#endregion
+
+namespace MovieTicket.Application.Movies.Queries;
+
+public class GetMoviesQuery : IRequest<List<Movie>>
 {
-    public class GetMoviesQuery : IRequest<List<Movie>>
-    {
-    }
 }

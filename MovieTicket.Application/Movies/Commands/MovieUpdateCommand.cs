@@ -1,7 +1,6 @@
-﻿namespace MovieTicket.Application.Movies.Commands
+﻿namespace MovieTicket.Application.Movies.Commands;
+
+public class MovieUpdateCommand : MovieCommand
 {
-    public class MovieUpdateCommand : MovieCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

@@ -1,7 +1,6 @@
-﻿namespace MovieTicket.Application.Tickets.Commands
+﻿namespace MovieTicket.Application.Tickets.Commands;
+
+public class TicketUpdateCommand : TicketCommand
 {
-    public class TicketUpdateCommand : TicketCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

@@ -1,28 +1,31 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Application.Sessions.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 
-namespace MovieTicket.Application.Sessions.Handlers
+#endregion
+
+namespace MovieTicket.Application.Sessions.Handlers;
+
+public class SessionCreateCommandHandler : IRequestHandler<SessionCreateCommand, Session>
 {
-    public class SessionCreateCommandHandler : IRequestHandler<SessionCreateCommand, Session>
+    private readonly ISessionRepository _sessionRepository;
+
+    public SessionCreateCommandHandler( ISessionRepository sessionRepository )
     {
-        private readonly ISessionRepository _sessionRepository;
+        this._sessionRepository = sessionRepository;
+    }
 
-        public SessionCreateCommandHandler( ISessionRepository sessionRepository )
-        {
-            this._sessionRepository = sessionRepository;
-        }
+    public async Task<Session> Handle( SessionCreateCommand request, CancellationToken cancellationToken )
+    {
+        var session = new Session( request.Room, request.AvailableTickets, request.Date, request.Price,
+            request.MovieId );
 
-        public async Task<Session> Handle( SessionCreateCommand request, CancellationToken cancellationToken )
-        {
-            var session = new Session( request.Room, request.AvailableTickets, request.Date, request.Price,
-                request.MovieId );
-
-            return session == null
-                ? throw new ApplicationException( "There was an error creating the session" )
-                : await this._sessionRepository.InsertSessionAsync( session );
-        }
+        return session == null
+            ? throw new ApplicationException( "There was an error creating the session" )
+            : await this._sessionRepository.InsertSessionAsync( session );
     }
 }

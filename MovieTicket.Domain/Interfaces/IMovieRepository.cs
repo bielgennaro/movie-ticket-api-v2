@@ -1,17 +1,20 @@
-﻿using MovieTicket.Domain.Entities;
+﻿#region
 
-namespace MovieTicket.Domain.Interfaces
+using MovieTicket.Domain.Entities;
+
+#endregion
+
+namespace MovieTicket.Domain.Interfaces;
+
+public interface IMovieRepository
 {
-    public interface IMovieRepository
-    {
-        Task<IEnumerable<Movie>> GetMoviesAsync();
+    Task<IEnumerable<Movie>> GetMoviesAsync();
 
-        Task<Movie> GetMovieByIdAsync( int id );
+    Task<Movie> GetMovieByIdAsync( int id );
 
-        Task<Movie> InsertMovieAsync( Movie movie );
+    Task<Movie> InsertMovieAsync( Movie movie );
 
-        Task<Movie> UpdateMovieAsync( Movie movie );
+    Task<Movie> UpdateMovieAsync( Movie movie );
 
-        Task<Movie> DeleteMovieAsync( Movie movie );
-    }
+    Task<Movie> DeleteMovieAsync( Movie movie );
 }

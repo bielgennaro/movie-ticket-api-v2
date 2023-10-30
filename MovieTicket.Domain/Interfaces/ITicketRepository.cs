@@ -1,4 +1,8 @@
-﻿using MovieTicket.Domain.Entities;
+﻿#region
+
+using MovieTicket.Domain.Entities;
+
+#endregion
 
 namespace MovieTicket.Domain.Interfaces;
 

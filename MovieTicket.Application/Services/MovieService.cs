@@ -1,55 +1,65 @@
-﻿using AutoMapper;
+﻿#region
+
+using AutoMapper;
+
+using MediatR;
 
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.Domain.Entities;
-using MovieTicket.Domain.Interfaces;
+using MovieTicket.Application.Movies.Commands;
+using MovieTicket.Application.Movies.Queries;
 
-namespace MovieTicket.Application.Services
+#endregion
+
+namespace MovieTicket.Application.Services;
+
+public class MovieService : IMovieService
 {
-    public class MovieService : IMovieService
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
+
+    public MovieService( IMediator mediator, IMapper mapper )
     {
-        private readonly IMovieRepository _movieRepository;
-        private readonly IMapper _mapper;
+        this._mediator = mediator;
+        this._mapper = mapper;
+    }
 
-        public MovieService( IMovieRepository movieRepository, IMapper mapper )
-        {
-            this._movieRepository = movieRepository;
-            this._mapper = mapper;
-        }
+    public async Task<IEnumerable<MovieDto>> GetMoviesAsync()
+    {
+        var moviesQuery = new GetMoviesQuery();
 
-        public async Task<IEnumerable<MovieDto>> GetMoviesAsync()
-        {
-            var movies = await this._movieRepository.GetMoviesAsync();
-            var moviesDto = this._mapper.Map<IEnumerable<MovieDto>>( movies );
-            return moviesDto;
-        }
+        var result = await this._mediator.Send( moviesQuery );
 
-        public async Task<MovieDto> GetMovieByIdAsync( int id )
-        {
-            var movie = await this._movieRepository.GetMovieByIdAsync( id );
-            var movieDto = this._mapper.Map<MovieDto>( movie );
-            return movieDto;
-        }
+        return this._mapper.Map<IEnumerable<MovieDto>>( result );
+    }
 
-        public async Task<MovieDto> CreateMovieAsync( MovieDto movieDto )
-        {
-            var movie = this._mapper.Map<Movie>( movieDto );
-            var newMovie = await this._movieRepository.InsertMovieAsync( movie );
-            var newMovieDto = this._mapper.Map<MovieDto>( newMovie );
-            return newMovieDto;
-        }
+    public async Task<MovieDto> GetMovieByIdAsync( int id )
+    {
+        var movieQuery = new GetMovieByIdQuery( id );
 
-        public async Task UpdateMovieAsync( MovieDto movieDto )
-        {
-            var movie = this._mapper.Map<Movie>( movieDto );
-            await this._movieRepository.UpdateMovieAsync( movie );
-        }
+        var result = await this._mediator.Send( movieQuery ) ?? throw new ApplicationException( "Movie not found" );
 
-        public async Task DeleteMovieAsync( int id )
-        {
-            var movie = this._movieRepository.GetMovieByIdAsync( id ).Result;
-            await this._movieRepository.DeleteMovieAsync( movie );
-        }
+        return this._mapper.Map<MovieDto>( result );
+    }
+
+    public async Task<MovieDto> CreateMovieAsync( MovieDto movieDto )
+    {
+        var movieCommand = this._mapper.Map<MovieCreateCommand>( movieDto );
+
+        var result = await this._mediator.Send( movieCommand );
+
+        return this._mapper.Map<MovieDto>( result );
+    }
+
+    public async Task UpdateMovieAsync( MovieDto movieDto )
+    {
+        var movieCommand = this._mapper.Map<MovieUpdateCommand>( movieDto );
+        await this._mediator.Send( movieCommand );
+    }
+
+    public async Task DeleteMovieAsync( int id )
+    {
+        var movieCommand = new MovieRemoveCommand( id );
+        var result = await this._mediator.Send( movieCommand );
     }
 }

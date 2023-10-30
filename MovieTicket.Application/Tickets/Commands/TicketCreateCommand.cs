@@ -1,6 +1,5 @@
-﻿namespace MovieTicket.Application.Tickets.Commands
+﻿namespace MovieTicket.Application.Tickets.Commands;
+
+public class TicketCreateCommand : TicketCommand
 {
-    public class TicketCreateCommand : TicketCommand
-    {
-    }
 }

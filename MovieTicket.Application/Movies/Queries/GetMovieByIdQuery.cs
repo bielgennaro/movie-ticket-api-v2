@@ -1,16 +1,19 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Movies.Queries
-{
-    public class GetMovieByIdQuery : IRequest<Movie>
-    {
-        public int Id { get; set; }
+#endregion
 
-        public GetMovieByIdQuery( int id )
-        {
-            this.Id = id;
-        }
+namespace MovieTicket.Application.Movies.Queries;
+
+public class GetMovieByIdQuery : IRequest<Movie>
+{
+    public GetMovieByIdQuery( int id )
+    {
+        this.Id = id;
     }
+
+    public int Id { get; set; }
 }
