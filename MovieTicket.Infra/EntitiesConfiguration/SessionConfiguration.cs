@@ -1,35 +1,38 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#region
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Infra.Data.EntitiesConfiguration
+#endregion
+
+namespace MovieTicket.Infra.Data.EntitiesConfiguration;
+
+public class SessionConfiguration : IEntityTypeConfiguration<Session>
 {
-    public class SessionConfiguration : IEntityTypeConfiguration<Session>
+    public void Configure( EntityTypeBuilder<Session> builder )
     {
-        public void Configure( EntityTypeBuilder<Session> builder )
-        {
-            builder.ToTable( "Sessions" );
+        builder.ToTable( "Sessions" );
 
-            builder.HasKey( s => s.Id );
+        builder.HasKey( s => s.Id );
 
-            builder.Property( s => s.Id ).HasColumnName( "id" );
+        builder.Property( s => s.Id ).HasColumnName( "id" );
 
-            builder.Property( s => s.Room ).HasColumnName( "room" );
+        builder.Property( s => s.Room ).HasColumnName( "room" );
 
-            builder.Property( s => s.Date ).HasColumnName( "date" );
+        builder.Property( s => s.Date ).HasColumnName( "date" );
 
-            builder.Property( s => s.Price )
-                .HasColumnName( "price" )
-                .HasColumnType( "decimal(18,2)" )
-                .HasPrecision( 18, 2 );
+        builder.Property( s => s.Price )
+            .HasColumnName( "price" )
+            .HasColumnType( "decimal(18,2)" )
+            .HasPrecision( 18, 2 );
 
-            builder.Property( s => s.AvailableTickets ).HasColumnName( "available_tickets" );
+        builder.Property( s => s.AvailableTickets ).HasColumnName( "available_tickets" );
 
-            builder.HasOne( s => s.Movie )
-                    .WithMany()
-                   .HasForeignKey( s => s.MovieId )
-                   .HasConstraintName( "movie_id" );
-        }
+        builder.HasOne( s => s.Movie )
+            .WithMany()
+            .HasForeignKey( s => s.MovieId )
+            .HasConstraintName( "movie_id" );
     }
 }

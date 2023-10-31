@@ -1,6 +1,5 @@
-﻿namespace MovieTicket.Application.Users.Commands
+﻿namespace MovieTicket.Application.Users.Commands;
+
+public class UserCreateCommand : UserCommand
 {
-    public class UserCreateCommand : UserCommand
-    {
-    }
 }

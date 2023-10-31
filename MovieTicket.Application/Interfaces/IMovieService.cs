@@ -1,4 +1,8 @@
-﻿using MovieTicket.Application.DTOs;
+﻿#region
+
+using MovieTicket.Application.DTOs;
+
+#endregion
 
 namespace MovieTicket.Application.Interfaces;
 
@@ -13,5 +17,4 @@ public interface IMovieService
     Task UpdateMovieAsync( MovieDto movieDto );
 
     Task DeleteMovieAsync( int id );
-
 }

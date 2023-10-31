@@ -1,10 +1,13 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Sessions.Queries
+#endregion
+
+namespace MovieTicket.Application.Sessions.Queries;
+
+public class GetSessionsQuery : IRequest<IList<Session>>
 {
-    public class GetSessionsQuery : IRequest<IList<Session>>
-    {
-    }
 }

@@ -1,7 +1,6 @@
-﻿namespace MovieTicket.Application.Sessions.Commands
+﻿namespace MovieTicket.Application.Sessions.Commands;
+
+public class SessionUpdateCommand : SessionCommand
 {
-    public class SessionUpdateCommand : SessionCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

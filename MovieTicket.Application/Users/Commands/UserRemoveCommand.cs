@@ -1,16 +1,19 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Users.Commands
-{
-    public class UserRemoveCommand : IRequest<User>
-    {
-        public int Id { get; set; }
+#endregion
 
-        public UserRemoveCommand( int id )
-        {
-            this.Id = id;
-        }
+namespace MovieTicket.Application.Users.Commands;
+
+public class UserRemoveCommand : IRequest<User>
+{
+    public UserRemoveCommand( int id )
+    {
+        this.Id = id;
     }
+
+    public int Id { get; set; }
 }

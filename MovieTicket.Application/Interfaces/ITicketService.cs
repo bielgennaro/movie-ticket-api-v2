@@ -1,17 +1,20 @@
-﻿using MovieTicket.Application.DTOs;
+﻿#region
 
-namespace MovieTicket.Application.Interfaces
+using MovieTicket.Application.DTOs;
+
+#endregion
+
+namespace MovieTicket.Application.Interfaces;
+
+public interface ITicketService
 {
-    public interface ITicketService
-    {
-        Task<IEnumerable<TicketDto>> GetTicketsAsync();
+    Task<IEnumerable<TicketDto>> GetTicketsAsync();
 
-        Task<TicketDto> GetTicketByIdAsync( int id );
+    Task<TicketDto> GetTicketByIdAsync( int id );
 
-        Task<TicketDto> CreateTicketAsync( TicketDto ticketDto );
+    Task<TicketDto> CreateTicketAsync( TicketDto ticketDto );
 
-        Task UpdateTicketAsync( TicketDto ticketDto );
+    Task UpdateTicketAsync( TicketDto ticketDto );
 
-        Task DeleteTicketAsync( int id );
-    }
+    Task DeleteTicketAsync( int id );
 }

@@ -266,3 +266,4 @@ C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.W
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\MediatR.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

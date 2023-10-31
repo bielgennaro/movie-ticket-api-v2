@@ -1,17 +1,20 @@
-﻿using MovieTicket.Application.DTOs;
+﻿#region
 
-namespace MovieTicket.Application.Interfaces
+using MovieTicket.Application.DTOs;
+
+#endregion
+
+namespace MovieTicket.Application.Interfaces;
+
+public interface ISessionService
 {
-    public interface ISessionService
-    {
-        Task<IEnumerable<SessionDto>> GetSessionsAsync();
+    Task<IEnumerable<SessionDto>> GetSessionsAsync();
 
-        Task<SessionDto> GetSessionByIdAsync( int id );
+    Task<SessionDto> GetSessionByIdAsync( int id );
 
-        Task<SessionDto> CreateSessionAsync( SessionDto sessionDto );
+    Task<SessionDto> CreateSessionAsync( SessionDto sessionDto );
 
-        Task UpdateSessionAsync( SessionDto sessionDto );
+    Task UpdateSessionAsync( SessionDto sessionDto );
 
-        Task DeleteSessionAsync( int id );
-    }
+    Task DeleteSessionAsync( int id );
 }

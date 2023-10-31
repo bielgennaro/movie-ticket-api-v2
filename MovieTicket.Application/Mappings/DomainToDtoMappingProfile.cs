@@ -1,25 +1,28 @@
-﻿using AutoMapper;
+﻿#region
+
+using AutoMapper;
 
 using MovieTicket.Application.DTOs;
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Mappings
+#endregion
+
+namespace MovieTicket.Application.Mappings;
+
+public class DomainToDtoMappingProfile : Profile
 {
-    public class DomainToDtoMappingProfile : Profile
+    public DomainToDtoMappingProfile()
     {
-        public DomainToDtoMappingProfile()
-        {
-            this.CreateMap<Session, SessionDto>()
-                .ReverseMap();
+        this.CreateMap<Session, SessionDto>()
+            .ReverseMap();
 
-            this.CreateMap<Ticket, TicketDto>()
-                .ReverseMap();
+        this.CreateMap<Ticket, TicketDto>()
+            .ReverseMap();
 
-            this.CreateMap<User, UserDto>()
-                .ReverseMap();
+        this.CreateMap<User, UserDto>()
+            .ReverseMap();
 
-            this.CreateMap<Movie, MovieDto>()
-                .ReverseMap();
-        }
+        this.CreateMap<Movie, MovieDto>()
+            .ReverseMap();
     }
 }

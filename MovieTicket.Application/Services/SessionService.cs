@@ -1,55 +1,67 @@
-﻿using AutoMapper;
+﻿#region
+
+using AutoMapper;
+
+using MediatR;
 
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.Domain.Entities;
-using MovieTicket.Domain.Interfaces;
+using MovieTicket.Application.Sessions.Commands;
+using MovieTicket.Application.Sessions.Queries;
 
-namespace MovieTicket.Application.Services
+#endregion
+
+namespace MovieTicket.Application.Services;
+
+public class SessionService : ISessionService
 {
-    public class SessionService : ISessionService
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
+
+    public SessionService( IMediator mediator, IMapper mapper )
     {
-        private readonly ISessionRepository _sessionRepository;
-        private readonly IMapper _mapper;
+        this._mediator = mediator;
+        this._mapper = mapper;
+    }
 
-        public SessionService( ISessionRepository sessionRepository, IMapper mapper )
-        {
-            this._sessionRepository = sessionRepository;
-            this._mapper = mapper;
-        }
+    public async Task<IEnumerable<SessionDto>> GetSessionsAsync()
+    {
+        var sessionsQuery = new GetSessionsQuery();
 
-        public async Task<IEnumerable<SessionDto>> GetSessionsAsync()
-        {
-            var sessions = await this._sessionRepository.GetSessionsAsync();
-            var sessionsDto = this._mapper.Map<IEnumerable<SessionDto>>( sessions );
-            return sessionsDto;
-        }
+        var result = await this._mediator.Send( sessionsQuery ) ?? throw new ApplicationException( "Sessions not found" );
 
-        public async Task<SessionDto> GetSessionByIdAsync( int id )
-        {
-            var session = await this._sessionRepository.GetSessionByIdAsync( id );
-            var sessionDto = this._mapper.Map<SessionDto>( session );
-            return sessionDto;
-        }
+        return this._mapper.Map<IEnumerable<SessionDto>>( result );
+    }
 
-        public async Task<SessionDto> CreateSessionAsync( SessionDto sessionDto )
-        {
-            var session = this._mapper.Map<Session>( sessionDto );
-            var newSession = await this._sessionRepository.InsertSessionAsync( session );
-            var newSessionDto = this._mapper.Map<SessionDto>( newSession );
-            return newSessionDto;
-        }
+    public async Task<SessionDto> GetSessionByIdAsync( int id )
+    {
+        var sessionQuery = new GetSessionByIdQuery( id );
 
-        public async Task UpdateSessionAsync( SessionDto sessionDto )
-        {
-            var session = this._mapper.Map<Session>( sessionDto );
-            await this._sessionRepository.UpdateSessionAsync( session );
-        }
+        var result = await this._mediator.Send( sessionQuery ) ?? throw new ApplicationException( "Session not found" );
 
-        public async Task DeleteSessionAsync( int id )
-        {
-            var session = this._sessionRepository.GetSessionByIdAsync( id ).Result;
-            await this._sessionRepository.DeleteSessionAsync( session );
-        }
+        return this._mapper.Map<SessionDto>( result );
+    }
+
+    public async Task<SessionDto> CreateSessionAsync( SessionDto sessionDto )
+    {
+        var sessionCommand = this._mapper.Map<SessionCreateCommand>( sessionDto );
+
+        var result = await this._mediator.Send( sessionCommand );
+
+        return this._mapper.Map<SessionDto>( result );
+    }
+
+    public async Task UpdateSessionAsync( SessionDto sessionDto )
+    {
+        var sessionCommand = this._mapper.Map<SessionUpdateCommand>( sessionDto );
+
+        await this._mediator.Send( sessionCommand );
+    }
+
+    public async Task DeleteSessionAsync( int id )
+    {
+        var sessionCommand = new SessionRemoveCommand( id );
+
+        var result = await this._mediator.Send( sessionCommand );
     }
 }

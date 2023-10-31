@@ -1,4 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#region
+
+using System.Reflection;
+
+using MediatR;
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,36 +15,42 @@ using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
 using MovieTicket.Infra.Data.Repositories;
 
-namespace MovieTicket.Infra.IoC
+#endregion
+
+namespace MovieTicket.Infra.IoC;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure( this IServiceCollection services,
+        IConfiguration configuration )
     {
-        public static IServiceCollection AddInfrastructure( this IServiceCollection services,
-            IConfiguration configuration )
-        {
-            services.AddDbContextPool<ApplicationDbContext>( options =>
-                options.UseSqlServer( configuration.GetConnectionString( "DevConnection" ), b =>
-                    b.MigrationsAssembly( typeof( ApplicationDbContext ).Assembly.FullName ) ) );
+        services.AddDbContextPool<ApplicationDbContext>( options =>
+            options.UseNpgsql( configuration.GetConnectionString( "DefaultConnection" ), b =>
+                b.MigrationsAssembly( typeof( ApplicationDbContext ).Assembly.FullName ) ) );
 
 #if DEBUG
-            services.AddDbContextPool<ApplicationDbContext>( options =>
-                options.UseSqlServer( configuration.GetConnectionString( "DevConnection" ), b =>
-                    b.MigrationsAssembly( typeof( ApplicationDbContext ).Assembly.FullName ) ) );
+        services.AddDbContextPool<ApplicationDbContext>( options =>
+            options.UseSqlServer( configuration.GetConnectionString( "DevConnection" ), b =>
+                b.MigrationsAssembly( typeof( ApplicationDbContext ).Assembly.FullName ) ) );
 #endif
 
-            services.AddScoped<IMovieRepository, MovieRepository>();
-            services.AddScoped<ISessionRepository, SessionRepository>();
-            services.AddScoped<ITicketRepository, TicketRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IMovieRepository, MovieRepository>();
+        services.AddScoped<ISessionRepository, SessionRepository>();
+        services.AddScoped<ITicketRepository, TicketRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddScoped<IMovieService, MovieService>();
-            services.AddScoped<ISessionService, SessionService>();
-            services.AddScoped<ITicketService, TicketService>();
-            services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IMovieService, MovieService>();
+        services.AddScoped<ISessionService, SessionService>();
+        services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<IUserService, UserService>();
 
-            services.AddAutoMapper( typeof( DomainToDtoMappingProfile ) );
+        services.AddAutoMapper( typeof( DomainToDtoMappingProfile ) );
+        services.AddAutoMapper( typeof( DtoToCommandMappingProfile ) );
 
-            return services;
-        }
+        var myHandlers = AppDomain.CurrentDomain.Load( "MovieTicket.Application" );
+
+        services.AddMediatR( cfg => cfg.RegisterServicesFromAssemblies( Assembly.GetExecutingAssembly() ) );
+
+        return services;
     }
 }

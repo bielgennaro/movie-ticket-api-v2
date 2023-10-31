@@ -1,16 +1,19 @@
-﻿using MediatR;
+﻿#region
+
+using MediatR;
 
 using MovieTicket.Domain.Entities;
 
-namespace MovieTicket.Application.Sessions.Queries
-{
-    public class GetSessionByIdQuery : IRequest<Session>
-    {
-        public int Id { get; set; }
+#endregion
 
-        public GetSessionByIdQuery( int id )
-        {
-            this.Id = id;
-        }
+namespace MovieTicket.Application.Sessions.Queries;
+
+public class GetSessionByIdQuery : IRequest<Session>
+{
+    public GetSessionByIdQuery( int id )
+    {
+        this.Id = id;
     }
+
+    public int Id { get; set; }
 }
