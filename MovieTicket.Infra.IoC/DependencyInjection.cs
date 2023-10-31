@@ -45,9 +45,9 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
 
         services.AddAutoMapper( typeof( DomainToDtoMappingProfile ) );
+        services.AddAutoMapper( typeof( DtoToCommandMappingProfile ) );
 
-        //var myHandlers = AppDomain.CurrentDomain.Load( "MovieTicket.Application" );
-        //services.AddMediatR( myHandlers );
+        var myHandlers = AppDomain.CurrentDomain.Load( "MovieTicket.Application" );
 
         services.AddMediatR( cfg => cfg.RegisterServicesFromAssemblies( Assembly.GetExecutingAssembly() ) );
 

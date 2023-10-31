@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieTicket.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231024224342_TestePg")]
-    partial class TestePg
+    [Migration("20231031230318_teste_projeto")]
+    partial class teste_projeto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,7 +152,8 @@ namespace MovieTicket.Infra.Data.Migrations
                         .HasColumnType("text")
                         .HasColumnName("password");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_users");
 
                     b.ToTable("Users", "public");
                 });

@@ -21,6 +21,10 @@ public class Startup
 
     public void ConfigureServices( IServiceCollection services )
     {
+        services.AddInfrastructure( this.Configuration );
+
+        services.AddControllers();
+
         services.AddControllers()
             .AddJsonOptions( options =>
             {
@@ -39,8 +43,6 @@ public class Startup
                 } );
             c.ResolveConflictingActions( apiDescriptions => apiDescriptions.First() );
         } );
-
-        services.AddDataProtection();
     }
 
     public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
@@ -55,9 +57,7 @@ public class Startup
 
         app.UseEndpoints( endpoints =>
         {
-            endpoints.MapControllerRoute(
-                "default",
-                "{controller=Home}/{action=Index}/{id?}" );
+            endpoints.MapControllers();
         } );
     }
 }

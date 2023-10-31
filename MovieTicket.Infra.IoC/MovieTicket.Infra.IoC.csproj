@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -15,6 +15,7 @@
         <ProjectReference Include="..\MovieTicket.Application\MovieTicket.Application.csproj"/>
         <ProjectReference Include="..\MovieTicket.Domain\MovieTicket.Domain.csproj"/>
         <ProjectReference Include="..\MovieTicket.Infra\MovieTicket.Infra.Data.csproj"/>
+        <PackageReference Include="MediatR" Version="12.1.1"/>
     </ItemGroup>
 
 </Project>
