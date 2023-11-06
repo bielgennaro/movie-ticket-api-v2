@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Domain.Entities;
 
 #endregion

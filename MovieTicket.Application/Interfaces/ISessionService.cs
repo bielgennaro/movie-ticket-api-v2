@@ -10,11 +10,11 @@ public interface ISessionService
 {
     Task<IEnumerable<SessionDto>> GetSessionsAsync();
 
-    Task<SessionDto> GetSessionByIdAsync( int id );
+    Task<SessionDto> GetSessionByIdAsync(int id);
 
-    Task<SessionDto> CreateSessionAsync( SessionDto sessionDto );
+    Task<SessionDto> CreateSessionAsync(SessionDto sessionDto);
 
-    Task UpdateSessionAsync( SessionDto sessionDto );
+    Task UpdateSessionAsync(SessionDto sessionDto);
 
-    Task DeleteSessionAsync( int id );
+    Task DeleteSessionAsync(int id);
 }

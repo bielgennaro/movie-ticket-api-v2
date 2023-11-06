@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Users.Queries;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -10,17 +9,17 @@ using MovieTicket.Domain.Interfaces;
 
 namespace MovieTicket.Application.Users.Handlers;
 
-public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IEnumerable<User>>
+public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IList<User>>
 {
     private readonly IUserRepository _userRepository;
 
-    public GetUsersQueryHandler( IUserRepository userRepository )
+    public GetUsersQueryHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<User>> Handle( GetUsersQuery request, CancellationToken cancellationToken )
+    public async Task<IList<User>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        return await this._userRepository.GetUsersAsync();
+        return await _userRepository.GetUsersAsync();
     }
 }

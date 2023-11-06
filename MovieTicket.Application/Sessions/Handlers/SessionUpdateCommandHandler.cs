@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Sessions.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,18 +13,18 @@ public class SessionUpdateCommandHandler : IRequestHandler<SessionUpdateCommand,
 {
     private readonly ISessionRepository _sessionRepository;
 
-    public SessionUpdateCommandHandler( ISessionRepository sessionRepository )
+    public SessionUpdateCommandHandler(ISessionRepository sessionRepository)
     {
-        this._sessionRepository = sessionRepository;
+        _sessionRepository = sessionRepository;
     }
 
-    public async Task<Session> Handle( SessionUpdateCommand request, CancellationToken cancellationToken )
+    public async Task<Session> Handle(SessionUpdateCommand request, CancellationToken cancellationToken)
     {
-        var session = await this._sessionRepository.GetSessionByIdAsync( request.Id ) ??
-                      throw new ApplicationException( "Session not found" );
+        var session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
+                      throw new ApplicationException("Session not found");
 
-        session.Update( request.Room, request.AvailableTickets, request.Date, request.Price, request.MovieId );
+        session.Update(request.Room, request.AvailableTickets, request.Date, request.Price, request.MovieId);
 
-        return await this._sessionRepository.UpdateSessionAsync( session );
+        return await _sessionRepository.UpdateSessionAsync(session);
     }
 }

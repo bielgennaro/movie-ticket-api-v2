@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Tickets.Queries;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,14 +13,14 @@ public class GetTicketByIdQueryHandler : IRequestHandler<GetTicketByIdQuery, Tic
 {
     private readonly ITicketRepository _ticketRepository;
 
-    public GetTicketByIdQueryHandler( ITicketRepository ticketRepository )
+    public GetTicketByIdQueryHandler(ITicketRepository ticketRepository)
     {
-        this._ticketRepository = ticketRepository;
+        _ticketRepository = ticketRepository;
     }
 
-    public async Task<Ticket> Handle( GetTicketByIdQuery request, CancellationToken cancellationToken )
+    public async Task<Ticket> Handle(GetTicketByIdQuery request, CancellationToken cancellationToken)
     {
-        return await this._ticketRepository.GetTicketByIdAsync( request.Id ) ??
-               throw new ApplicationException( "Ticket not found" );
+        return await _ticketRepository.GetTicketByIdAsync(request.Id) ??
+               throw new ApplicationException("Ticket not found");
     }
 }

@@ -1,9 +1,7 @@
 ﻿#region
 
 using AutoMapper;
-
 using MediatR;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Application.Users.Commands;
@@ -11,59 +9,58 @@ using MovieTicket.Application.Users.Queries;
 
 #endregion
 
-namespace MovieTicket.Application.Services
+namespace MovieTicket.Application.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
+
+    public UserService(IMediator mediator,
+        IMapper mapper)
     {
-        private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+        _mapper = mapper;
+    }
 
-        public UserService( IMediator mediator,
-            IMapper mapper )
-        {
-            this._mediator = mediator;
-            this._mapper = mapper;
-        }
+    public async Task<IEnumerable<UserDto>> GetUsersAsync()
+    {
+        var usersQuery = new GetUsersQuery();
 
-        public async Task<IEnumerable<UserDto>> GetUsersAsync()
-        {
-            var usersQuery = new GetUsersQuery();
+        var result = await _mediator.Send(usersQuery);
 
-            var result = await this._mediator.Send( usersQuery );
+        return _mapper.Map<IEnumerable<UserDto>>(result);
+    }
 
-            return this._mapper.Map<IEnumerable<UserDto>>( result );
-        }
+    public async Task<UserDto> GetUserByIdAsync(int id)
+    {
+        var userQuery = new GetUserByIdQuery(id);
 
-        public async Task<UserDto> GetUserByIdAsync( int id )
-        {
-            var userQuery = new GetUserByIdQuery( id );
+        var result = await _mediator.Send(userQuery) ?? throw new ApplicationException("User not found");
 
-            var result = await this._mediator.Send( userQuery ) ?? throw new ApplicationException( "User not found" );
+        return _mapper.Map<UserDto>(result);
+    }
 
-            return this._mapper.Map<UserDto>( result );
-        }
+    public async Task<UserDto> CreateUserAsync(UserDto userDto)
+    {
+        var userCommand = _mapper.Map<UserCreateCommand>(userDto);
 
-        public async Task<UserDto> CreateUserAsync( UserDto userDto )
-        {
-            var userCommand = this._mapper.Map<UserCreateCommand>( userDto );
+        var result = await _mediator.Send(userCommand);
 
-            var result = await this._mediator.Send( userCommand );
+        return _mapper.Map<UserDto>(result);
+    }
 
-            return this._mapper.Map<UserDto>( result );
-        }
+    public async Task UpdateUserAsync(UserDto userDto)
+    {
+        var userCommand = _mapper.Map<UserUpdateCommand>(userDto);
 
-        public async Task UpdateUserAsync( UserDto userDto )
-        {
-            var userCommand = this._mapper.Map<UserUpdateCommand>( userDto );
+        await _mediator.Send(userCommand);
+    }
 
-            await this._mediator.Send( userCommand );
-        }
+    public async Task DeleteUserAsync(int id)
+    {
+        var userCommand = new UserRemoveCommand(id);
 
-        public async Task DeleteUserAsync( int id )
-        {
-            var userCommand = new UserRemoveCommand( id );
-
-            await this._mediator.Send( userCommand );
-        }
+        await _mediator.Send(userCommand);
     }
 }

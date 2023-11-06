@@ -2,10 +2,10 @@
 
 public class Ticket : Entity
 {
-    public Ticket( int sessionId, int userId )
+    public Ticket(int sessionId, int userId)
     {
-        this.SessionId = sessionId;
-        this.UserId = userId;
+        SessionId = sessionId;
+        UserId = userId;
     }
 
     public int SessionId { get; private set; }
@@ -14,9 +14,9 @@ public class Ticket : Entity
     public int UserId { get; private set; }
     public User? User { get; }
 
-    public void Update( int sessionId, int userId )
+    public void Update(int sessionId, int userId)
     {
-        this.SessionId = sessionId;
-        this.UserId = userId;
+        SessionId = sessionId;
+        UserId = userId;
     }
 }

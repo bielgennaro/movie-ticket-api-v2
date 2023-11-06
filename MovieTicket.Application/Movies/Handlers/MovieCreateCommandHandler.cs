@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Movies.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,15 +13,15 @@ public class MovieCreateCommandHandler : IRequestHandler<MovieCreateCommand, Mov
 {
     private readonly IMovieRepository _movieRepository;
 
-    public MovieCreateCommandHandler( IMovieRepository movieRepository )
+    public MovieCreateCommandHandler(IMovieRepository movieRepository)
     {
-        this._movieRepository = movieRepository;
+        _movieRepository = movieRepository;
     }
 
-    public async Task<Movie> Handle( MovieCreateCommand request, CancellationToken cancellationToken )
+    public async Task<Movie> Handle(MovieCreateCommand request, CancellationToken cancellationToken)
     {
-        var movie = new Movie( request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl );
+        var movie = new Movie(request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl);
 
-        return await this._movieRepository.InsertMovieAsync( movie );
+        return await _movieRepository.InsertMovieAsync(movie);
     }
 }

@@ -1,48 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#region
 
-using MovieTicket.Application.DTOs;
+using Microsoft.AspNetCore.Mvc;
 using MovieTicket.Application.Interfaces;
 
-namespace MovieTicket.WebApi.Controller
+#endregion
+
+namespace MovieTicket.WebApi.Controller;
+
+[Route("api/v1/[controller]")]
+[ApiController]
+public class UsersController : ControllerBase
 {
-    [Route( "api/[controller]" )]
-    [ApiController]
-    public class UsersController : ControllerBase
+    private readonly IUserService _userService;
+
+    public UsersController(IUserService userService)
     {
-        private readonly IUserService _userService;
+        _userService = userService;
+    }
 
-        public UsersController( IUserService userService )
+    [HttpGet("getallusers", Order = 1)]
+    public async Task<ActionResult> GetUsersAsync()
+    {
+        try
         {
-            this._userService = userService;
+            var users = await _userService.GetUsersAsync();
+
+            if (users == null) return NotFound("message: Nenhum usuário encontrado");
+
+            return Ok(users);
         }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> Get()
+        catch (Exception e)
         {
-            try
-            {
-                List<UserDto> users = ( await this._userService.GetUsersAsync() ).ToList();
-
-                return this.Ok( users );
-            }
-            catch( Exception ex )
-            {
-                return this.BadRequest( ex.Message );
-            }
-        }
-
-        [HttpGet( "{id}" )]
-        public async Task<ActionResult<UserDto>> ListById( int id)
-        {
-            try
-            {
-                var user = await this._userService.GetUserByIdAsync( id );
-
-                return this.Ok( user );
-            }catch( Exception ex )
-            {
-                return this.BadRequest( ex.Message );
-            }
+            throw new Exception($"Erro ao buscar usuários: {e.Message}");
         }
     }
 }

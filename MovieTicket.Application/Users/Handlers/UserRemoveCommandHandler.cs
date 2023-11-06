@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Users.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,16 +13,16 @@ public class UserRemoveCommandHandler : IRequestHandler<UserRemoveCommand, User>
 {
     private readonly IUserRepository _userRepository;
 
-    public UserRemoveCommandHandler( IUserRepository userRepository )
+    public UserRemoveCommandHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<User> Handle( UserRemoveCommand request, CancellationToken cancellationToken )
+    public async Task<User> Handle(UserRemoveCommand request, CancellationToken cancellationToken)
     {
-        var user = await this._userRepository.GetUserByIdAsync( request.Id ) ??
-                   throw new ApplicationException( "User not found" );
+        var user = await _userRepository.GetUserByIdAsync(request.Id) ??
+                   throw new ApplicationException("User not found");
 
-        return await this._userRepository.DeleteUserAsync( user );
+        return await _userRepository.DeleteUserAsync(user);
     }
 }

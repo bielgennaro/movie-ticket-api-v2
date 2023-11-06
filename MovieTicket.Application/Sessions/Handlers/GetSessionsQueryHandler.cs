@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Sessions.Queries;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,13 +13,13 @@ public class GetSessionsQueryHandler : IRequestHandler<GetSessionsQuery, IEnumer
 {
     private readonly ISessionRepository _sessionRepository;
 
-    public GetSessionsQueryHandler( ISessionRepository sessionRepository )
+    public GetSessionsQueryHandler(ISessionRepository sessionRepository)
     {
-        this._sessionRepository = sessionRepository;
+        _sessionRepository = sessionRepository;
     }
 
-    public async Task<IEnumerable<Session>> Handle( GetSessionsQuery request, CancellationToken cancellationToken )
+    public async Task<IEnumerable<Session>> Handle(GetSessionsQuery request, CancellationToken cancellationToken)
     {
-        return await this._sessionRepository.GetSessionsAsync();
+        return await _sessionRepository.GetSessionsAsync();
     }
 }

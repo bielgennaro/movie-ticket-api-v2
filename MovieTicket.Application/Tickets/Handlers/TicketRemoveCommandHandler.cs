@@ -1,7 +1,6 @@
 ﻿#region
 
 using MediatR;
-
 using MovieTicket.Application.Tickets.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -14,16 +13,16 @@ internal class TicketRemoveCommandHandler : IRequestHandler<TicketRemoveCommand,
 {
     private readonly ITicketRepository _ticketRepository;
 
-    public TicketRemoveCommandHandler( ITicketRepository ticketRepository )
+    public TicketRemoveCommandHandler(ITicketRepository ticketRepository)
     {
-        this._ticketRepository = ticketRepository;
+        _ticketRepository = ticketRepository;
     }
 
-    public async Task<Ticket> Handle( TicketRemoveCommand request, CancellationToken cancellationToken )
+    public async Task<Ticket> Handle(TicketRemoveCommand request, CancellationToken cancellationToken)
     {
-        var ticket = await this._ticketRepository.GetTicketByIdAsync( request.Id ) ??
-                     throw new ApplicationException( "Ticket not found" );
+        var ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
+                     throw new ApplicationException("Ticket not found");
 
-        return await this._ticketRepository.DeleteTicketAsync( ticket );
+        return await _ticketRepository.DeleteTicketAsync(ticket);
     }
 }
