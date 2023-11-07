@@ -8,13 +8,13 @@ namespace MovieTicket.Application.Interfaces;
 
 public interface ITicketService
 {
-    Task<IEnumerable<TicketDto>> GetTicketsAsync();
+    Task<IEnumerable<TicketDto>> GetTickets();
 
-    Task<TicketDto> GetTicketByIdAsync(int id);
+    Task<TicketDto> GetTicketById(int id);
 
-    Task<TicketDto> CreateTicketAsync(TicketDto ticketDto);
+    Task<TicketDto> CreateTicket(TicketDto ticketDto);
 
-    Task UpdateTicketAsync(TicketDto ticketDto);
+    Task UpdateTicket(TicketDto ticketDto);
 
-    Task DeleteTicketAsync(int id);
+    Task DeleteTicket(int id);
 }

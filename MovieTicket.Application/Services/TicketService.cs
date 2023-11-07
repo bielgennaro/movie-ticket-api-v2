@@ -24,7 +24,7 @@ public class TicketService : ITicketService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<TicketDto>> GetTicketsAsync()
+    public async Task<IEnumerable<TicketDto>> GetTickets()
     {
         GetTicketsQuery ticketsQuery = new GetTicketsQuery();
 
@@ -33,7 +33,7 @@ public class TicketService : ITicketService
         return _mapper.Map<IEnumerable<TicketDto>>(result);
     }
 
-    public async Task<TicketDto> GetTicketByIdAsync(int id)
+    public async Task<TicketDto> GetTicketById(int id)
     {
         GetTicketByIdQuery ticketQuery = new GetTicketByIdQuery(id);
 
@@ -42,7 +42,7 @@ public class TicketService : ITicketService
         return _mapper.Map<TicketDto>(result);
     }
 
-    public async Task<TicketDto> CreateTicketAsync(TicketDto ticketDto)
+    public async Task<TicketDto> CreateTicket(TicketDto ticketDto)
     {
         TicketCreateCommand ticketCommand = _mapper.Map<TicketCreateCommand>(ticketDto);
 
@@ -51,14 +51,14 @@ public class TicketService : ITicketService
         return _mapper.Map<TicketDto>(result);
     }
 
-    public async Task UpdateTicketAsync(TicketDto ticketDto)
+    public async Task UpdateTicket(TicketDto ticketDto)
     {
         TicketUpdateCommand ticketCommand = _mapper.Map<TicketUpdateCommand>(ticketDto);
 
         await _mediator.Send(ticketCommand);
     }
 
-    public async Task DeleteTicketAsync(int id)
+    public async Task DeleteTicket(int id)
     {
         TicketRemoveCommand ticketCommand = new TicketRemoveCommand(id);
 
