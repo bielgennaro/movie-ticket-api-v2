@@ -1,6 +1,7 @@
 ﻿#region
 
 using MediatR;
+
 using MovieTicket.Application.Users.Commands;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
@@ -22,8 +23,13 @@ public class UserCreateCommandHandler : IRequestHandler<UserCreateCommand, User>
     {
         var user = new User(request.Email, request.Password, request.IsAdmin);
 
-        return user == null
-            ? throw new ApplicationException("There was an error creating the user")
-            : await _userRepository.InsertUserAsync(user);
+        if (user == null)
+        {
+            throw new ApplicationException($"Error creating entity");
+        }
+        else
+        {
+            return await _userRepository.InsertUserAsync(user);
+        }
     }
 }

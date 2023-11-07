@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;

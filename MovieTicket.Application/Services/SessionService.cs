@@ -1,7 +1,9 @@
 ﻿#region
 
 using AutoMapper;
+
 using MediatR;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Application.Sessions.Commands;

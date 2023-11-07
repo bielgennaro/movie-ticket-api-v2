@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "gMZ1RAc11omPZQIBl8b8obRGdji7pQSkovx0gxrsYh37BZHH2ibWwd5WzKOVFu7mVXYfLPfpupCgHjYOZsxO/g==",
+  "dgSpecHash": "dLCx03M1Rj6W+6+1XwaBmYaMYyDWNPCMbC/0rlBnpSnHbYojviCwSsIs4LNzUQk7KgnKfnyszJu43gyl4zrBXw==",
   "success": true,
-  "projectFilePath": "C:\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
+  "projectFilePath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\biel\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\guili\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\guili\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\guili\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\guili\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\guili\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

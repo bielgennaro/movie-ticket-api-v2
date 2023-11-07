@@ -239,40 +239,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\biel\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\guili\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
+      "projectUniqueName": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
       "projectName": "MovieTicket.Application",
-      "projectPath": "C:\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
-      "packagesPath": "C:\\Users\\biel\\.nuget\\packages\\",
-      "outputPath": "C:\\MovieTicket\\MovieTicket.Application\\obj\\",
+      "projectPath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Application\\MovieTicket.Application.csproj",
+      "packagesPath": "C:\\Users\\guili\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Application\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\biel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\guili\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
-              "projectPath": "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj"
+            "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
+              "projectPath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj"
             }
           }
         }
@@ -312,7 +304,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\guili\\.dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

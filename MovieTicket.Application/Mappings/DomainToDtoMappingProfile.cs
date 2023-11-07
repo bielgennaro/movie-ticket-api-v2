@@ -1,6 +1,7 @@
 ﻿#region
 
 using AutoMapper;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Domain.Entities;
 

@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {}
+    "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {}
   },
   "projects": {
-    "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
+    "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj",
         "projectName": "MovieTicket.Domain",
-        "projectPath": "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj",
-        "packagesPath": "C:\\Users\\biel\\.nuget\\packages\\",
-        "outputPath": "C:\\MovieTicket\\MovieTicket.Domain\\obj\\",
+        "projectPath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj",
+        "packagesPath": "C:\\Users\\guili\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\guili\\OneDrive\\Área de Trabalho\\MovieTicket2\\MovieTicket\\MovieTicket.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\biel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\guili\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\guili\\.dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

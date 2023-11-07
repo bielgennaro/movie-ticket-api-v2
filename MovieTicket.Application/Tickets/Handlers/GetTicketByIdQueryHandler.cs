@@ -1,6 +1,7 @@
 ﻿#region
 
 using MediatR;
+
 using MovieTicket.Application.Tickets.Queries;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;

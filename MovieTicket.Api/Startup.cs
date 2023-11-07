@@ -1,8 +1,10 @@
 ﻿#region
 
-using System.Text.Json;
 using Microsoft.OpenApi.Models;
+
 using MovieTicket.Infra.IoC;
+
+using System.Text.Json;
 
 #endregion
 
@@ -42,21 +44,24 @@ public class Startup
         });
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app)
     {
         app.UseSwagger();
         app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"); });
 
         app.UseRouting();
+
+        app.UseCors(configurePolicy => configurePolicy.AllowAnyOrigin());
+
+        app.UseAuthorization();
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(
-                "default",
-                "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapControllers();
         });
     }
 }

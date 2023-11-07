@@ -1,6 +1,7 @@
 #region
 
 using FluentAssertions;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Validation;
 

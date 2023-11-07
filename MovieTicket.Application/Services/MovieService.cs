@@ -1,7 +1,9 @@
 ﻿#region
 
 using AutoMapper;
+
 using MediatR;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Application.Movies.Commands;
@@ -22,7 +24,7 @@ public class MovieService : IMovieService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<MovieDto>> GetMoviesAsync()
+    public async Task<IEnumerable<MovieDto>> GetMovies()
     {
         var moviesQuery = new GetMoviesQuery();
 
@@ -31,7 +33,7 @@ public class MovieService : IMovieService
         return _mapper.Map<IEnumerable<MovieDto>>(result);
     }
 
-    public async Task<MovieDto> GetMovieByIdAsync(int id)
+    public async Task<MovieDto> GetMovieById(int id)
     {
         var movieQuery = new GetMovieByIdQuery(id);
 
@@ -40,7 +42,7 @@ public class MovieService : IMovieService
         return _mapper.Map<MovieDto>(result);
     }
 
-    public async Task<MovieDto> CreateMovieAsync(MovieDto movieDto)
+    public async Task<MovieDto> CreateMovie(MovieDto movieDto)
     {
         var movieCommand = _mapper.Map<MovieCreateCommand>(movieDto);
 
@@ -49,13 +51,13 @@ public class MovieService : IMovieService
         return _mapper.Map<MovieDto>(result);
     }
 
-    public async Task UpdateMovieAsync(MovieDto movieDto)
+    public async Task UpdateMovie(MovieDto movieDto)
     {
         var movieCommand = _mapper.Map<MovieUpdateCommand>(movieDto);
         await _mediator.Send(movieCommand);
     }
 
-    public async Task DeleteMovieAsync(int id)
+    public async Task DeleteMovie(int id)
     {
         var movieCommand = new MovieRemoveCommand(id);
         var result = await _mediator.Send(movieCommand);

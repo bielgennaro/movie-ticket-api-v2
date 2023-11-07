@@ -1,7 +1,8 @@
 ﻿#region
 
-using System.ComponentModel.DataAnnotations;
 using MovieTicket.Domain.Entities;
+
+using System.ComponentModel.DataAnnotations;
 
 #endregion
 
