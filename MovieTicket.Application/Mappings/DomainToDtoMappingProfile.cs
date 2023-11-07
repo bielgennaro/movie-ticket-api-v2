@@ -13,16 +13,16 @@ public class DomainToDtoMappingProfile : Profile
 {
     public DomainToDtoMappingProfile()
     {
-        this.CreateMap<Session, SessionDto>()
+        CreateMap<Session, SessionDto>()
             .ReverseMap();
 
-        this.CreateMap<Ticket, TicketDto>()
+        CreateMap<Ticket, TicketDto>()
             .ReverseMap();
 
-        this.CreateMap<User, UserDto>()
+        CreateMap<User, UserDto>()
             .ReverseMap();
 
-        this.CreateMap<Movie, MovieDto>()
+        CreateMap<Movie, MovieDto>()
             .ReverseMap();
     }
 }

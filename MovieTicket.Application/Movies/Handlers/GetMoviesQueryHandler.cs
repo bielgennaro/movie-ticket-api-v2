@@ -14,13 +14,13 @@ public class GetMoviesQueryHandler : IRequestHandler<GetMoviesQuery, IEnumerable
 {
     private readonly IMovieRepository _movieRepository;
 
-    public GetMoviesQueryHandler( IMovieRepository movieRepository )
+    public GetMoviesQueryHandler(IMovieRepository movieRepository)
     {
-        this._movieRepository = movieRepository;
+        _movieRepository = movieRepository;
     }
 
-    public async Task<IEnumerable<Movie>> Handle( GetMoviesQuery request, CancellationToken cancellationToken )
+    public async Task<IEnumerable<Movie>> Handle(GetMoviesQuery request, CancellationToken cancellationToken)
     {
-        return await this._movieRepository.GetMoviesAsync();
+        return await _movieRepository.GetMoviesAsync();
     }
 }

@@ -10,9 +10,9 @@ namespace MovieTicket.Application.Users.Queries;
 
 public class GetUserByIdQuery : IRequest<User>
 {
-    public GetUserByIdQuery( int id )
+    public GetUserByIdQuery(int id)
     {
-        this.Id = id;
+        Id = id;
     }
 
     public int Id { get; set; }

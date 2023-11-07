@@ -14,13 +14,13 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IEnumerable<U
 {
     private readonly IUserRepository _userRepository;
 
-    public GetUsersQueryHandler( IUserRepository userRepository )
+    public GetUsersQueryHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<User>> Handle( GetUsersQuery request, CancellationToken cancellationToken )
+    public async Task<IEnumerable<User>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        return await this._userRepository.GetUsersAsync();
+        return await _userRepository.GetUsersAsync();
     }
 }

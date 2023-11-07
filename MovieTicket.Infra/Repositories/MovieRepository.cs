@@ -14,39 +14,39 @@ public class MovieRepository : IMovieRepository
 {
     private readonly ApplicationDbContext _movieContext;
 
-    public MovieRepository( ApplicationDbContext movieContext )
+    public MovieRepository(ApplicationDbContext movieContext)
     {
-        this._movieContext = movieContext;
+        _movieContext = movieContext;
     }
 
-    public async Task<Movie> DeleteMovieAsync( Movie movie )
+    public async Task<Movie> DeleteMovieAsync(Movie movie)
     {
-        this._movieContext.Remove( movie );
-        await this._movieContext.SaveChangesAsync();
+        _movieContext.Remove(movie);
+        await _movieContext.SaveChangesAsync();
         return movie;
     }
 
-    public async Task<Movie> GetMovieByIdAsync( int id )
+    public async Task<Movie> GetMovieByIdAsync(int id)
     {
-        return await this._movieContext.Movies.FindAsync( id );
+        return await _movieContext.Movies.FindAsync(id);
     }
 
     public async Task<IEnumerable<Movie>> GetMoviesAsync()
     {
-        return await this._movieContext.Movies.ToListAsync();
+        return await _movieContext.Movies.ToListAsync();
     }
 
-    public async Task<Movie> InsertMovieAsync( Movie movie )
+    public async Task<Movie> InsertMovieAsync(Movie movie)
     {
-        this._movieContext.Add( movie );
-        await this._movieContext.SaveChangesAsync();
+        _movieContext.Add(movie);
+        await _movieContext.SaveChangesAsync();
         return movie;
     }
 
-    public async Task<Movie> UpdateMovieAsync( Movie movie )
+    public async Task<Movie> UpdateMovieAsync(Movie movie)
     {
-        this._movieContext.Update( movie );
-        await this._movieContext.SaveChangesAsync();
+        _movieContext.Update(movie);
+        await _movieContext.SaveChangesAsync();
         return movie;
     }
 }

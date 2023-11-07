@@ -11,59 +11,83 @@ using MovieTicket.Application.Users.Queries;
 
 #endregion
 
-namespace MovieTicket.Application.Services
+namespace MovieTicket.Application.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
+
+    public UserService(IMediator mediator,
+        IMapper mapper)
     {
-        private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+        _mapper = mapper;
+    }
 
-        public UserService( IMediator mediator,
-            IMapper mapper )
+    public async Task<IEnumerable<UserDto>> GetUsers()
+    {
+        var userQuery = new GetUsersQuery();
+
+        if (userQuery == null)
         {
-            this._mediator = mediator;
-            this._mapper = mapper;
+            throw new ApplicationException($"Entity could not be loaded.");
         }
 
-        public async Task<IEnumerable<UserDto>> GetUsersAsync()
+        var result = await _mediator.Send(userQuery);
+
+        return _mapper.Map<IEnumerable<UserDto>>(result);
+    }
+
+    public async Task<UserDto> GetUserById(int id)
+    {
+        var userByIdQuery = new GetUserByIdQuery(id);
+
+        if (userByIdQuery == null)
         {
-            var usersQuery = new GetUsersQuery();
-
-            var result = await this._mediator.Send( usersQuery );
-
-            return this._mapper.Map<IEnumerable<UserDto>>( result );
+            throw new ApplicationException($"Entity could not be loaded.");
         }
 
-        public async Task<UserDto> GetUserByIdAsync( int id )
+        var result = await _mediator.Send(userByIdQuery);
+
+        return _mapper.Map<UserDto>(result);
+    }
+
+    //TODO: Implementar o método de adicionar usuário
+    public async Task<UserDto> AddUser(UserDto userDto)
+    {
+        var userCreateCommand = _mapper.Map<UserCreateCommand>(userDto);
+
+        var user = await _mediator.Send(userCreateCommand);
+
+        return _mapper.Map<UserDto>(user);
+    }
+
+    public async Task UpdateUser(UserDto userDto)
+    {
+        var userCommand = _mapper.Map<UserUpdateCommand>(userDto);
+
+        await _mediator.Send(userCommand);
+    }
+
+    public async Task<UserDto> GetUserByEmailAsync(string email)
+    {
+        var userQuery = new GetUserByEmailQuery(email);
+
+        var result = await _mediator.Send(userQuery) ?? throw new ApplicationException("User not found");
+
+        return _mapper.Map<UserDto>(result);
+    }
+
+    public async Task RemoveUser(int id)
+    {
+        var userRemoveCommand = new UserRemoveCommand(id);
+
+        if (userRemoveCommand == null)
         {
-            var userQuery = new GetUserByIdQuery( id );
-
-            var result = await this._mediator.Send( userQuery ) ?? throw new ApplicationException( "User not found" );
-
-            return this._mapper.Map<UserDto>( result );
+            throw new ApplicationException($"Entity could not be loaded.");
         }
 
-        public async Task<UserDto> CreateUserAsync( UserDto userDto )
-        {
-            var userCommand = this._mapper.Map<UserCreateCommand>( userDto );
-
-            var result = await this._mediator.Send( userCommand );
-
-            return this._mapper.Map<UserDto>( result );
-        }
-
-        public async Task UpdateUserAsync( UserDto userDto )
-        {
-            var userCommand = this._mapper.Map<UserUpdateCommand>( userDto );
-
-            await this._mediator.Send( userCommand );
-        }
-
-        public async Task DeleteUserAsync( int id )
-        {
-            var userCommand = new UserRemoveCommand( id );
-
-            await this._mediator.Send( userCommand );
-        }
+        await _mediator.Send(userRemoveCommand);
     }
 }

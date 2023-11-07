@@ -14,13 +14,13 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
 {
     private readonly IUserRepository _userRepository;
 
-    public GetUserByIdQueryHandler( IUserRepository userRepository )
+    public GetUserByIdQueryHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<User> Handle( GetUserByIdQuery request, CancellationToken cancellationToken )
+    public async Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
-        return await this._userRepository.GetUserByIdAsync( request.Id ) ?? throw new ApplicationException( "User not found" );
+        return await _userRepository.GetUserByIdAsync(request.Id);
     }
 }

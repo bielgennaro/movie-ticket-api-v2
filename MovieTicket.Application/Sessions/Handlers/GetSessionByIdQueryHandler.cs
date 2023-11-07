@@ -14,14 +14,14 @@ public class GetSessionByIdQueryHandler : IRequestHandler<GetSessionByIdQuery, S
 {
     private readonly ISessionRepository _sessionRepository;
 
-    public GetSessionByIdQueryHandler( ISessionRepository sessionRepository )
+    public GetSessionByIdQueryHandler(ISessionRepository sessionRepository)
     {
-        this._sessionRepository = sessionRepository;
+        _sessionRepository = sessionRepository;
     }
 
-    public async Task<Session> Handle( GetSessionByIdQuery request, CancellationToken cancellationToken )
+    public async Task<Session> Handle(GetSessionByIdQuery request, CancellationToken cancellationToken)
     {
-        return await this._sessionRepository.GetSessionByIdAsync( request.Id ) ??
-               throw new ApplicationException( "Session not found" );
+        return await _sessionRepository.GetSessionByIdAsync(request.Id) ??
+               throw new ApplicationException("Session not found");
     }
 }

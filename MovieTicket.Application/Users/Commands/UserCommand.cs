@@ -10,7 +10,7 @@ namespace MovieTicket.Application.Users.Commands;
 
 public abstract class UserCommand : IRequest<User>
 {
-    public string Email { get; set; } = null!;
-    public string Password { get; set; } = null!;
+    public string Email { get; set; }
+    public string Password { get; set; }
     public bool IsAdmin { get; set; }
 }

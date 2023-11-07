@@ -14,18 +14,18 @@ public class MovieUpdateCommandHandler : IRequestHandler<MovieUpdateCommand, Mov
 {
     private readonly IMovieRepository _movieRepository;
 
-    public MovieUpdateCommandHandler( IMovieRepository movieRepository )
+    public MovieUpdateCommandHandler(IMovieRepository movieRepository)
     {
-        this._movieRepository = movieRepository;
+        _movieRepository = movieRepository;
     }
 
-    public async Task<Movie> Handle( MovieUpdateCommand request, CancellationToken cancellationToken )
+    public async Task<Movie> Handle(MovieUpdateCommand request, CancellationToken cancellationToken)
     {
-        var movie = await this._movieRepository.GetMovieByIdAsync( request.Id ) ??
-                    throw new ApplicationException( "Movie not found" );
+        var movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
+                    throw new ApplicationException("Movie not found");
 
-        movie.Update( request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl );
+        movie.Update(request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl);
 
-        return await this._movieRepository.UpdateMovieAsync( movie );
+        return await _movieRepository.UpdateMovieAsync(movie);
     }
 }

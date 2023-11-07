@@ -10,9 +10,9 @@ namespace MovieTicket.Application.Tickets.Commands;
 
 public class TicketRemoveCommand : IRequest<Ticket>
 {
-    public TicketRemoveCommand( int id )
+    public TicketRemoveCommand(int id)
     {
-        this.Id = id;
+        Id = id;
     }
 
     public int Id { get; set; }

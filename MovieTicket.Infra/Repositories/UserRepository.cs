@@ -14,57 +14,44 @@ public class UserRepository : IUserRepository
 {
     private readonly ApplicationDbContext _userContext;
 
-    public UserRepository( ApplicationDbContext userContext )
+    public UserRepository(ApplicationDbContext userContext)
     {
-        this._userContext = userContext;
+        _userContext = userContext;
     }
 
-    public async Task<IEnumerable<User>> GetUsersAsync()
+    public async Task<IList<User>> GetUsersAsync()
     {
-        return await this._userContext.Users.ToListAsync();
+        return await _userContext.Users.ToListAsync();
     }
 
-    public async Task<User> GetUserByIdAsync( int id )
+    public async Task<User> GetUserByIdAsync(int id)
     {
-        return await this._userContext.Users.FindAsync( id );
+        return await _userContext.Users.FindAsync(id);
     }
 
-    public async Task<User> GetUserByEmailAsync( string email )
+    public async Task<User> GetUserByEmailAsync(string email)
     {
-        return await this._userContext.Users.Where( u => u.Email == email ).FirstOrDefaultAsync();
+        return await _userContext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
     }
 
-    public async Task<User> InsertUserAsync( User user )
+    public async Task<User> InsertUserAsync(User user)
     {
-        this._userContext.Add( user );
-        await this._userContext.SaveChangesAsync();
+        _userContext.Add(user);
+        await _userContext.SaveChangesAsync();
         return user;
     }
 
-    public async Task<User> UpdateUserAsync( User user )
+    public async Task<User> UpdateUserAsync(User user)
     {
-        this._userContext.Update( user );
-        await this._userContext.SaveChangesAsync();
+        _userContext.Update(user);
+        await _userContext.SaveChangesAsync();
         return user;
     }
 
-    public async Task<User> DeleteUserAsync( User user )
+    public async Task<User> DeleteUserAsync(User user)
     {
-        this._userContext.Remove( user );
-        await this._userContext.SaveChangesAsync();
+        _userContext.Remove(user);
+        await _userContext.SaveChangesAsync();
         return user;
-    }
-
-    //TODO implement this
-    public async Task<User> VerifyPasswordAsync( User user, string password, string hashedPassword )
-    {
-        this._userContext.Users.Where( u => u.Password == password );
-        return await this._userContext.Users.FindAsync( user );
-    }
-
-    //TODO implement this
-    public async Task<string> HashPasswordAsync( string password )
-    {
-        throw new NotImplementedException();
     }
 }

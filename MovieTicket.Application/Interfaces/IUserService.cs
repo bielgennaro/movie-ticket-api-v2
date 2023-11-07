@@ -8,13 +8,15 @@ namespace MovieTicket.Application.Interfaces;
 
 public interface IUserService
 {
-    Task<IEnumerable<UserDto>> GetUsersAsync();
+    Task<IEnumerable<UserDto>> GetUsers();
 
-    Task<UserDto> GetUserByIdAsync( int id );
+    Task<UserDto> GetUserById(int id);
 
-    Task<UserDto> CreateUserAsync( UserDto userDto );
+    Task<UserDto> AddUser(UserDto userDto);
 
-    Task UpdateUserAsync( UserDto userDto );
+    Task UpdateUser(UserDto userDto);
 
-    Task DeleteUserAsync( int id );
+    Task<UserDto> GetUserByEmailAsync(string email);
+
+    Task RemoveUser(int id);
 }

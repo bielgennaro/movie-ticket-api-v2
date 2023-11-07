@@ -14,17 +14,17 @@ public class SessionRemoveCommandHandler : IRequestHandler<SessionRemoveCommand,
 {
     private readonly ISessionRepository _sessionRepository;
 
-    public SessionRemoveCommandHandler( ISessionRepository sessionRepository )
+    public SessionRemoveCommandHandler(ISessionRepository sessionRepository)
     {
-        this._sessionRepository = sessionRepository;
+        _sessionRepository = sessionRepository;
     }
 
-    public async Task<Session> Handle( SessionRemoveCommand request, CancellationToken cancellationToken )
+    public async Task<Session> Handle(SessionRemoveCommand request, CancellationToken cancellationToken)
     {
-        var session = await this._sessionRepository.GetSessionByIdAsync( request.Id ) ??
-                      throw new ApplicationException( "Error removing session" );
+        var session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
+                      throw new ApplicationException("Error removing session");
 
-        await this._sessionRepository.DeleteSessionAsync( session );
+        await _sessionRepository.DeleteSessionAsync(session);
         return session;
     }
 }

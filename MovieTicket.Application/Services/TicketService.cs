@@ -18,50 +18,50 @@ public class TicketService : ITicketService
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
 
-    public TicketService( IMediator mediator, IMapper mapper )
+    public TicketService(IMediator mediator, IMapper mapper)
     {
-        this._mediator = mediator;
-        this._mapper = mapper;
+        _mediator = mediator;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<TicketDto>> GetTicketsAsync()
     {
         var ticketsQuery = new GetTicketsQuery();
 
-        var result = await this._mediator.Send( ticketsQuery ) ?? throw new ApplicationException( "Tickets not found" );
+        var result = await _mediator.Send(ticketsQuery) ?? throw new ApplicationException("Tickets not found");
 
-        return this._mapper.Map<IEnumerable<TicketDto>>( result );
+        return _mapper.Map<IEnumerable<TicketDto>>(result);
     }
 
-    public async Task<TicketDto> GetTicketByIdAsync( int id )
+    public async Task<TicketDto> GetTicketByIdAsync(int id)
     {
-        var ticketQuery = new GetTicketByIdQuery( id );
+        var ticketQuery = new GetTicketByIdQuery(id);
 
-        var result = await this._mediator.Send( ticketQuery ) ?? throw new ApplicationException( "Ticket not found" );
+        var result = await _mediator.Send(ticketQuery) ?? throw new ApplicationException("Ticket not found");
 
-        return this._mapper.Map<TicketDto>( result );
+        return _mapper.Map<TicketDto>(result);
     }
 
-    public async Task<TicketDto> CreateTicketAsync( TicketDto ticketDto )
+    public async Task<TicketDto> CreateTicketAsync(TicketDto ticketDto)
     {
-        var ticketCommand = this._mapper.Map<TicketCreateCommand>( ticketDto );
+        var ticketCommand = _mapper.Map<TicketCreateCommand>(ticketDto);
 
-        var result = await this._mediator.Send( ticketCommand );
+        var result = await _mediator.Send(ticketCommand);
 
-        return this._mapper.Map<TicketDto>( result );
+        return _mapper.Map<TicketDto>(result);
     }
 
-    public async Task UpdateTicketAsync( TicketDto ticketDto )
+    public async Task UpdateTicketAsync(TicketDto ticketDto)
     {
-        var ticketCommand = this._mapper.Map<TicketUpdateCommand>( ticketDto );
+        var ticketCommand = _mapper.Map<TicketUpdateCommand>(ticketDto);
 
-        await this._mediator.Send( ticketCommand );
+        await _mediator.Send(ticketCommand);
     }
 
-    public async Task DeleteTicketAsync( int id )
+    public async Task DeleteTicketAsync(int id)
     {
-        var ticketCommand = new TicketRemoveCommand( id );
+        var ticketCommand = new TicketRemoveCommand(id);
 
-        await this._mediator.Send( ticketCommand );
+        await _mediator.Send(ticketCommand);
     }
 }

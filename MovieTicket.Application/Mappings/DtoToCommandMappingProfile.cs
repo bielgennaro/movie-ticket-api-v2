@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿#region
+
+using AutoMapper;
 
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Movies.Commands;
@@ -6,19 +8,24 @@ using MovieTicket.Application.Sessions.Commands;
 using MovieTicket.Application.Tickets.Commands;
 using MovieTicket.Application.Users.Commands;
 
-namespace MovieTicket.Application.Mappings
+#endregion
+
+namespace MovieTicket.Application.Mappings;
+
+public class DtoToCommandMappingProfile : Profile
 {
-    public class DtoToCommandMappingProfile : Profile
+    public DtoToCommandMappingProfile()
     {
-        public DtoToCommandMappingProfile()
-        {
-            this.CreateMap<SessionDto, SessionCreateCommand>();
+        CreateMap<SessionDto, SessionCreateCommand>();
+        CreateMap<SessionDto, SessionUpdateCommand>();
 
-            this.CreateMap<TicketDto, TicketCreateCommand>();
+        CreateMap<TicketDto, TicketCreateCommand>();
+        CreateMap<TicketDto, TicketUpdateCommand>();
 
-            this.CreateMap<UserDto, UserCreateCommand>();
+        CreateMap<UserDto, UserCreateCommand>();
+        CreateMap<UserDto, UserUpdateCommand>();
 
-            this.CreateMap<MovieDto, MovieCreateCommand>();
-        }
+        CreateMap<MovieDto, MovieCreateCommand>();
+        CreateMap<MovieDto, MovieUpdateCommand>();
     }
 }

@@ -14,14 +14,14 @@ public class GetMovieByIdQueryHandler : IRequestHandler<GetMovieByIdQuery, Movie
 {
     private readonly IMovieRepository _movieRepository;
 
-    public GetMovieByIdQueryHandler( IMovieRepository movieRepository )
+    public GetMovieByIdQueryHandler(IMovieRepository movieRepository)
     {
-        this._movieRepository = movieRepository;
+        _movieRepository = movieRepository;
     }
 
-    public async Task<Movie> Handle( GetMovieByIdQuery request, CancellationToken cancellationToken )
+    public async Task<Movie> Handle(GetMovieByIdQuery request, CancellationToken cancellationToken)
     {
-        return await this._movieRepository.GetMovieByIdAsync( request.Id ) ??
-               throw new ApplicationException( "Movie not found" );
+        return await _movieRepository.GetMovieByIdAsync(request.Id) ??
+               throw new ApplicationException("Movie not found");
     }
 }

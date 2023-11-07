@@ -14,19 +14,19 @@ internal class TicketUpdateCommandHandler : IRequestHandler<TicketUpdateCommand,
 {
     private readonly ITicketRepository _ticketRepository;
 
-    public TicketUpdateCommandHandler( ITicketRepository ticketRepository )
+    public TicketUpdateCommandHandler(ITicketRepository ticketRepository)
     {
-        this._ticketRepository = ticketRepository;
+        _ticketRepository = ticketRepository;
     }
 
-    public async Task<Ticket> Handle( TicketUpdateCommand request, CancellationToken cancellationToken )
+    public async Task<Ticket> Handle(TicketUpdateCommand request, CancellationToken cancellationToken)
     {
-        var ticket = await this._ticketRepository.GetTicketByIdAsync( request.Id ) ??
-                     throw new ApplicationException( "Ticket not found" );
+        var ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
+                     throw new ApplicationException("Ticket not found");
 
-        ticket.Update( request.SessionId, request.UserId );
+        ticket.Update(request.SessionId, request.UserId);
 
-        await this._ticketRepository.UpdateTicketAsync( ticket );
+        await _ticketRepository.UpdateTicketAsync(ticket);
 
         return ticket;
     }

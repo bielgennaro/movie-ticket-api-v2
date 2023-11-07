@@ -14,16 +14,23 @@ public class UserRemoveCommandHandler : IRequestHandler<UserRemoveCommand, User>
 {
     private readonly IUserRepository _userRepository;
 
-    public UserRemoveCommandHandler( IUserRepository userRepository )
+    public UserRemoveCommandHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<User> Handle( UserRemoveCommand request, CancellationToken cancellationToken )
+    public async Task<User> Handle(UserRemoveCommand request, CancellationToken cancellationToken)
     {
-        var user = await this._userRepository.GetUserByIdAsync( request.Id ) ??
-                   throw new ApplicationException( "User not found" );
+        var user = await _userRepository.GetUserByIdAsync(request.Id);
 
-        return await this._userRepository.DeleteUserAsync( user );
+        if (user == null)
+        {
+            throw new ApplicationException($"Error could not find user with id {request.Id}");
+        }
+        else
+        {
+            var result = await _userRepository.DeleteUserAsync(user);
+            return user;
+        }
     }
 }

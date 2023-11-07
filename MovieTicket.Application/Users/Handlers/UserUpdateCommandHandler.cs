@@ -14,18 +14,24 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommand, User>
 {
     private readonly IUserRepository _userRepository;
 
-    public UserUpdateCommandHandler( IUserRepository userRepository )
+    public UserUpdateCommandHandler(IUserRepository userRepository)
     {
-        this._userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<User> Handle( UserUpdateCommand request, CancellationToken cancellationToken )
+    public async Task<User> Handle(UserUpdateCommand request, CancellationToken cancellationToken)
     {
-        var user = await this._userRepository.GetUserByIdAsync( request.Id ) ??
-                   throw new ApplicationException( "User not found" );
+        var user = await _userRepository.GetUserByIdAsync(request.Id);
 
-        user.Update( request.Email, request.Password, request.IsAdmin );
+        if (user == null)
+        {
+            throw new ApplicationException($"Error could not find user with id {request.Id}");
+        }
+        else
+        {
+            user.Update(request.Email, request.Password, request.IsAdmin);
 
-        return await this._userRepository.UpdateUserAsync( user );
+            return await _userRepository.UpdateUserAsync(user);
+        }
     }
 }

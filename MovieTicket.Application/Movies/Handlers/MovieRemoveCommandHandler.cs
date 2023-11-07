@@ -14,16 +14,16 @@ public class MovieRemoveCommandHandler : IRequestHandler<MovieRemoveCommand, Mov
 {
     private readonly IMovieRepository _movieRepository;
 
-    public MovieRemoveCommandHandler( IMovieRepository movieRepository )
+    public MovieRemoveCommandHandler(IMovieRepository movieRepository)
     {
-        this._movieRepository = movieRepository;
+        _movieRepository = movieRepository;
     }
 
-    public async Task<Movie> Handle( MovieRemoveCommand request, CancellationToken cancellationToken )
+    public async Task<Movie> Handle(MovieRemoveCommand request, CancellationToken cancellationToken)
     {
-        var movie = await this._movieRepository.GetMovieByIdAsync( request.Id ) ??
-                    throw new ApplicationException( "Movie not found" );
+        var movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
+                    throw new ApplicationException("Movie not found");
 
-        return await this._movieRepository.DeleteMovieAsync( movie );
+        return await _movieRepository.DeleteMovieAsync(movie);
     }
 }

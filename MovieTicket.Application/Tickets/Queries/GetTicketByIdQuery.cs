@@ -10,9 +10,9 @@ namespace MovieTicket.Application.Tickets.Queries;
 
 public class GetTicketByIdQuery : IRequest<Ticket>
 {
-    public GetTicketByIdQuery( int id )
+    public GetTicketByIdQuery(int id)
     {
-        this.Id = id;
+        Id = id;
     }
 
     public int Id { get; set; }

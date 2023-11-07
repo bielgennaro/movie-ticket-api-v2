@@ -10,9 +10,9 @@ namespace MovieTicket.Application.Sessions.Queries;
 
 public class GetSessionByIdQuery : IRequest<Session>
 {
-    public GetSessionByIdQuery( int id )
+    public GetSessionByIdQuery(int id)
     {
-        this.Id = id;
+        Id = id;
     }
 
     public int Id { get; set; }
