@@ -21,7 +21,7 @@ public class MovieCreateCommandHandler : IRequestHandler<MovieCreateCommand, Mov
 
     public async Task<Movie> Handle(MovieCreateCommand request, CancellationToken cancellationToken)
     {
-        var movie = new Movie(request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl);
+        Movie movie = new Movie(request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl);
 
         return await _movieRepository.InsertMovieAsync(movie);
     }

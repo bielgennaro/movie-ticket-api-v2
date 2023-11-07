@@ -21,7 +21,7 @@ public class SessionUpdateCommandHandler : IRequestHandler<SessionUpdateCommand,
 
     public async Task<Session> Handle(SessionUpdateCommand request, CancellationToken cancellationToken)
     {
-        var session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
+        Session session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
                       throw new ApplicationException("Session not found");
 
         session.Update(request.Room, request.AvailableTickets, request.Date, request.Price, request.MovieId);

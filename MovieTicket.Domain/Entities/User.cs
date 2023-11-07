@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using MovieTicket.Domain.Validation;
 

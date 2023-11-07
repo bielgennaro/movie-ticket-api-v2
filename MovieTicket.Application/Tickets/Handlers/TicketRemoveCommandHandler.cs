@@ -21,7 +21,7 @@ internal class TicketRemoveCommandHandler : IRequestHandler<TicketRemoveCommand,
 
     public async Task<Ticket> Handle(TicketRemoveCommand request, CancellationToken cancellationToken)
     {
-        var ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
+        Ticket ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
                      throw new ApplicationException("Ticket not found");
 
         return await _ticketRepository.DeleteTicketAsync(ticket);

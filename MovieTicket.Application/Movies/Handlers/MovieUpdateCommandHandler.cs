@@ -21,7 +21,7 @@ public class MovieUpdateCommandHandler : IRequestHandler<MovieUpdateCommand, Mov
 
     public async Task<Movie> Handle(MovieUpdateCommand request, CancellationToken cancellationToken)
     {
-        var movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
+        Movie movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
                     throw new ApplicationException("Movie not found");
 
         movie.Update(request.Gender, request.Synopsis, request.Title, request.Director, request.BannerUrl);

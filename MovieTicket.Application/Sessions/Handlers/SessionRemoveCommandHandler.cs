@@ -21,7 +21,7 @@ public class SessionRemoveCommandHandler : IRequestHandler<SessionRemoveCommand,
 
     public async Task<Session> Handle(SessionRemoveCommand request, CancellationToken cancellationToken)
     {
-        var session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
+        Session session = await _sessionRepository.GetSessionByIdAsync(request.Id) ??
                       throw new ApplicationException("Error removing session");
 
         await _sessionRepository.DeleteSessionAsync(session);

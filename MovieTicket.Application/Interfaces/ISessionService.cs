@@ -8,13 +8,13 @@ namespace MovieTicket.Application.Interfaces;
 
 public interface ISessionService
 {
-    Task<IEnumerable<SessionDto>> GetSessionsAsync();
+    Task<IEnumerable<SessionDto>> GetSessions();
 
-    Task<SessionDto> GetSessionByIdAsync(int id);
+    Task<SessionDto> GetSessionById(int id);
 
-    Task<SessionDto> CreateSessionAsync(SessionDto sessionDto);
+    Task<SessionDto> CreateSession(SessionDto sessionDto);
 
-    Task UpdateSessionAsync(SessionDto sessionDto);
+    Task UpdateSession(SessionDto sessionDto);
 
-    Task DeleteSessionAsync(int id);
+    Task DeleteSession(int id);
 }

@@ -3,6 +3,7 @@
 using MovieTicket.Domain.Entities;
 
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 #endregion
 
@@ -10,17 +11,18 @@ namespace MovieTicket.Application.DTOs;
 
 public class SessionDto
 {
+    [JsonIgnore]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Please enter a room")]
     [MinLength(3)]
     [MaxLength(100)]
     [Display(Name = "Room")]
-    public string Room { get; }
+    public required string Room { get; set; }
 
     [Required(ErrorMessage = "Please enter a available tickets")]
     [Display(Name = "Available Tickets")]
-    public int AvailableTickets { get; }
+    public int AvailableTickets { get; set; }
 
     [Required(ErrorMessage = "Please enter a date")]
     [Display(Name = "Date")]
@@ -30,11 +32,12 @@ public class SessionDto
     [Required(ErrorMessage = "Please enter a price")]
     [Display(Name = "Price")]
     [DataType(DataType.Currency)]
-    public decimal Price { get; }
+    public decimal Price { get; set; }
 
     [Required(ErrorMessage = "Please enter a movie id")]
     [Display(Name = "Movie Id")]
-    public int MovieId { get; }
+    public int MovieId { get; set; }
 
+    [JsonIgnore]
     public Movie Movie { get; }
 }

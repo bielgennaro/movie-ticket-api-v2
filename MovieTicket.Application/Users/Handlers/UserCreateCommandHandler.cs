@@ -21,7 +21,7 @@ public class UserCreateCommandHandler : IRequestHandler<UserCreateCommand, User>
 
     public async Task<User> Handle(UserCreateCommand request, CancellationToken cancellationToken)
     {
-        var user = new User(request.Email, request.Password, request.IsAdmin);
+        User user = new User(request.Email, request.Password, request.IsAdmin);
 
         if (user == null)
         {

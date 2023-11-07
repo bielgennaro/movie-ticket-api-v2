@@ -21,7 +21,7 @@ public class MovieRemoveCommandHandler : IRequestHandler<MovieRemoveCommand, Mov
 
     public async Task<Movie> Handle(MovieRemoveCommand request, CancellationToken cancellationToken)
     {
-        var movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
+        Movie movie = await _movieRepository.GetMovieByIdAsync(request.Id) ??
                     throw new ApplicationException("Movie not found");
 
         return await _movieRepository.DeleteMovieAsync(movie);

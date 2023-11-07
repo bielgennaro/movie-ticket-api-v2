@@ -26,40 +26,40 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<MovieDto>> GetMovies()
     {
-        var moviesQuery = new GetMoviesQuery();
+        GetMoviesQuery moviesQuery = new GetMoviesQuery();
 
-        var result = await _mediator.Send(moviesQuery);
+        IEnumerable<Domain.Entities.Movie> result = await _mediator.Send(moviesQuery);
 
         return _mapper.Map<IEnumerable<MovieDto>>(result);
     }
 
     public async Task<MovieDto> GetMovieById(int id)
     {
-        var movieQuery = new GetMovieByIdQuery(id);
+        GetMovieByIdQuery movieQuery = new GetMovieByIdQuery(id);
 
-        var result = await _mediator.Send(movieQuery) ?? throw new ApplicationException("Movie not found");
+        Domain.Entities.Movie result = await _mediator.Send(movieQuery) ?? throw new ApplicationException("Movie not found");
 
         return _mapper.Map<MovieDto>(result);
     }
 
     public async Task<MovieDto> CreateMovie(MovieDto movieDto)
     {
-        var movieCommand = _mapper.Map<MovieCreateCommand>(movieDto);
+        MovieCreateCommand movieCommand = _mapper.Map<MovieCreateCommand>(movieDto);
 
-        var result = await _mediator.Send(movieCommand);
+        Domain.Entities.Movie result = await _mediator.Send(movieCommand);
 
         return _mapper.Map<MovieDto>(result);
     }
 
     public async Task UpdateMovie(MovieDto movieDto)
     {
-        var movieCommand = _mapper.Map<MovieUpdateCommand>(movieDto);
+        MovieUpdateCommand movieCommand = _mapper.Map<MovieUpdateCommand>(movieDto);
         await _mediator.Send(movieCommand);
     }
 
     public async Task DeleteMovie(int id)
     {
-        var movieCommand = new MovieRemoveCommand(id);
-        var result = await _mediator.Send(movieCommand);
+        MovieRemoveCommand movieCommand = new MovieRemoveCommand(id);
+        Domain.Entities.Movie result = await _mediator.Send(movieCommand);
     }
 }

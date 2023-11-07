@@ -21,7 +21,7 @@ internal class TicketCreateCommandHandler : IRequestHandler<TicketCreateCommand,
 
     public async Task<Ticket> Handle(TicketCreateCommand request, CancellationToken cancellationToken)
     {
-        var ticket = new Ticket(request.SessionId, request.UserId);
+        Ticket ticket = new Ticket(request.SessionId, request.UserId);
 
         return ticket == null
             ? throw new ApplicationException("There was an error creating the user")

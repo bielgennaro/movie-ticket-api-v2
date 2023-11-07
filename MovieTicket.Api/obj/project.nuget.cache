@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6MwtmrLDwqPrYr8V0fGH+QQ4uk6AceYCYfPiQeyLlYnvXMarjohdaGYQAPw5hW09ObaPU3Y9s3jS4p4HacDvtQ==",
+  "dgSpecHash": "P7OvxetVUs3yQT9xW/hIlBVi+FfqD15s8kwKHZ5wgSX8BAJqGDk1L+FaXyKTonUcWpWSfgGXuDfjBTGnS9K9gQ==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
   "expectedPackageFiles": [
@@ -123,7 +123,7 @@
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\nuget.common\\6.6.1\\nuget.common.6.6.1.nupkg.sha512",

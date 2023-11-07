@@ -27,28 +27,28 @@ public class UserService : IUserService
 
     public async Task<IEnumerable<UserDto>> GetUsers()
     {
-        var userQuery = new GetUsersQuery();
+        GetUsersQuery userQuery = new GetUsersQuery();
 
         if (userQuery == null)
         {
             throw new ApplicationException($"Entity could not be loaded.");
         }
 
-        var result = await _mediator.Send(userQuery);
+        IEnumerable<Domain.Entities.User> result = await _mediator.Send(userQuery);
 
         return _mapper.Map<IEnumerable<UserDto>>(result);
     }
 
     public async Task<UserDto> GetUserById(int id)
     {
-        var userByIdQuery = new GetUserByIdQuery(id);
+        GetUserByIdQuery userByIdQuery = new GetUserByIdQuery(id);
 
         if (userByIdQuery == null)
         {
             throw new ApplicationException($"Entity could not be loaded.");
         }
 
-        var result = await _mediator.Send(userByIdQuery);
+        Domain.Entities.User result = await _mediator.Send(userByIdQuery);
 
         return _mapper.Map<UserDto>(result);
     }
@@ -56,32 +56,32 @@ public class UserService : IUserService
     //TODO: Implementar o método de adicionar usuário
     public async Task<UserDto> AddUser(UserDto userDto)
     {
-        var userCreateCommand = _mapper.Map<UserCreateCommand>(userDto);
+        UserCreateCommand userCommand = _mapper.Map<UserCreateCommand>(userDto);
 
-        var user = await _mediator.Send(userCreateCommand);
+        Domain.Entities.User result = await _mediator.Send(userCommand);
 
-        return _mapper.Map<UserDto>(user);
+        return _mapper.Map<UserDto>(result);
     }
 
     public async Task UpdateUser(UserDto userDto)
     {
-        var userCommand = _mapper.Map<UserUpdateCommand>(userDto);
+        UserUpdateCommand userCommand = _mapper.Map<UserUpdateCommand>(userDto);
 
         await _mediator.Send(userCommand);
     }
 
     public async Task<UserDto> GetUserByEmailAsync(string email)
     {
-        var userQuery = new GetUserByEmailQuery(email);
+        GetUserByEmailQuery userQuery = new GetUserByEmailQuery(email);
 
-        var result = await _mediator.Send(userQuery) ?? throw new ApplicationException("User not found");
+        Domain.Entities.User result = await _mediator.Send(userQuery) ?? throw new ApplicationException("User not found");
 
         return _mapper.Map<UserDto>(result);
     }
 
     public async Task RemoveUser(int id)
     {
-        var userRemoveCommand = new UserRemoveCommand(id);
+        UserRemoveCommand userRemoveCommand = new UserRemoveCommand(id);
 
         if (userRemoveCommand == null)
         {

@@ -21,7 +21,7 @@ public class SessionCreateCommandHandler : IRequestHandler<SessionCreateCommand,
 
     public async Task<Session> Handle(SessionCreateCommand request, CancellationToken cancellationToken)
     {
-        var session = new Session(request.Room, request.AvailableTickets, request.Date, request.Price,
+        Session session = new Session(request.Room, request.AvailableTickets, request.Date, request.Price,
             request.MovieId);
 
         return session == null

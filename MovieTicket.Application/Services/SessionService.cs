@@ -24,44 +24,44 @@ public class SessionService : ISessionService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<SessionDto>> GetSessionsAsync()
+    public async Task<IEnumerable<SessionDto>> GetSessions()
     {
-        var sessionsQuery = new GetSessionsQuery();
+        GetSessionsQuery sessionsQuery = new GetSessionsQuery();
 
-        var result = await _mediator.Send(sessionsQuery) ?? throw new ApplicationException("Sessions not found");
+        IList<Domain.Entities.Session> result = await _mediator.Send(sessionsQuery) ?? throw new ApplicationException("Sessions not found");
 
         return _mapper.Map<IEnumerable<SessionDto>>(result);
     }
 
-    public async Task<SessionDto> GetSessionByIdAsync(int id)
+    public async Task<SessionDto> GetSessionById(int id)
     {
-        var sessionQuery = new GetSessionByIdQuery(id);
+        GetSessionByIdQuery sessionQuery = new GetSessionByIdQuery(id);
 
-        var result = await _mediator.Send(sessionQuery) ?? throw new ApplicationException("Session not found");
+        Domain.Entities.Session result = await _mediator.Send(sessionQuery) ?? throw new ApplicationException("Session not found");
 
         return _mapper.Map<SessionDto>(result);
     }
 
-    public async Task<SessionDto> CreateSessionAsync(SessionDto sessionDto)
+    public async Task<SessionDto> CreateSession(SessionDto sessionDto)
     {
-        var sessionCommand = _mapper.Map<SessionCreateCommand>(sessionDto);
+        SessionCreateCommand sessionCommand = _mapper.Map<SessionCreateCommand>(sessionDto);
 
-        var result = await _mediator.Send(sessionCommand);
+        Domain.Entities.Session result = await _mediator.Send(sessionCommand);
 
         return _mapper.Map<SessionDto>(result);
     }
 
-    public async Task UpdateSessionAsync(SessionDto sessionDto)
+    public async Task UpdateSession(SessionDto sessionDto)
     {
-        var sessionCommand = _mapper.Map<SessionUpdateCommand>(sessionDto);
+        SessionUpdateCommand sessionCommand = _mapper.Map<SessionUpdateCommand>(sessionDto);
 
         await _mediator.Send(sessionCommand);
     }
 
-    public async Task DeleteSessionAsync(int id)
+    public async Task DeleteSession(int id)
     {
-        var sessionCommand = new SessionRemoveCommand(id);
+        SessionRemoveCommand sessionCommand = new SessionRemoveCommand(id);
 
-        var result = await _mediator.Send(sessionCommand);
+        Domain.Entities.Session result = await _mediator.Send(sessionCommand);
     }
 }

@@ -42,12 +42,23 @@ public class Startup
                     Version = "v1"
                 });
         });
+
+        services.ConfigureSwaggerGen(options =>
+        {
+            options.CustomSchemaIds(x => x.FullName);
+            options.OrderActionsBy((apiDesc) => $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+        });
     }
 
     public void Configure(IApplicationBuilder app)
     {
         app.UseSwagger();
-        app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"); });
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            c.ConfigObject.DisplayRequestDuration = true;
+            c.DefaultModelsExpandDepth(-1);
+        });
 
         app.UseRouting();
 

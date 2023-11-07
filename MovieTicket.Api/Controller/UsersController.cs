@@ -22,7 +22,7 @@ public class UsersController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("getallusers", Order = 1)]
+    [HttpGet("getallusers")]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersAsync()
     {
         try
@@ -45,7 +45,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpGet("getuserbyid/{id}", Order = 2)]
+    [HttpGet("getuserbyid/{id}")]
     public async Task<ActionResult<UserDto>> GetUserByIdAsync(int id)
     {
         try
@@ -69,7 +69,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("createuser", Order = 3)]
+    [HttpPost("createuser")]
     public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] UserDto userDto)
     {
         try
@@ -84,7 +84,7 @@ public class UsersController : ControllerBase
             await _userService.AddUser(userDto);
 
             _logger.LogInformation("Usuário criado com sucesso");
-            return CreatedAtRoute("GetUsers", new { id = userDto.Id }, userDto);
+            return CreatedAtRoute("GetUsers", new { email = userDto.Email }, userDto);
         }
         catch (Exception e)
         {
@@ -93,7 +93,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPut("updateuser/{id}", Order = 4)]
+    [HttpPut("updateuser/{id}")]
     public async Task<ActionResult> UpdateUserAsync(int id, [FromBody] UserDto userDto)
     {
         try
@@ -120,7 +120,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpDelete("deleteuser/{id}", Order = 5)]
+    [HttpDelete("deleteuser/{id}")]
     public async Task<ActionResult> DeleteUserAsync(int id)
     {
         try
@@ -143,7 +143,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("login", Order = 7)]
+    [HttpPost("login")]
     public async Task<ActionResult> LoginAsync([FromBody] UserDto userDto)
     {
         try

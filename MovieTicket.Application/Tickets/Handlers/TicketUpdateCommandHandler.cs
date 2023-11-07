@@ -21,7 +21,7 @@ internal class TicketUpdateCommandHandler : IRequestHandler<TicketUpdateCommand,
 
     public async Task<Ticket> Handle(TicketUpdateCommand request, CancellationToken cancellationToken)
     {
-        var ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
+        Ticket ticket = await _ticketRepository.GetTicketByIdAsync(request.Id) ??
                      throw new ApplicationException("Ticket not found");
 
         ticket.Update(request.SessionId, request.UserId);

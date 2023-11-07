@@ -18,15 +18,16 @@ namespace MovieTicket.WebApi.Controller
             _logger = logger;
         }
 
-        [HttpGet("getAllMovies", Order = 1)]
+        [HttpGet("getAllMovies")]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetMoviesAsync()
         {
             try
             {
-                var movies = await _movieService.GetMovies();
+                IEnumerable<MovieDto> movies = await _movieService.GetMovies();
 
                 if (movies == null)
                 {
+                    _logger.LogInformation("Nenhum filme encontrado");
                     return NotFound("Message: Nenhum filme encontrado");
                 }
 
@@ -42,12 +43,12 @@ namespace MovieTicket.WebApi.Controller
         }
 
 
-        [HttpGet("getMovieById/{id}", Order = 2)]
+        [HttpGet("getMovieById/{id}")]
         public async Task<ActionResult<MovieDto>> GetMovieByIdAsync(int id)
         {
             try
             {
-                var movies = await _movieService.GetMovieById(id);
+                MovieDto movies = await _movieService.GetMovieById(id);
 
                 if (movies == null)
                 {
@@ -65,7 +66,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPost("createMovie", Order = 3)]
+        [HttpPost("createMovie")]
         public async Task<ActionResult<MovieDto>> CreateMovieAsync([FromBody] MovieDto movieDto)
         {
             try
@@ -88,12 +89,12 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPut("updateMovie/{id}", Order = 4)]
+        [HttpPut("updateMovie/{id}")]
         public async Task<ActionResult> UpdateMovieAsync(int id, [FromBody] MovieDto movieDto)
         {
             try
             {
-                var movie = await _movieService.GetMovieById(id);
+                MovieDto movie = await _movieService.GetMovieById(id);
 
                 if (movie == null)
                 {
@@ -112,12 +113,12 @@ namespace MovieTicket.WebApi.Controller
             };
         }
 
-        [HttpDelete("deleteMovie/{id}", Order = 5)]
+        [HttpDelete("deleteMovie/{id}")]
         public async Task<ActionResult> DeleteMovieAsync(int id)
         {
             try
             {
-                var movie = await _movieService.GetMovieById(id);
+                MovieDto movie = await _movieService.GetMovieById(id);
 
                 if (movie == null)
                 {

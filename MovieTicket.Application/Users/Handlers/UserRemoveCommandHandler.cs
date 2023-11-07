@@ -21,7 +21,7 @@ public class UserRemoveCommandHandler : IRequestHandler<UserRemoveCommand, User>
 
     public async Task<User> Handle(UserRemoveCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetUserByIdAsync(request.Id);
+        User user = await _userRepository.GetUserByIdAsync(request.Id);
 
         if (user == null)
         {
@@ -29,7 +29,7 @@ public class UserRemoveCommandHandler : IRequestHandler<UserRemoveCommand, User>
         }
         else
         {
-            var result = await _userRepository.DeleteUserAsync(user);
+            User result = await _userRepository.DeleteUserAsync(user);
             return user;
         }
     }

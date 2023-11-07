@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieTicket.Infra.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class teste : Migration
+    public partial class AtualizandoData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
