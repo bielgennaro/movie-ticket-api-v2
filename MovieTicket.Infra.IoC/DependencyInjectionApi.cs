@@ -1,5 +1,6 @@
 ﻿#region
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,8 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Application.Mappings;
 using MovieTicket.Application.Services;
+using MovieTicket.Domain.Account;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
+using MovieTicket.Infra.Data.Identity;
 using MovieTicket.Infra.Data.Repositories;
 
 #endregion
@@ -24,9 +27,16 @@ public static class DependencyInjectionApi
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"), b =>
                 b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-        //services.AddIdentity<ApplicationUser, IdentityRole>()
-        //.AddEntityFrameworkStores<ApplicationDbContext>()
-        //.AddDefaultTokenProviders();
+        services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+        //services.ConfigureApplicationCookie(options =>
+        //{
+            //options.Cookie.Name = "MovieTicket";
+            //options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            //options.SlidingExpiration = true;
+        //});
 
 #if DEBUG
         services.AddDbContextPool<ApplicationDbContext>(options =>
@@ -43,8 +53,9 @@ public static class DependencyInjectionApi
         services.AddScoped<ISessionService, SessionService>();
         services.AddScoped<ITicketService, TicketService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthenticate, AuthenticateService>();
 
-        //services.AddScoped(IAuthenticate, AuthenticateService);
+        services.AddScoped<ISeedUserRoleInitial, SeeduserRoleInitial>();
 
         services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
         services.AddAutoMapper(typeof(DtoToCommandMappingProfile));

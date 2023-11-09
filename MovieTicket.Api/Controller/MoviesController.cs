@@ -5,7 +5,7 @@ using MovieTicket.Application.Interfaces;
 
 namespace MovieTicket.WebApi.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/movies")]
     [ApiController]
     public class MoviesController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace MovieTicket.WebApi.Controller
             _logger = logger;
         }
 
-        [HttpGet("getAllMovies")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetMoviesAsync()
         {
             try
@@ -43,7 +43,7 @@ namespace MovieTicket.WebApi.Controller
         }
 
 
-        [HttpGet("getMovieById/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<MovieDto>> GetMovieByIdAsync(int id)
         {
             try
@@ -66,7 +66,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPost("createMovie")]
+        [HttpPost("create")]
         public async Task<ActionResult<MovieDto>> CreateMovieAsync([FromBody] MovieDto movieDto)
         {
             try
@@ -89,7 +89,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPut("updateMovie/{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult> UpdateMovieAsync(int id, [FromBody] MovieDto movieDto)
         {
             try
@@ -113,7 +113,7 @@ namespace MovieTicket.WebApi.Controller
             };
         }
 
-        [HttpDelete("deleteMovie/{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeleteMovieAsync(int id)
         {
             try
@@ -122,13 +122,14 @@ namespace MovieTicket.WebApi.Controller
 
                 if (movie == null)
                 {
+                    _logger.LogError("Erro ao deletar filme: Nenhum filme encontrado");
                     return NotFound("Message: Nenhum filme encontrado");
                 }
 
                 await _movieService.DeleteMovie(id);
-
-                _logger.LogInformation("Filme deletado com sucesso");
+                
                 return Ok($"Message: Filme {id} deletado com sucesso");
+                _logger.LogInformation("Filme deletado com sucesso");
             }
             catch (Exception e)
             {

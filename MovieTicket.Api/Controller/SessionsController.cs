@@ -5,7 +5,7 @@ using MovieTicket.Application.Interfaces;
 
 namespace MovieTicket.WebApi.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/sessions")]
     [ApiController]
     public class SessionsController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace MovieTicket.WebApi.Controller
             _logger = logger;
         }
 
-        [HttpGet("getAllSessions")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<SessionDto>>> GetSessionsAsync()
         {
             try
@@ -42,7 +42,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpGet("getSessionById/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<SessionDto>> GetSessionByIdAsync(int id)
         {
             try
@@ -67,7 +67,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPost("createSession")]
+        [HttpPost("create")]
         public async Task<ActionResult<SessionDto>> CreateSessionAsync(SessionDto sessionDto)
         {
             try
@@ -91,7 +91,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpPut("updateSession")]
+        [HttpPut("update")]
         public async Task<ActionResult<SessionDto>> UpdateSessionAsync(SessionDto sessionDto)
         {
             try
@@ -109,7 +109,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpDelete("deleteSession/{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeleteSessionAsync(int id)
         {
             try

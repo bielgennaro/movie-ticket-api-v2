@@ -43,7 +43,7 @@ namespace MovieTicket.WebApi.Controller
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<TicketDto>> GetTicketByIdAsync(int id)
         {
             try
@@ -62,6 +62,82 @@ namespace MovieTicket.WebApi.Controller
             {
                 _logger.LogError($"Erro ao buscar ingresso {id}");
                 throw new Exception($"Erro ao buscar ticket: {e.Message}");
+            }
+        }
+        
+        [HttpPost("create")]
+        public async Task<ActionResult<TicketDto>> CreateTicketAsync([FromBody] TicketDto ticketDto)
+        {
+            try
+            {
+                _logger.LogInformation("Criando ingresso");
+                var ticket = await _ticketService.CreateTicket(ticketDto);
+
+                if (ticket == null)
+                {
+                    _logger.LogError("Erro ao criar ingresso");
+                    return BadRequest("Erro ao criar ingresso");
+                }
+
+                _logger.LogInformation("Ingresso criado com sucesso");
+                return CreatedAtRoute("", new { id = ticket.Id }, ticket);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("Erro ao criar ingresso");
+                throw new Exception($"Erro ao criar ingresso: {e.Message}");
+            }
+        }
+        
+        [HttpPut("update/{id}")]
+        public async Task<ActionResult<TicketDto>> UpdateTicketAsync(int id, [FromBody] TicketDto ticketDto)
+        {
+            try
+            {
+                var ticket = await _ticketService.GetTicketById(id);
+                
+                if (ticket == null)
+                {
+                    _logger.LogError($"Erro ao atualizar ingresso {id}");
+                    return NotFound($"Erro ao atualizar ingresso de id: {id}");
+                }
+                
+                _logger.LogInformation($"Atualizando ingresso {id}");
+                await _ticketService.UpdateTicket(ticketDto);
+                
+                _logger.LogInformation($"Ingresso {id} atualizado com sucesso");
+                return Ok(ticketDto);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Erro ao atualizar ingresso {id}");
+                throw new Exception($"Erro ao atualizar ingresso: {e.Message}");
+            }
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<ActionResult> DeleteTicketAsync(int id)
+        {
+            try
+            {
+                var ticket = await _ticketService.GetTicketById(id);
+
+                if (ticket == null)
+                {
+                    _logger.LogError($"Erro ao deletar ingresso {id}");
+                    return NotFound($"Erro ao deletar ingresso de id: {id}");
+                }
+
+                _logger.LogInformation($"Deletando ingresso {id}");
+                await _ticketService.DeleteTicket(id);
+
+                _logger.LogInformation($"Ingresso {id} deletado com sucesso");
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Erro ao deletar ingresso {id}");
+                throw new Exception($"Erro ao deletar ingresso: {e.Message}");
             }
         }
     }

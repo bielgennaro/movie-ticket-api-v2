@@ -12,6 +12,10 @@ C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Azure.Identity.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Humanizer.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\MediatR.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -36,6 +40,9 @@ C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.De
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll

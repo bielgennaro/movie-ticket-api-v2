@@ -1,19 +1,19 @@
 ﻿#region
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 using MovieTicket.Domain.Entities;
+using MovieTicket.Infra.Data.Identity;
 
 #endregion
 
 namespace MovieTicket.Infra.Data.Context;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-        Database.Migrate();
-    }
+    {}
 
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Ticket> Tickets { get; set; }

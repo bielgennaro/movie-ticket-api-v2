@@ -9,7 +9,7 @@ using MovieTicket.Application.Interfaces;
 
 namespace MovieTicket.WebApi.Controller;
 
-[Route("api/v1/users")]
+[Route("api/users")]
 [ApiController]
 public class UsersController : ControllerBase
 {
@@ -22,7 +22,7 @@ public class UsersController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("getallusers")]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersAsync()
     {
         try
@@ -45,7 +45,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpGet("getuserbyid/{id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<UserDto>> GetUserByIdAsync(int id)
     {
         try
@@ -69,7 +69,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("createuser")]
+    [HttpPost("create")]
     public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] UserDto userDto)
     {
         try
@@ -84,7 +84,7 @@ public class UsersController : ControllerBase
             await _userService.AddUser(userDto);
 
             _logger.LogInformation("Usuário criado com sucesso");
-            return CreatedAtRoute("GetUsers", new { email = userDto.Email }, userDto);
+            return CreatedAtRoute("", new { email = userDto.Email }, userDto);
         }
         catch (Exception e)
         {
@@ -93,7 +93,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPut("updateuser/{id}")]
+    [HttpPut("update/{id}")]
     public async Task<ActionResult> UpdateUserAsync(int id, [FromBody] UserDto userDto)
     {
         try
@@ -120,7 +120,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpDelete("deleteuser/{id}")]
+    [HttpDelete("delete/{id}")]
     public async Task<ActionResult> DeleteUserAsync(int id)
     {
         try
@@ -134,42 +134,13 @@ public class UsersController : ControllerBase
 
             await _userService.RemoveUser(id);
 
-            return Ok("message: Usuário deletado com sucesso");
+            return NoContent();
+            _logger.LogInformation("Usuário deletado com sucesso");
         }
         catch (Exception e)
         {
             _logger.LogError("Erro ao deletar usuário: exception");
             throw new Exception($"Erro ao deletar usuário: {e.Message}");
-        }
-    }
-
-    [HttpPost("login")]
-    public async Task<ActionResult> LoginAsync([FromBody] UserDto userDto)
-    {
-        try
-        {
-            _logger.LogInformation("Tentando realizar login");
-            UserDto user = await _userService.GetUserByEmailAsync(userDto.Email);
-
-            if (user == null)
-            {
-                _logger.LogError("Erro ao realizar login: Nenhum usuário encontrado");
-                return NotFound("Message: Nenhum usuário encontrado");
-            }
-
-            if (user.Password != userDto.Password)
-            {
-                _logger.LogTrace("Senha incorreta");
-                return BadRequest("Message: Senha incorreta");
-            }
-
-            _logger.LogInformation($"Usuário logado com sucesso: {userDto.Email}");
-            return Ok("Message: Login realizado com sucesso");
-        }
-        catch (Exception e)
-        {
-            _logger.LogError($"Erro ao realizar login do usuário: {userDto.Email}");
-            throw new Exception($"Erro ao realizar login: {e.Message}");
         }
     }
 }
