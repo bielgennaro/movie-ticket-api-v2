@@ -1,7 +1,6 @@
 ﻿#region
 
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 #endregion
 
@@ -9,9 +8,6 @@ namespace MovieTicket.Application.DTOs;
 
 public class MovieDto
 {
-    [JsonIgnore]
-    public int Id { get; set; }
-
     [Required(ErrorMessage = "Please enter a gender")]
     [MinLength(3)]
     [MaxLength(100)]

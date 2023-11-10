@@ -1,13 +1,10 @@
 ﻿#region
 
 using AutoMapper;
-
-using MediatR;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.Application.Movies.Commands;
-using MovieTicket.Application.Movies.Queries;
+using MovieTicket.Domain.Entities;
+using MovieTicket.Domain.Interfaces;
 
 #endregion
 
@@ -16,50 +13,45 @@ namespace MovieTicket.Application.Services;
 public class MovieService : IMovieService
 {
     private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    private readonly IMovieRepository _movieRepository;
 
-    public MovieService(IMediator mediator, IMapper mapper)
+    public MovieService(IMovieRepository movieRepository, IMapper mapper)
     {
-        _mediator = mediator;
+        _movieRepository = movieRepository;
         _mapper = mapper;
     }
 
     public async Task<IEnumerable<MovieDto>> GetMovies()
     {
-        GetMoviesQuery moviesQuery = new GetMoviesQuery();
-
-        IEnumerable<Domain.Entities.Movie> result = await _mediator.Send(moviesQuery);
-
-        return _mapper.Map<IEnumerable<MovieDto>>(result);
+        var movies = await _movieRepository.GetMoviesAsync();
+        var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
+        return moviesDto;
     }
 
     public async Task<MovieDto> GetMovieById(int id)
     {
-        GetMovieByIdQuery movieQuery = new GetMovieByIdQuery(id);
-
-        Domain.Entities.Movie result = await _mediator.Send(movieQuery) ?? throw new ApplicationException("Movie not found");
-
-        return _mapper.Map<MovieDto>(result);
+        var movie = await _movieRepository.GetMovieByIdAsync(id);
+        var movieDto = _mapper.Map<MovieDto>(movie);
+        return movieDto;
     }
 
     public async Task<MovieDto> CreateMovie(MovieDto movieDto)
     {
-        MovieCreateCommand movieCommand = _mapper.Map<MovieCreateCommand>(movieDto);
-
-        Domain.Entities.Movie result = await _mediator.Send(movieCommand);
-
-        return _mapper.Map<MovieDto>(result);
+        var movie = _mapper.Map<Movie>(movieDto);
+        var newMovie = await _movieRepository.InsertMovieAsync(movie);
+        var newMovieDto = _mapper.Map<MovieDto>(newMovie);
+        return newMovieDto;
     }
 
     public async Task UpdateMovie(MovieDto movieDto)
     {
-        MovieUpdateCommand movieCommand = _mapper.Map<MovieUpdateCommand>(movieDto);
-        await _mediator.Send(movieCommand);
+        var movie = _mapper.Map<Movie>(movieDto);
+        await _movieRepository.UpdateMovieAsync(movie);
     }
 
     public async Task DeleteMovie(int id)
     {
-        MovieRemoveCommand movieCommand = new MovieRemoveCommand(id);
-        Domain.Entities.Movie result = await _mediator.Send(movieCommand);
+        var movie = _movieRepository.GetMovieByIdAsync(id).Result;
+        await _movieRepository.DeleteMovieAsync(movie);
     }
 }

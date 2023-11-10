@@ -1,13 +1,10 @@
 ﻿#region
 
 using AutoMapper;
-
-using MediatR;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.Application.Tickets.Commands;
-using MovieTicket.Application.Tickets.Queries;
+using MovieTicket.Domain.Entities;
+using MovieTicket.Domain.Interfaces;
 
 #endregion
 
@@ -16,52 +13,45 @@ namespace MovieTicket.Application.Services;
 public class TicketService : ITicketService
 {
     private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    private readonly ITicketRepository _ticketRepository;
 
-    public TicketService(IMediator mediator, IMapper mapper)
+    public TicketService(ITicketRepository ticketRepository, IMapper mapper)
     {
-        _mediator = mediator;
+        _ticketRepository = ticketRepository;
         _mapper = mapper;
     }
 
     public async Task<IEnumerable<TicketDto>> GetTickets()
     {
-        GetTicketsQuery ticketsQuery = new GetTicketsQuery();
-
-        IList<Domain.Entities.Ticket> result = await _mediator.Send(ticketsQuery) ?? throw new ApplicationException("Tickets not found");
-
-        return _mapper.Map<IEnumerable<TicketDto>>(result);
+        var tickets = await _ticketRepository.GetTicketsAsync();
+        var ticketsDto = _mapper.Map<IEnumerable<TicketDto>>(tickets);
+        return ticketsDto;
     }
 
     public async Task<TicketDto> GetTicketById(int id)
     {
-        GetTicketByIdQuery ticketQuery = new GetTicketByIdQuery(id);
-
-        Domain.Entities.Ticket result = await _mediator.Send(ticketQuery) ?? throw new ApplicationException("Ticket not found");
-
-        return _mapper.Map<TicketDto>(result);
+        var ticket = await _ticketRepository.GetTicketByIdAsync(id);
+        var ticketDto = _mapper.Map<TicketDto>(ticket);
+        return ticketDto;
     }
 
     public async Task<TicketDto> CreateTicket(TicketDto ticketDto)
     {
-        TicketCreateCommand ticketCommand = _mapper.Map<TicketCreateCommand>(ticketDto);
-
-        Domain.Entities.Ticket result = await _mediator.Send(ticketCommand);
-
-        return _mapper.Map<TicketDto>(result);
+        var ticket = _mapper.Map<Ticket>(ticketDto);
+        var newTicket = await _ticketRepository.InsertTicketAsync(ticket);
+        var newTicketDto = _mapper.Map<TicketDto>(newTicket);
+        return newTicketDto;
     }
 
     public async Task UpdateTicket(TicketDto ticketDto)
     {
-        TicketUpdateCommand ticketCommand = _mapper.Map<TicketUpdateCommand>(ticketDto);
-
-        await _mediator.Send(ticketCommand);
+        var ticket = _mapper.Map<Ticket>(ticketDto);
+        await _ticketRepository.UpdateTicketAsync(ticket);
     }
 
     public async Task DeleteTicket(int id)
     {
-        TicketRemoveCommand ticketCommand = new TicketRemoveCommand(id);
-
-        await _mediator.Send(ticketCommand);
+        var ticket = _ticketRepository.GetTicketByIdAsync(id).Result;
+        await _ticketRepository.DeleteTicketAsync(ticket);
     }
 }

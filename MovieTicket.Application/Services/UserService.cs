@@ -1,13 +1,10 @@
 ﻿#region
 
 using AutoMapper;
-
-using MediatR;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.Application.Users.Commands;
-using MovieTicket.Application.Users.Queries;
+using MovieTicket.Domain.Entities;
+using MovieTicket.Domain.Interfaces;
 
 #endregion
 
@@ -15,79 +12,47 @@ namespace MovieTicket.Application.Services;
 
 public class UserService : IUserService
 {
-    private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    private readonly IMapper mapper;
+    private readonly IUserRepository userRepository;
 
-    public UserService(IMediator mediator,
+    public UserService(IUserRepository userRepository,
         IMapper mapper)
     {
-        _mediator = mediator;
-        _mapper = mapper;
+        this.userRepository = userRepository;
+        this.mapper = mapper;
     }
 
     public async Task<IEnumerable<UserDto>> GetUsers()
     {
-        GetUsersQuery userQuery = new GetUsersQuery();
-
-        if (userQuery == null)
-        {
-            throw new ApplicationException($"Entity could not be loaded.");
-        }
-
-        IEnumerable<Domain.Entities.User> result = await _mediator.Send(userQuery);
-
-        return _mapper.Map<IEnumerable<UserDto>>(result);
+        var users = await userRepository.GetUsersAsync();
+        var usersDto = mapper.Map<IEnumerable<UserDto>>(users);
+        return usersDto;
     }
 
     public async Task<UserDto> GetUserById(int id)
     {
-        GetUserByIdQuery userByIdQuery = new GetUserByIdQuery(id);
-
-        if (userByIdQuery == null)
-        {
-            throw new ApplicationException($"Entity could not be loaded.");
-        }
-
-        Domain.Entities.User result = await _mediator.Send(userByIdQuery);
-
-        return _mapper.Map<UserDto>(result);
+        var user = await userRepository.GetUserByIdAsync(id);
+        var userDto = mapper.Map<UserDto>(user);
+        return userDto;
     }
 
-    //TODO: Implementar o método de adicionar usuário
     public async Task<UserDto> AddUser(UserDto userDto)
     {
-        UserCreateCommand userCommand = _mapper.Map<UserCreateCommand>(userDto);
-
-        Domain.Entities.User result = await _mediator.Send(userCommand);
-
-        return _mapper.Map<UserDto>(result);
+        var user = mapper.Map<User>(userDto);
+        var newUser = await userRepository.InsertUserAsync(user);
+        var newUserDto = mapper.Map<UserDto>(newUser);
+        return newUserDto;
     }
 
     public async Task UpdateUser(UserDto userDto)
     {
-        UserUpdateCommand userCommand = _mapper.Map<UserUpdateCommand>(userDto);
-
-        await _mediator.Send(userCommand);
-    }
-
-    public async Task<UserDto> GetUserByEmailAsync(string email)
-    {
-        GetUserByEmailQuery userQuery = new GetUserByEmailQuery(email);
-
-        Domain.Entities.User result = await _mediator.Send(userQuery) ?? throw new ApplicationException("User not found");
-
-        return _mapper.Map<UserDto>(result);
+        var user = mapper.Map<User>(userDto);
+        await userRepository.UpdateUserAsync(user);
     }
 
     public async Task RemoveUser(int id)
     {
-        UserRemoveCommand userRemoveCommand = new UserRemoveCommand(id);
-
-        if (userRemoveCommand == null)
-        {
-            throw new ApplicationException($"Entity could not be loaded.");
-        }
-
-        await _mediator.Send(userRemoveCommand);
+        var user = userRepository.GetUserByIdAsync(id).Result;
+        await userRepository.DeleteUserAsync(user);
     }
 }

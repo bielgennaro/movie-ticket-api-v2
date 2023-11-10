@@ -1,7 +1,6 @@
 #region
 
 using Microsoft.EntityFrameworkCore;
-
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -27,11 +26,6 @@ public class UserRepository : IUserRepository
     public async Task<User> GetUserByIdAsync(int id)
     {
         return await _userContext.Users.FindAsync(id);
-    }
-
-    public async Task<User> GetUserByEmailAsync(string email)
-    {
-        return await _userContext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
     }
 
     public async Task<User> InsertUserAsync(User user)

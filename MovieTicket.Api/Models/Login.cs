@@ -1,18 +1,18 @@
+#region
+
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using MovieTicket.Domain.Entities;
+
+#endregion
 
 namespace MovieTicket.WebApi.Models;
 
 public class Login
 {
-    [Required(ErrorMessage = "Email is required")]
-    [EmailAddress(ErrorMessage = "Invalid format email")]
-    public string Email { get; set; }
+    [DataType(DataType.EmailAddress)]
+    [Required(ErrorMessage = "Please enter a email")]
+    public required string Email { get; set; }
 
-    [Required(ErrorMessage = "Password is required")]
-    [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max " +
-                                     "{1} characters long.", MinimumLength = 10)]
+    [Required(ErrorMessage = "Please enter a password")]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 }

@@ -1,10 +1,8 @@
 ﻿#region
 
-using Microsoft.OpenApi.Models;
-
-using MovieTicket.Infra.IoC;
-
 using System.Text.Json;
+using Microsoft.OpenApi.Models;
+using MovieTicket.Infra.IoC;
 
 #endregion
 
@@ -46,7 +44,8 @@ public class Startup
         services.ConfigureSwaggerGen(options =>
         {
             options.CustomSchemaIds(x => x.FullName);
-            options.OrderActionsBy((apiDesc) => $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+            options.OrderActionsBy(apiDesc =>
+                $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.GroupName}");
         });
     }
 
@@ -70,9 +69,6 @@ public class Startup
         app.UseStaticFiles();
 
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 }

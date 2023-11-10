@@ -16,7 +16,5 @@ public interface IUserService
 
     Task UpdateUser(UserDto userDto);
 
-    Task<UserDto> GetUserByEmailAsync(string email);
-
     Task RemoveUser(int id);
 }

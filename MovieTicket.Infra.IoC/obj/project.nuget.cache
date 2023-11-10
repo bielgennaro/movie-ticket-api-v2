@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RQwtvf/lBkeYmP15E2gZBT0VB0kTKZQ1FKDCXy5TDfFaVmnQfZoQXpoQUAC0S77KobFCLvjKfwJtTFfERhMCJg==",
+  "dgSpecHash": "xrLGQzK5H1eMC4VYpxH2o3SBxXBfieoLiR9P4PZ32BzBsrMiqnt18XbkH+U049t5sewRARNPSCW4ndtqCPLTtA==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Infra.IoC\\MovieTicket.Infra.IoC.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,6 @@
     "C:\\Users\\biel\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
-    "C:\\Users\\biel\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.1.1\\microsoft.aspnetcore.authentication.2.1.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.1.1\\microsoft.aspnetcore.authentication.abstractions.2.1.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.1.1\\microsoft.aspnetcore.authentication.cookies.2.1.1.nupkg.sha512",

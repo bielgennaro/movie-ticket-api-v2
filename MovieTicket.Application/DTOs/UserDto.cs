@@ -20,6 +20,5 @@ public class UserDto
     [DataType(DataType.Password)]
     public required string Password { get; set; }
 
-    [Required]
-    public bool IsAdmin { get; set; }
+    [Required] public bool IsAdmin { get; set; }
 }

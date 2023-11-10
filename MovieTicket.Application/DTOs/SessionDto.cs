@@ -1,9 +1,6 @@
 ﻿#region
 
-using MovieTicket.Domain.Entities;
-
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 #endregion
 
@@ -11,9 +8,6 @@ namespace MovieTicket.Application.DTOs;
 
 public class SessionDto
 {
-    [JsonIgnore]
-    public int Id { get; set; }
-
     [Required(ErrorMessage = "Please enter a room")]
     [MinLength(3)]
     [MaxLength(100)]
@@ -37,7 +31,4 @@ public class SessionDto
     [Required(ErrorMessage = "Please enter a movie id")]
     [Display(Name = "Movie Id")]
     public int MovieId { get; set; }
-
-    [JsonIgnore]
-    public Movie Movie { get; }
 }

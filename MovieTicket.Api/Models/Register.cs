@@ -1,22 +1,18 @@
+#region
+
 using System.ComponentModel.DataAnnotations;
+
+#endregion
 
 namespace MovieTicket.WebApi.Models;
 
 public class Register
 {
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+    [DataType(DataType.EmailAddress)]
+    [Required(ErrorMessage = "Please enter a email")]
+    public required string Email { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Please enter a password")]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
-
-    [DataType(DataType.Password)]
-    [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "Password and confirmation password do not match.")]
-    public string ConfirmPassword { get; set; }
-
-    [Required]
-    public bool IsAdmin { get; set; }
+    public required string Password { get; set; }
 }
