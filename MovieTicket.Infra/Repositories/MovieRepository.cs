@@ -18,31 +18,31 @@ public class MovieRepository : IMovieRepository
         _movieContext = movieContext;
     }
 
-    public async Task<Movie> DeleteMovieAsync(Movie movie)
-    {
-        _movieContext.Remove(movie);
-        await _movieContext.SaveChangesAsync();
-        return movie;
-    }
-
-    public async Task<Movie> GetMovieByIdAsync(int id)
-    {
-        return await _movieContext.Movies.FindAsync(id);
-    }
-
     public async Task<IEnumerable<Movie>> GetMoviesAsync()
     {
         return await _movieContext.Movies.ToListAsync();
     }
 
-    public async Task<Movie> InsertMovieAsync(Movie movie)
+    public async Task<Movie> CreateAsync(Movie movie)
     {
         _movieContext.Add(movie);
         await _movieContext.SaveChangesAsync();
         return movie;
     }
 
-    public async Task<Movie> UpdateMovieAsync(Movie movie)
+    public async Task<Movie> DeleteAsync(Movie movie)
+    {
+        _movieContext.Remove(movie);
+        await _movieContext.SaveChangesAsync();
+        return movie;
+    }
+
+    public async Task<Movie> GetByIdAsync(int id)
+    {
+        return await _movieContext.Movies.FindAsync(id);
+    }
+
+    public async Task<Movie> UpdateAsync(Movie movie)
     {
         _movieContext.Update(movie);
         await _movieContext.SaveChangesAsync();

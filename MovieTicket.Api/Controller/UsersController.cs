@@ -43,11 +43,11 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(GetUserById), new { id = newUser.Email }, newUser);
     }
 
-    [HttpPut]
+    [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateUser([FromBody] UserDto userDto)
     {
         await _userService.UpdateUser(userDto);
-        return NoContent();
+        return Ok($"Usuário {userDto.Id} atualizado com sucesso");
     }
 
     [HttpDelete("{id}")]

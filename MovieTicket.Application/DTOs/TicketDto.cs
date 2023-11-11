@@ -8,7 +8,7 @@ namespace MovieTicket.Application.DTOs;
 
 public class TicketDto
 {
-    public int Id { get; protected set; }
+    public int Id { get; set; }
 
     [Required(ErrorMessage = "Please enter a session id")]
     [Display(Name = "Session Id")]

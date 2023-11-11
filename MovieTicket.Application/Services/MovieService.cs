@@ -23,35 +23,31 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<MovieDto>> GetMovies()
     {
-        var movies = await _movieRepository.GetMoviesAsync();
-        var moviesDto = _mapper.Map<IEnumerable<MovieDto>>(movies);
-        return moviesDto;
+        var categoriesEntity = await _movieRepository.GetMoviesAsync();
+        return _mapper.Map<IEnumerable<MovieDto>>(categoriesEntity);
     }
 
-    public async Task<MovieDto> GetMovieById(int id)
+    public async Task<MovieDto> GetById(int id)
     {
-        var movie = await _movieRepository.GetMovieByIdAsync(id);
-        var movieDto = _mapper.Map<MovieDto>(movie);
-        return movieDto;
+        var categoryEntity = await _movieRepository.GetByIdAsync(id);
+        return _mapper.Map<MovieDto>(categoryEntity);
     }
 
-    public async Task<MovieDto> CreateMovie(MovieDto movieDto)
+    public async Task Create(MovieDto movieDto)
     {
-        var movie = _mapper.Map<Movie>(movieDto);
-        var newMovie = await _movieRepository.InsertMovieAsync(movie);
-        var newMovieDto = _mapper.Map<MovieDto>(newMovie);
-        return newMovieDto;
+        var categoryEntity = _mapper.Map<Movie>(movieDto);
+        await _movieRepository.CreateAsync(categoryEntity);
     }
 
-    public async Task UpdateMovie(MovieDto movieDto)
+    public async Task Update(MovieDto movieDto)
     {
-        var movie = _mapper.Map<Movie>(movieDto);
-        await _movieRepository.UpdateMovieAsync(movie);
+        var categoryEntity = _mapper.Map<Movie>(movieDto);
+        await _movieRepository.UpdateAsync(categoryEntity);
     }
 
-    public async Task DeleteMovie(int id)
+    public async Task Remove(int id)
     {
-        var movie = _movieRepository.GetMovieByIdAsync(id).Result;
-        await _movieRepository.DeleteMovieAsync(movie);
+        var categoryEntity = _movieRepository.GetByIdAsync(id).Result;
+        await _movieRepository.DeleteAsync(categoryEntity);
     }
 }

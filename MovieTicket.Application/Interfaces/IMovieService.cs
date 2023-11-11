@@ -10,11 +10,11 @@ public interface IMovieService
 {
     Task<IEnumerable<MovieDto>> GetMovies();
 
-    Task<MovieDto> GetMovieById(int id);
+    Task<MovieDto> GetById(int id);
 
-    Task<MovieDto> CreateMovie(MovieDto movieDto);
+    Task Create(MovieDto movieDto);
 
-    Task UpdateMovie(MovieDto movieDto);
+    Task Update(MovieDto movieDto);
 
-    Task DeleteMovie(int id);
+    Task Remove(int id);
 }

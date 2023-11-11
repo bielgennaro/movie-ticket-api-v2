@@ -69,7 +69,7 @@ public sealed class Movie : Entity
         DomainExceptionValidation.When(bannerUrl.Length > 255,
             "Invalid banner url. Too long, maximum 255 characters");
 
-        Gender = Gender;
+        Gender = gender;
         Synopsis = synopsis;
         Title = title;
         Director = director;

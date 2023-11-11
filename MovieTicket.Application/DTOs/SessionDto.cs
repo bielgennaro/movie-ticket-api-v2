@@ -8,6 +8,8 @@ namespace MovieTicket.Application.DTOs;
 
 public class SessionDto
 {
+    public int Id { get; set; }
+    
     [Required(ErrorMessage = "Please enter a room")]
     [MinLength(3)]
     [MaxLength(100)]

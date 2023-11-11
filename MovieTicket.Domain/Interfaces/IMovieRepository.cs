@@ -10,11 +10,11 @@ public interface IMovieRepository
 {
     Task<IEnumerable<Movie>> GetMoviesAsync();
 
-    Task<Movie> GetMovieByIdAsync(int id);
+    Task<Movie> GetByIdAsync(int id);
 
-    Task<Movie> InsertMovieAsync(Movie movie);
+    Task<Movie> CreateAsync(Movie movie);
 
-    Task<Movie> UpdateMovieAsync(Movie movie);
+    Task<Movie> UpdateAsync(Movie movie);
 
-    Task<Movie> DeleteMovieAsync(Movie movie);
+    Task<Movie> DeleteAsync(Movie movie);
 }

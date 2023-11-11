@@ -29,31 +29,38 @@ public class MoviesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<MovieDto>> GetMovieById(int id)
     {
-        var movie = await _movieService.GetMovieById(id);
+        var movie = await _movieService.GetById(id);
 
         if (movie == null) return NotFound();
 
         return Ok(movie);
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<ActionResult<MovieDto>> CreateMovie([FromBody] MovieDto movieDto)
     {
-        var newMovie = await _movieService.CreateMovie(movieDto);
-        return CreatedAtAction(nameof(GetMovieById), new { id = newMovie.Gender }, newMovie);
+        if (!ModelState.IsValid)
+            return BadRequest();
+        
+        await _movieService.Create(movieDto);
+        return Ok();
     }
 
-    [HttpPut]
+    [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateMovie([FromBody] MovieDto movieDto)
     {
-        await _movieService.UpdateMovie(movieDto);
-        return NoContent();
+        if (movieDto == null)
+            return BadRequest();
+
+        await _movieService.Update(movieDto);
+
+        return Ok(movieDto);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMovie(int id)
     {
-        await _movieService.DeleteMovie(id);
+        await _movieService.Remove(id);
         return NoContent();
     }
 }
