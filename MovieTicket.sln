@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Domain", "Movie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Application", "MovieTicket.Application\MovieTicket.Application.csproj", "{D1F6D1B6-2600-4C52-8943-ADBF4798B570}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Infra.Data", "MovieTicket.Infra\MovieTicket.Infra.Data.csproj", "{D8379808-F860-42A3-B4E6-474CE9348172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Infra.ApiData", "MovieTicket.Infra\MovieTicket.Infra.ApiData.csproj", "{D8379808-F860-42A3-B4E6-474CE9348172}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.WebApi", "MovieTicket.Api\MovieTicket.WebApi.csproj", "{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}"
 EndProject
