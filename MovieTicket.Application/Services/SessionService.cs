@@ -43,10 +43,10 @@ public class SessionService : ISessionService
         return newSessionDto;
     }
 
-    public async Task UpdateSession(SessionDto sessionDto)
+    public async Task UpdateSession(SessionDto sessionDto, int id)
     {
         var session = _mapper.Map<Session>(sessionDto);
-        await _sessionRepository.UpdateSessionAsync(session);
+        await _sessionRepository.UpdateSessionAsync(session, id);
     }
 
     public async Task DeleteSession(int id)

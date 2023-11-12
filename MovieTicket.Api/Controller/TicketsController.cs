@@ -6,54 +6,105 @@ using MovieTicket.Application.Interfaces;
 
 #endregion
 
-namespace MovieTicket.API.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-public class TicketsController : ControllerBase
+namespace MovieTicket.API.Controllers
 {
-    private readonly ITicketService _ticketService;
-
-    public TicketsController(ITicketService ticketService)
+    [ApiController]
+    [Route("api/tickets")]
+    public class TicketController : ControllerBase
     {
-        _ticketService = ticketService;
-    }
+        private readonly ILogger<TicketController> _logger;
+        private readonly ITicketService _ticketService;
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<TicketDto>>> GetTickets()
-    {
-        var tickets = await _ticketService.GetTickets();
-        return Ok(tickets);
-    }
+        public TicketController(ITicketService ticketService, ILogger<TicketController> logger)
+        {
+            _ticketService = ticketService;
+            _logger = logger;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<TicketDto>> GetTicketById(int id)
-    {
-        var ticket = await _ticketService.GetTicketById(id);
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTickets()
+        {
+            try
+            {
+                var tickets = await _ticketService.GetTickets();
+                _logger.LogInformation("Tickets retrieved successfully.");
+                return Ok(tickets);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving tickets.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        if (ticket == null) return NotFound();
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TicketDto>> GetTicketById(int id)
+        {
+            try
+            {
+                var ticket = await _ticketService.GetTicketById(id);
 
-        return Ok(ticket);
-    }
+                if (ticket == null)
+                {
+                    _logger.LogInformation($"Ticket with ID {id} not found.");
+                    return NotFound();
+                }
 
-    [HttpPost("create")]
-    public async Task<ActionResult<TicketDto>> CreateTicket([FromBody] TicketDto ticketDto)
-    {
-        var newTicket = await _ticketService.CreateTicket(ticketDto);
-        return CreatedAtAction(nameof(GetTicketById), new { user_id = newTicket.UserId }, newTicket);
-    }
+                return Ok(ticket);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving ticket with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateTicket([FromBody] TicketDto ticketDto)
-    {
-        await _ticketService.UpdateTicket(ticketDto);
-        return NoContent();
-    }
+        [HttpPost]
+        public async Task<ActionResult<TicketDto>> CreateTicket(TicketDto ticketDto)
+        {
+            try
+            {
+                var newTicket = await _ticketService.CreateTicket(ticketDto);
+                _logger.LogInformation($"Ticket created successfully with ID {newTicket.Id}.");
+                return CreatedAtAction(nameof(GetTicketById), new { id = newTicket.Id }, newTicket);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating ticket.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTicket(int id)
-    {
-        await _ticketService.DeleteTicket(id);
-        return NoContent();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTicket(TicketDto ticketDto, int id)
+        {
+            try
+            {
+                await _ticketService.UpdateTicket(ticketDto, id);
+                _logger.LogInformation($"Ticket with ID {id} updated successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating ticket with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTicket(int id)
+        {
+            try
+            {
+                await _ticketService.DeleteTicket(id);
+                _logger.LogInformation($"Ticket with ID {id} deleted successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting ticket with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

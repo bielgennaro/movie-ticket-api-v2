@@ -23,12 +23,12 @@ public class Session : Entity
         MovieId = movieId;
     }
 
-    public string Room { get; private set; }
-    public int AvailableTickets { get; private set; }
-    public DateTime Date { get; private set; }
-    public decimal Price { get; private set; }
+    public string Room { get; set; }
+    public int AvailableTickets { get; set; }
+    public DateTime Date { get; set; }
+    public decimal Price { get; set; }
 
-    public int MovieId { get; private set; }
+    public int MovieId { get; set; }
     public Movie Movie { get; }
 
     public void Update(string room, int availableTickets, DateTime date, decimal price, int movieId)

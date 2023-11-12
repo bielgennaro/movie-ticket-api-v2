@@ -14,7 +14,7 @@ public interface ITicketService
 
     Task<TicketDto> CreateTicket(TicketDto ticketDto);
 
-    Task UpdateTicket(TicketDto ticketDto);
+    Task UpdateTicket(TicketDto ticketDto, int id);
 
     Task DeleteTicket(int id);
 }

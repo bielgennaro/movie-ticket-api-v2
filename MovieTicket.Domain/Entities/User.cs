@@ -16,23 +16,9 @@ public sealed class User : Entity
         IsAdmin = isAdmin;
     }
 
-    public User(int id, string email, string password, bool isAdmin)
-    {
-        ValidateDomain(email, password);
-        DomainExceptionValidation.When(id < 0, "Invalid Id value");
-        Id = id;
-        IsAdmin = isAdmin;
-    }
-
-    public string Email { get; private set; }
-    public string Password { get; private set; }
-    public bool IsAdmin { get; private set; }
-
-    public void Update(string email, string password, bool isAdmin)
-    {
-        ValidateDomain(email, password);
-        IsAdmin = isAdmin;
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public bool IsAdmin { get; set; }
 
     public void ValidateDomain(string email, string password)
     {

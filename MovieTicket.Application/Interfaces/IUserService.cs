@@ -14,7 +14,7 @@ public interface IUserService
 
     Task<UserDto> AddUser(UserDto userDto);
 
-    Task UpdateUser(UserDto userDto);
+    Task UpdateUser(UserDto userDto, int id);
 
     Task RemoveUser(int id);
 }

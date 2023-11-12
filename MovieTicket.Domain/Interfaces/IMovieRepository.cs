@@ -14,7 +14,7 @@ public interface IMovieRepository
 
     Task<Movie> CreateAsync(Movie movie);
 
-    Task<Movie> UpdateAsync(Movie movie);
+    Task UpdateAsync(Movie movie, int id);
 
     Task<Movie> DeleteAsync(Movie movie);
 }

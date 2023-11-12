@@ -65,8 +65,6 @@ m
 =MovieTicket.Application/Mappings/DomainToDtoMappingProfile.cs,5\1\51dee992945484d9832ca61e2d203a01948fb93d
 o
 ?MovieTicket.Infra/EntitiesConfiguration/SessionConfiguration.cs,9\8\98436afa06f48b2a7034855b5f597368af8a8a99
-c
-3MovieTicket.Infra.IoC/DependencyInjectionSwagger.cs,9\3\93fc6f8ade8c4390e559ff3cd79acde0fd4ec172
 m
 =MovieTicket.Infra/EntitiesConfiguration/MovieConfiguration.cs,c\d\cdff13df2331274a0a2e463fdcdfaffad1fb77f3
 n
@@ -77,3 +75,5 @@ T
 $MovieTicket.Domain/Entities/Movie.cs,8\8\88a2a9986163f5ec995ca3a00996ffcb6746931a
 b
 2MovieTicket.Infra/Repositories/TicketRepository.cs,7\e\7e4af454e04b3259035dd7f38e14915b04426fa7
+X
+(MovieTicket.Api/Security/PasswordHash.cs,0\2\02b550fedf6040651710a4063ff729c0fd5cd22a

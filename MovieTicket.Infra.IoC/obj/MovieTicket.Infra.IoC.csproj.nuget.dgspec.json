@@ -169,8 +169,8 @@
               "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
                 "projectPath": "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj"
               },
-              "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj": {
-                "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj"
+              "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj": {
+                "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj"
               }
             }
           }
@@ -210,12 +210,12 @@
         }
       }
     },
-    "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj": {
+    "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj",
-        "projectName": "MovieTicket.Infra.DataApi",
-        "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj",
+        "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj",
+        "projectName": "MovieTicket.Infra.Data",
+        "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj",
         "packagesPath": "C:\\Users\\biel\\.nuget\\packages\\",
         "outputPath": "C:\\MovieTicket\\MovieTicket.Infra\\obj\\",
         "projectStyle": "PackageReference",
@@ -255,10 +255,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity": {
-              "target": "Package",
-              "version": "[2.1.39, )"
-            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.13, )"

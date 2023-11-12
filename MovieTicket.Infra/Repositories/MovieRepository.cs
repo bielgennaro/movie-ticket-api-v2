@@ -7,45 +7,55 @@ using MovieTicket.Infra.Data.Context;
 
 #endregion
 
-namespace MovieTicket.Infra.Data.Repositories;
-
-public class MovieRepository : IMovieRepository
+namespace MovieTicket.Infra.Data.Repositories
 {
-    private readonly ApplicationDbContext _movieContext;
-
-    public MovieRepository(ApplicationDbContext movieContext)
+    public class MovieRepository : IMovieRepository
     {
-        _movieContext = movieContext;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<IEnumerable<Movie>> GetMoviesAsync()
-    {
-        return await _movieContext.Movies.ToListAsync();
-    }
+        public MovieRepository(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
-    public async Task<Movie> CreateAsync(Movie movie)
-    {
-        _movieContext.Add(movie);
-        await _movieContext.SaveChangesAsync();
-        return movie;
-    }
+        public async Task<IEnumerable<Movie>> GetMoviesAsync()
+        {
+            return await _dbContext.Movies.ToListAsync();
+        }
 
-    public async Task<Movie> DeleteAsync(Movie movie)
-    {
-        _movieContext.Remove(movie);
-        await _movieContext.SaveChangesAsync();
-        return movie;
-    }
+        public async Task<Movie> GetByIdAsync(int id)
+        {
+            return await _dbContext.Movies.FindAsync(id);
+        }
 
-    public async Task<Movie> GetByIdAsync(int id)
-    {
-        return await _movieContext.Movies.FindAsync(id);
-    }
+        public async Task<Movie> CreateAsync(Movie movie)
+        {
+            _dbContext.Movies.Add(movie);
+            await _dbContext.SaveChangesAsync();
+            return movie;
+        }
 
-    public async Task<Movie> UpdateAsync(Movie movie)
-    {
-        _movieContext.Update(movie);
-        await _movieContext.SaveChangesAsync();
-        return movie;
+        public async Task UpdateAsync(Movie movie, int id)
+        {
+            var existingMovie = await _dbContext.Movies.FindAsync(id);
+
+            if (existingMovie != null)
+            {
+                existingMovie.Gender = movie.Gender;
+                existingMovie.Title = movie.Title;
+                existingMovie.Synopsis = movie.Synopsis;
+                existingMovie.Director = movie.Director;
+                existingMovie.BannerUrl = movie.BannerUrl;
+
+                await _dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<Movie> DeleteAsync(Movie movie)
+        {
+            _dbContext.Movies.Remove(movie);
+            await _dbContext.SaveChangesAsync();
+            return movie;
+        }
     }
 }

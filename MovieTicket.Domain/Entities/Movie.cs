@@ -20,11 +20,11 @@ public sealed class Movie : Entity
         Id = id;
     }
 
-    public string Gender { get; private set; }
-    public string Synopsis { get; private set; }
-    public string Title { get; private set; }
-    public string Director { get; private set; }
-    public string BannerUrl { get; private set; }
+    public string Gender { get; set; }
+    public string Synopsis { get; set; }
+    public string Title { get; set; }
+    public string Director { get; set; }
+    public string BannerUrl { get; set; }
 
     public void Update(string gender, string synopsis, string title, string director, string bannerUrl)
     {

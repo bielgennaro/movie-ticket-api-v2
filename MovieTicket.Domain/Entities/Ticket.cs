@@ -8,15 +8,9 @@ public class Ticket : Entity
         UserId = userId;
     }
 
-    public int SessionId { get; private set; }
+    public int SessionId { get; set; }
     public Session? Session { get; }
 
-    public int UserId { get; private set; }
+    public int UserId { get; set; }
     public User? User { get; }
-
-    public void Update(int sessionId, int userId)
-    {
-        SessionId = sessionId;
-        UserId = userId;
-    }
 }

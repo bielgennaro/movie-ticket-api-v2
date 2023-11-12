@@ -13,15 +13,15 @@ public class DomainToDtoMappingProfile : Profile
     public DomainToDtoMappingProfile()
     {
         CreateMap<Session, SessionDto>()
-            .ReverseMap();
+            .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
         CreateMap<Ticket, TicketDto>()
-            .ReverseMap();
+            .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
         CreateMap<User, UserDto>()
-            .ReverseMap();
+            .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
         CreateMap<Movie, MovieDto>()
-            .ReverseMap();
+            .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
     }
 }

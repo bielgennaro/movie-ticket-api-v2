@@ -9,8 +9,9 @@ C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\AutoMapper.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Azure.Core.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Azure.Identity.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\DevOne.Security.Cryptography.BCrypt.dll
+C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\BCrypt.Net.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Humanizer.dll
-C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\MovieTicket\MovieTicket.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

@@ -8,8 +8,8 @@ namespace MovieTicket.Application.DTOs;
 
 public class MovieDto
 {
-    public int Id { get; private set; }
-    
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "Please enter a gender")]
     [MinLength(3)]
     [MaxLength(100)]

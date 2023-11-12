@@ -9,6 +9,7 @@ using MovieTicket.Application.Services;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
 using MovieTicket.Infra.Data.Repositories;
+using MovieTicket.Infra.DataApi.Repositories;
 
 #endregion
 
@@ -20,14 +21,8 @@ public static class DependencyInjectionApi
         IConfiguration configuration)
     {
         services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("ProdConnection"), b =>
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"), b =>
                 b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-#if DEBUG
-        services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DevConnection"), b =>
-                b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-#endif
 
         services.AddScoped<IMovieRepository, MovieRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
@@ -40,7 +35,6 @@ public static class DependencyInjectionApi
         services.AddScoped<IUserService, UserService>();
 
         services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
-
 
         return services;
     }

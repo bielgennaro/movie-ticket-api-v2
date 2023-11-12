@@ -6,54 +6,105 @@ using MovieTicket.Application.Interfaces;
 
 #endregion
 
-namespace MovieTicket.API.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-public class UsersController : ControllerBase
+namespace MovieTicket.API.Controllers
 {
-    private readonly IUserService _userService;
-
-    public UsersController(IUserService userService)
+    [ApiController]
+    [Route("api/users")]
+    public class UserController : ControllerBase
     {
-        _userService = userService;
-    }
+        private readonly ILogger<UserController> _logger;
+        private readonly IUserService _userService;
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
-    {
-        var users = await _userService.GetUsers();
-        return Ok(users);
-    }
+        public UserController(IUserService userService, ILogger<UserController> logger)
+        {
+            _userService = userService;
+            _logger = logger;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UserDto>> GetUserById(int id)
-    {
-        var user = await _userService.GetUserById(id);
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        {
+            try
+            {
+                var users = await _userService.GetUsers();
+                _logger.LogInformation("Users retrieved successfully.");
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving users.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        if (user == null) return NotFound();
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserDto>> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserById(id);
 
-        return Ok(user);
-    }
+                if (user == null)
+                {
+                    _logger.LogInformation($"User with ID {id} not found.");
+                    return NotFound();
+                }
 
-    [HttpPost]
-    public async Task<ActionResult<UserDto>> CreateUser([FromBody] UserDto userDto)
-    {
-        var newUser = await _userService.AddUser(userDto);
-        return CreatedAtAction(nameof(GetUserById), new { id = newUser.Email }, newUser);
-    }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving user with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateUser([FromBody] UserDto userDto)
-    {
-        await _userService.UpdateUser(userDto);
-        return Ok($"Usuário {userDto.Id} atualizado com sucesso");
-    }
+        [HttpPost]
+        public async Task<ActionResult<UserDto>> AddUser(UserDto userDto)
+        {
+            try
+            {
+                var newUser = await _userService.AddUser(userDto);
+                _logger.LogInformation($"User created successfully with ID {newUser.Id}.");
+                return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating user.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
-    {
-        await _userService.RemoveUser(id);
-        return NoContent();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(UserDto userDto, int id)
+        {
+            try
+            {
+                await _userService.UpdateUser(userDto, id);
+                _logger.LogInformation($"User with ID {id} updated successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating user with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveUser(int id)
+        {
+            try
+            {
+                await _userService.RemoveUser(id);
+                _logger.LogInformation($"User with ID {id} deleted successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting user with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

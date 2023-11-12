@@ -14,7 +14,7 @@ public interface ISessionRepository
 
     Task<Session> InsertSessionAsync(Session session);
 
-    Task<Session> UpdateSessionAsync(Session session);
+    Task UpdateSessionAsync(Session session, int id);
 
     Task<Session> DeleteSessionAsync(Session session);
 

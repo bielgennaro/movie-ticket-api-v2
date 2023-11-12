@@ -6,61 +6,105 @@ using MovieTicket.Application.Interfaces;
 
 #endregion
 
-namespace MovieTicket.API.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-public class MoviesController : ControllerBase
+namespace MovieTicket.API.Controllers
 {
-    private readonly IMovieService _movieService;
-
-    public MoviesController(IMovieService movieService)
+    [ApiController]
+    [Route("api/movies")]
+    public class MovieController : ControllerBase
     {
-        _movieService = movieService;
-    }
+        private readonly ILogger<MovieController> _logger;
+        private readonly IMovieService _movieService;
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies()
-    {
-        var movies = await _movieService.GetMovies();
-        return Ok(movies);
-    }
+        public MovieController(IMovieService movieService, ILogger<MovieController> logger)
+        {
+            _movieService = movieService;
+            _logger = logger;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<MovieDto>> GetMovieById(int id)
-    {
-        var movie = await _movieService.GetById(id);
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies()
+        {
+            try
+            {
+                var movies = await _movieService.GetMovies();
+                _logger.LogInformation("Movies retrieved successfully.");
+                return Ok(movies);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving movies.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        if (movie == null) return NotFound();
+        [HttpGet("{id}")]
+        public async Task<ActionResult<MovieDto>> GetById(int id)
+        {
+            try
+            {
+                var movie = await _movieService.GetById(id);
 
-        return Ok(movie);
-    }
+                if (movie == null)
+                {
+                    _logger.LogInformation($"Movie with ID {id} not found.");
+                    return NotFound();
+                }
 
-    [HttpPost("create")]
-    public async Task<ActionResult<MovieDto>> CreateMovie([FromBody] MovieDto movieDto)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest();
-        
-        await _movieService.Create(movieDto);
-        return Ok();
-    }
+                return Ok(movie);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving movie with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateMovie([FromBody] MovieDto movieDto)
-    {
-        if (movieDto == null)
-            return BadRequest();
+        [HttpPost]
+        public async Task<ActionResult<MovieDto>> Create(MovieDto movieDto)
+        {
+            try
+            {
+                await _movieService.Create(movieDto);
+                _logger.LogInformation("Movie created successfully.");
+                return CreatedAtAction(nameof(GetById), new { id = movieDto.Id }, movieDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating movie.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        await _movieService.Update(movieDto);
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(MovieDto movieDto, int id)
+        {
+            try
+            {
+                await _movieService.Update(movieDto, id);
+                _logger.LogInformation($"Movie with ID {id} updated successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating movie with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        return Ok(movieDto);
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteMovie(int id)
-    {
-        await _movieService.Remove(id);
-        return NoContent();
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            try
+            {
+                await _movieService.Remove(id);
+                _logger.LogInformation($"Movie with ID {id} deleted successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting movie with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

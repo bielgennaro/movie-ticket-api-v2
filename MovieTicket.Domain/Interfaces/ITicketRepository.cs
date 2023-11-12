@@ -14,7 +14,7 @@ public interface ITicketRepository
 
     Task<Ticket> InsertTicketAsync(Ticket ticket);
 
-    Task<Ticket> UpdateTicketAsync(Ticket ticket);
+    Task<Ticket> UpdateTicketAsync(Ticket ticket, int id);
 
     Task<Ticket> DeleteTicketAsync(Ticket ticket);
 

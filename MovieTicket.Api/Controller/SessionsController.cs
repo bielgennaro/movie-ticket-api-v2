@@ -6,54 +6,105 @@ using MovieTicket.Application.Interfaces;
 
 #endregion
 
-namespace MovieTicket.API.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-public class SessionsController : ControllerBase
+namespace MovieTicket.API.Controllers
 {
-    private readonly ISessionService _sessionService;
-
-    public SessionsController(ISessionService sessionService)
+    [ApiController]
+    [Route("api/sessions")]
+    public class SessionController : ControllerBase
     {
-        _sessionService = sessionService;
-    }
+        private readonly ILogger<SessionController> _logger;
+        private readonly ISessionService _sessionService;
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<SessionDto>>> GetSessions()
-    {
-        var sessions = await _sessionService.GetSessions();
-        return Ok(sessions);
-    }
+        public SessionController(ISessionService sessionService, ILogger<SessionController> logger)
+        {
+            _sessionService = sessionService;
+            _logger = logger;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<SessionDto>> GetSessionById(int id)
-    {
-        var session = await _sessionService.GetSessionById(id);
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<SessionDto>>> GetSessions()
+        {
+            try
+            {
+                var sessions = await _sessionService.GetSessions();
+                _logger.LogInformation("Sessions retrieved successfully.");
+                return Ok(sessions);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving sessions.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-        if (session == null) return NotFound();
+        [HttpGet("{id}")]
+        public async Task<ActionResult<SessionDto>> GetSessionById(int id)
+        {
+            try
+            {
+                var session = await _sessionService.GetSessionById(id);
 
-        return Ok(session);
-    }
+                if (session == null)
+                {
+                    _logger.LogInformation($"Session with ID {id} not found.");
+                    return NotFound();
+                }
 
-    [HttpPost]
-    public async Task<ActionResult<SessionDto>> CreateSession([FromBody] SessionDto sessionDto)
-    {
-        var newSession = await _sessionService.CreateSession(sessionDto);
-        return CreatedAtAction(nameof(GetSessionById), new { id = newSession.MovieId }, newSession);
-    }
+                return Ok(session);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving session with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateSession([FromBody] SessionDto sessionDto)
-    {
-        await _sessionService.UpdateSession(sessionDto);
-        return NoContent();
-    }
+        [HttpPost]
+        public async Task<ActionResult<SessionDto>> CreateSession(SessionDto sessionDto)
+        {
+            try
+            {
+                var newSession = await _sessionService.CreateSession(sessionDto);
+                _logger.LogInformation($"Session created successfully with ID {newSession.Id}.");
+                return CreatedAtAction(nameof(GetSessionById), new { id = newSession.Id }, newSession);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating session.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteSession(int id)
-    {
-        await _sessionService.DeleteSession(id);
-        return NoContent();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSession(SessionDto sessionDto, int id)
+        {
+            try
+            {
+                await _sessionService.UpdateSession(sessionDto, id);
+                _logger.LogInformation($"Session with ID {id} updated successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating session with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSession(int id)
+        {
+            try
+            {
+                await _sessionService.DeleteSession(id);
+                _logger.LogInformation($"Session with ID {id} deleted successfully.");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting session with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

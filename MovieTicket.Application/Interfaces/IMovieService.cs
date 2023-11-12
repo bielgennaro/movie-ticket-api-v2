@@ -14,7 +14,7 @@ public interface IMovieService
 
     Task Create(MovieDto movieDto);
 
-    Task Update(MovieDto movieDto);
+    Task Update(MovieDto movieDto, int id);
 
     Task Remove(int id);
 }
