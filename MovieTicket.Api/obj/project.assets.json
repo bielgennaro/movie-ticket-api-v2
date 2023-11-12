@@ -4519,7 +4519,7 @@
           "bin/placeholder/MovieTicket.Domain.dll": {}
         }
       },
-      "MovieTicket.Infra.Data/1.0.0": {
+      "MovieTicket.Infra.ApiData/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -4531,10 +4531,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11"
         },
         "compile": {
-          "bin/placeholder/MovieTicket.Infra.Data.dll": {}
+          "bin/placeholder/MovieTicket.Infra.ApiData.dll": {}
         },
         "runtime": {
-          "bin/placeholder/MovieTicket.Infra.Data.dll": {}
+          "bin/placeholder/MovieTicket.Infra.ApiData.dll": {}
         }
       },
       "MovieTicket.Infra.IoC/1.0.0": {
@@ -4544,7 +4544,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "MovieTicket.Application": "1.0.0",
           "MovieTicket.Domain": "1.0.0",
-          "MovieTicket.Infra.Data": "1.0.0"
+          "MovieTicket.Infra.ApiData": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MovieTicket.Infra.IoC.dll": {}
@@ -12762,10 +12762,10 @@
       "path": "../MovieTicket.Domain/MovieTicket.Domain.csproj",
       "msbuildProject": "../MovieTicket.Domain/MovieTicket.Domain.csproj"
     },
-    "MovieTicket.Infra.Data/1.0.0": {
+    "MovieTicket.Infra.ApiData/1.0.0": {
       "type": "project",
-      "path": "../MovieTicket.Infra/MovieTicket.Infra.Data.csproj",
-      "msbuildProject": "../MovieTicket.Infra/MovieTicket.Infra.Data.csproj"
+      "path": "../MovieTicket.Infra/MovieTicket.Infra.ApiData.csproj",
+      "msbuildProject": "../MovieTicket.Infra/MovieTicket.Infra.ApiData.csproj"
     },
     "MovieTicket.Infra.IoC/1.0.0": {
       "type": "project",

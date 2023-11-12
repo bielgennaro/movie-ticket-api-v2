@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HGBsr88R+fbOQdOXiHqazi+XX8XmSxlzx9nB5aHCw1c8STR/IaQzJN+rHQPtMyltAIJLdI9buux+0STIJqNsnQ==",
+  "dgSpecHash": "FsAUO+fsiY49XIvY6860M3/OK1Ag55FkN1ZlCrXDdxthESFXo1Ga+UPBKQceROZcHnlYDLotVskwczEsjSZB4w==",
   "success": true,
-  "projectFilePath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.Data.csproj",
+  "projectFilePath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.ApiData.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\biel\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

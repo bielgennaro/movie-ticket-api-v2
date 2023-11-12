@@ -7,17 +7,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieTicket.Infra.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Teste : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "public");
-
             migrationBuilder.CreateTable(
                 name: "Movies",
-                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -35,7 +31,6 @@ namespace MovieTicket.Infra.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Users",
-                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -51,7 +46,6 @@ namespace MovieTicket.Infra.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Sessions",
-                schema: "public",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -68,7 +62,6 @@ namespace MovieTicket.Infra.Data.Migrations
                     table.ForeignKey(
                         name: "movie_id",
                         column: x => x.MovieId,
-                        principalSchema: "public",
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -76,7 +69,6 @@ namespace MovieTicket.Infra.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Tickets",
-                schema: "public",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -90,14 +82,12 @@ namespace MovieTicket.Infra.Data.Migrations
                     table.ForeignKey(
                         name: "session_id",
                         column: x => x.SessionId,
-                        principalSchema: "public",
                         principalTable: "Sessions",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "user_id",
                         column: x => x.UserId,
-                        principalSchema: "public",
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -105,19 +95,16 @@ namespace MovieTicket.Infra.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_MovieId",
-                schema: "public",
                 table: "Sessions",
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_SessionId",
-                schema: "public",
                 table: "Tickets",
                 column: "SessionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_UserId",
-                schema: "public",
                 table: "Tickets",
                 column: "UserId");
         }
@@ -126,20 +113,16 @@ namespace MovieTicket.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tickets",
-                schema: "public");
+                name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "Sessions",
-                schema: "public");
+                name: "Sessions");
 
             migrationBuilder.DropTable(
-                name: "Users",
-                schema: "public");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Movies",
-                schema: "public");
+                name: "Movies");
         }
     }
 }

@@ -12,15 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieTicket.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231111193550_Teste")]
-    partial class Teste
+    [Migration("20231112071549_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("public")
                 .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -61,7 +60,7 @@ namespace MovieTicket.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", "public");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("MovieTicket.Domain.Entities.Session", b =>
@@ -98,7 +97,7 @@ namespace MovieTicket.Infra.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Sessions", "public");
+                    b.ToTable("Sessions", (string)null);
                 });
 
             modelBuilder.Entity("MovieTicket.Domain.Entities.Ticket", b =>
@@ -122,7 +121,7 @@ namespace MovieTicket.Infra.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Tickets", "public");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("MovieTicket.Domain.Entities.User", b =>
@@ -150,7 +149,7 @@ namespace MovieTicket.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", "public");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("MovieTicket.Domain.Entities.Session", b =>

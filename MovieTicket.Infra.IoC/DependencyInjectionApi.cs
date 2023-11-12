@@ -20,7 +20,7 @@ public static class DependencyInjectionApi
         IConfiguration configuration)
     {
         services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"), b =>
+            options.UseNpgsql(configuration.GetConnectionString("ProdConnection"), b =>
                 b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
 #if DEBUG
