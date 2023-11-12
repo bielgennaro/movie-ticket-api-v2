@@ -3936,9 +3936,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.ApiData.csproj",
-      "projectName": "MovieTicket.Infra.ApiData",
-      "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.ApiData.csproj",
+      "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj",
+      "projectName": "MovieTicket.Infra.DataApi",
+      "projectPath": "C:\\MovieTicket\\MovieTicket.Infra\\MovieTicket.Infra.DataApi.csproj",
       "packagesPath": "C:\\Users\\biel\\.nuget\\packages\\",
       "outputPath": "C:\\MovieTicket\\MovieTicket.Infra\\obj\\",
       "projectStyle": "PackageReference",
