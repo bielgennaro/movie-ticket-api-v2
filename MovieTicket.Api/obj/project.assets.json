@@ -75,28 +75,6 @@
           }
         }
       },
-      "BCrypt/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/DevOne.Security.Cryptography.BCrypt.dll": {}
-        },
-        "runtime": {
-          "lib/DevOne.Security.Cryptography.BCrypt.dll": {}
-        }
-      },
-      "BCrypt.Net/0.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net35/BCrypt.Net.dll": {
-            "related": ".XML"
-          }
-        },
-        "runtime": {
-          "lib/net35/BCrypt.Net.dll": {
-            "related": ".XML"
-          }
-        }
-      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -4253,31 +4231,6 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
-      ]
-    },
-    "BCrypt/1.0.0": {
-      "sha512": "/ibwe2Sg7MJR26IrEzW2Rde9/+A+AYXB5Kf9w/8BVLDdzSfUe4W2M7i2efy1Wa9wHh1k0y81Q6h9Ty8C6IrUGA==",
-      "type": "package",
-      "path": "bcrypt/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bcrypt.1.0.0.nupkg.sha512",
-        "bcrypt.nuspec",
-        "lib/DevOne.Security.Cryptography.BCrypt.dll"
-      ]
-    },
-    "BCrypt.Net/0.1.0": {
-      "sha512": "sST2w361Dxt9GGMfpOTiK50wXGV64Ybb1hiX3xjEWnhVYZNF43NuySGwADJa7X1R+bA53NsFR+tuDxcYiJeIOA==",
-      "type": "package",
-      "path": "bcrypt.net/0.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bcrypt.net.0.1.0.nupkg.sha512",
-        "bcrypt.net.nuspec",
-        "lib/net35/BCrypt.Net.XML",
-        "lib/net35/BCrypt.Net.dll"
       ]
     },
     "Humanizer/2.14.1": {
@@ -12095,8 +12048,6 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "BCrypt >= 1.0.0",
-      "BCrypt.Net >= 0.1.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.11",
@@ -12156,14 +12107,6 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
-          "BCrypt": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
-          "BCrypt.Net": {
-            "target": "Package",
-            "version": "[0.1.0, )"
-          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.13, )"
@@ -12217,27 +12160,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'BCrypt 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "BCrypt",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "BCrypt.Net",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  }
 }
