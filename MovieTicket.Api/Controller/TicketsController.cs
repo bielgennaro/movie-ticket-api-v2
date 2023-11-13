@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 
@@ -9,7 +10,7 @@ using MovieTicket.Application.Interfaces;
 namespace MovieTicket.API.Controllers
 {
     [ApiController]
-    [Route("api/tickets")]
+    [Route("tickets")]
     public class TicketController : ControllerBase
     {
         private readonly ILogger<TicketController> _logger;
@@ -37,7 +38,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{int:id}")]
         public async Task<ActionResult<TicketDto>> GetTicketById(int id)
         {
             try
@@ -59,8 +60,8 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult<TicketDto>> CreateTicket(TicketDto ticketDto)
+        [HttpPost("register")]
+        public async Task<ActionResult<TicketDto>> CreateTicket(TicketDtoRequest ticketDto)
         {
             try
             {
@@ -75,8 +76,8 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTicket(TicketDto ticketDto, int id)
+        [HttpPut("update/{int:id}")]
+        public async Task<IActionResult> UpdateTicket(TicketDtoRequest ticketDto, int id)
         {
             try
             {
@@ -91,7 +92,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{int:id}")]
         public async Task<IActionResult> DeleteTicket(int id)
         {
             try

@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 
@@ -9,7 +10,7 @@ using MovieTicket.Application.Interfaces;
 namespace MovieTicket.API.Controllers
 {
     [ApiController]
-    [Route("api/sessions")]
+    [Route("sessions")]
     public class SessionController : ControllerBase
     {
         private readonly ILogger<SessionController> _logger;
@@ -37,7 +38,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{int:id}")]
         public async Task<ActionResult<SessionDto>> GetSessionById(int id)
         {
             try
@@ -59,14 +60,14 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult<SessionDto>> CreateSession(SessionDto sessionDto)
+        [HttpPost("register")]
+        public async Task<ActionResult<SessionDto>> CreateSession(SessionDtoRequest sessionDto)
         {
             try
             {
                 var newSession = await _sessionService.CreateSession(sessionDto);
-                _logger.LogInformation($"Session created successfully with ID {newSession.Id}.");
-                return CreatedAtAction(nameof(GetSessionById), new { id = newSession.Id }, newSession);
+                _logger.LogInformation($"Session created successfully with ID {newSession.MovieId}.");
+                return CreatedAtAction(nameof(GetSessionById), new { id = newSession.MovieId }, newSession);
             }
             catch (Exception ex)
             {
@@ -75,8 +76,8 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSession(SessionDto sessionDto, int id)
+        [HttpPut("update/{int:id}")]
+        public async Task<IActionResult> UpdateSession(SessionDtoRequest sessionDto, int id)
         {
             try
             {
@@ -91,7 +92,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{int:id}")]
         public async Task<IActionResult> DeleteSession(int id)
         {
             try

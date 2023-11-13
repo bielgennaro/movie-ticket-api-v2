@@ -4,17 +4,18 @@ using MovieTicket.Application.DTOs;
 
 #endregion
 
-namespace MovieTicket.Application.Interfaces;
-
-public interface ITicketService
+namespace MovieTicket.Application.Interfaces
 {
-    Task<IEnumerable<TicketDto>> GetTickets();
+    public interface ITicketService
+    {
+        Task<IEnumerable<TicketDto>> GetTickets();
 
-    Task<TicketDto> GetTicketById(int id);
+        Task<TicketDto> GetTicketById(int id);
 
-    Task<TicketDto> CreateTicket(TicketDto ticketDto);
+        Task<TicketDto> CreateTicket(TicketDtoRequest ticketDto);
 
-    Task UpdateTicket(TicketDto ticketDto, int id);
+        Task UpdateTicket(TicketDtoRequest ticketDto, int id);
 
-    Task DeleteTicket(int id);
+        Task DeleteTicket(int id);
+    }
 }

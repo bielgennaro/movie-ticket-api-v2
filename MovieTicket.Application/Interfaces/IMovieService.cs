@@ -4,17 +4,18 @@ using MovieTicket.Application.DTOs;
 
 #endregion
 
-namespace MovieTicket.Application.Interfaces;
-
-public interface IMovieService
+namespace MovieTicket.Application.Interfaces
 {
-    Task<IEnumerable<MovieDto>> GetMovies();
+    public interface IMovieService
+    {
+        Task<IEnumerable<MovieDto>> GetMovies();
 
-    Task<MovieDto> GetById(int id);
+        Task<MovieDto> GetById(int id);
 
-    Task Create(MovieDto movieDto);
+        Task Create(MovieDtoRequest movieDto);
 
-    Task Update(MovieDto movieDto, int id);
+        Task Update(MovieDtoRequest movieDto, int id);
 
-    Task Remove(int id);
+        Task Remove(int id);
+    }
 }

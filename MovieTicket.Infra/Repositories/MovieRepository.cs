@@ -1,6 +1,7 @@
 #region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -30,7 +31,8 @@ namespace MovieTicket.Infra.Data.Repositories
 
         public async Task<Movie> CreateAsync(Movie movie)
         {
-            _dbContext.Movies.Add(movie);
+            var newMovie = new Movie(movie.Gender, movie.Synopsis, movie.Title, movie.Director, movie.BannerUrl);
+            _dbContext.Movies.Add(newMovie);
             await _dbContext.SaveChangesAsync();
             return movie;
         }

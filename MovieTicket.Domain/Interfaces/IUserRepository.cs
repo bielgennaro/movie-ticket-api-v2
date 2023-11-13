@@ -4,17 +4,18 @@ using MovieTicket.Domain.Entities;
 
 #endregion
 
-namespace MovieTicket.Domain.Interfaces;
-
-public interface IUserRepository
+namespace MovieTicket.Domain.Interfaces
 {
-    Task<IList<User>> GetUsersAsync();
+    public interface IUserRepository
+    {
+        Task<IList<User>> GetUsersAsync();
 
-    Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByIdAsync(int id);
 
-    Task<User> InsertUserAsync(User user);
+        Task<User> InsertUserAsync(User user);
 
-    Task UpdateUserAsync(User user, int id);
+        Task UpdateUserAsync(User user, int id);
 
-    Task<User> DeleteUserAsync(User user);
+        Task<User> DeleteUserAsync(User user);
+    }
 }

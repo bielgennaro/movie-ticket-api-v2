@@ -4,19 +4,20 @@ using MovieTicket.Domain.Entities;
 
 #endregion
 
-namespace MovieTicket.Domain.Interfaces;
-
-public interface ISessionRepository
+namespace MovieTicket.Domain.Interfaces
 {
-    Task<IEnumerable<Session>> GetSessionsAsync();
+    public interface ISessionRepository
+    {
+        Task<IEnumerable<Session>> GetSessionsAsync();
 
-    Task<Session> GetSessionByIdAsync(int id);
+        Task<Session> GetSessionByIdAsync(int id);
 
-    Task<Session> InsertSessionAsync(Session session);
+        Task<Session> InsertSessionAsync(Session session);
 
-    Task UpdateSessionAsync(Session session, int id);
+        Task UpdateSessionAsync(Session session, int id);
 
-    Task<Session> DeleteSessionAsync(Session session);
+        Task<Session> DeleteSessionAsync(Session session);
 
-    Task<IEnumerable<Session>> GetSessionsByMovieIdAsync(int movieId);
+        Task<IEnumerable<Session>> GetSessionsByMovieIdAsync(int movieId);
+    }
 }

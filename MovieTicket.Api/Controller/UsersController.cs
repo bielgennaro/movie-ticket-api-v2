@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 
@@ -9,7 +10,7 @@ using MovieTicket.Application.Interfaces;
 namespace MovieTicket.API.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("users")]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
@@ -37,7 +38,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{int:id}")]
         public async Task<ActionResult<UserDto>> GetUserById(int id)
         {
             try
@@ -59,8 +60,8 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult<UserDto>> AddUser(UserDto userDto)
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> AddUser(UserDtoRequest userDto)
         {
             try
             {
@@ -75,8 +76,8 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(UserDto userDto, int id)
+        [HttpPut("update/{int:id}")]
+        public async Task<IActionResult> UpdateUser(UserDtoRequest userDto, int id)
         {
             try
             {
@@ -91,7 +92,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{int:id}")]
         public async Task<IActionResult> RemoveUser(int id)
         {
             try

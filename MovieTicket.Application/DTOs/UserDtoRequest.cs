@@ -1,15 +1,9 @@
-﻿#region
-
 using System.ComponentModel.DataAnnotations;
-
-#endregion
 
 namespace MovieTicket.Application.DTOs
 {
-    public class UserDto
+    public class UserDtoRequest
     {
-        public int Id { get; set; }
-
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Please enter a email")]
         [MinLength(3)]

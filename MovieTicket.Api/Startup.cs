@@ -1,76 +1,77 @@
 ﻿#region
 
-using System.Text.Json;
 using Microsoft.OpenApi.Models;
+
 using MovieTicket.Infra.IoC;
+
+using System.Text.Json;
 
 #endregion
 
-namespace MovieTicket.WebApi;
-
-public class Startup
+namespace MovieTicket.WebApi
 {
-    public Startup(IConfiguration configuration)
+    public class Startup
     {
-        Configuration = configuration;
-    }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-    private IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddInfrastructure(Configuration);
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddInfrastructure(Configuration);
 
-        services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                });
 
-        services.AddControllers()
-            .AddJsonOptions(options =>
+
+            services.AddSwaggerGen(c =>
             {
-                options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
-                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                options.JsonSerializerOptions.IgnoreNullValues = true;
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Movie Ticket",
+                        Description = "Projeto integrado do 3/4° semestre",
+                        Version = "v1"
+                    });
             });
 
+            services.ConfigureSwaggerGen(options =>
+            {
+                options.CustomSchemaIds(x => x.FullName);
+                options.OrderActionsBy(apiDesc =>
+                    $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.GroupName}");
+            });
+        }
 
-        services.AddSwaggerGen(c =>
+        public void Configure(IApplicationBuilder app)
         {
-            c.SwaggerDoc("v1",
-                new OpenApiInfo
-                {
-                    Title = "Movie Ticket",
-                    Description = "Projeto integrado do 3/4° semestre",
-                    Version = "v1"
-                });
-        });
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                c.ConfigObject.DisplayRequestDuration = true;
+                c.DefaultModelsExpandDepth(-1);
+            });
 
-        services.ConfigureSwaggerGen(options =>
-        {
-            options.CustomSchemaIds(x => x.FullName);
-            options.OrderActionsBy(apiDesc =>
-                $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.GroupName}");
-        });
-    }
+            app.UseRouting();
 
-    public void Configure(IApplicationBuilder app)
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            c.ConfigObject.DisplayRequestDuration = true;
-            c.DefaultModelsExpandDepth(-1);
-        });
+            app.UseCors(configurePolicy => configurePolicy.AllowAnyOrigin());
 
-        app.UseRouting();
+            app.UseAuthorization();
 
-        app.UseCors(configurePolicy => configurePolicy.AllowAnyOrigin());
-
-        app.UseAuthorization();
-
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
 
-        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
     }
 }

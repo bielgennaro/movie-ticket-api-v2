@@ -1,6 +1,7 @@
-﻿namespace MovieTicket.Domain.Entities;
-
-public class Entity
+﻿namespace MovieTicket.Domain.Entities
 {
-    public int Id { get; protected set; }
+    public class Entity
+    {
+        public int Id { get; protected set; }
+    }
 }

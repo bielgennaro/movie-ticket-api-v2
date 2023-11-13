@@ -1,6 +1,7 @@
 #region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -30,9 +31,10 @@ namespace MovieTicket.Infra.Data.Repositories
 
         public async Task<Ticket> InsertTicketAsync(Ticket ticket)
         {
-            _dbContext.Add(ticket);
+            var newTicket = new Ticket(ticket.SessionId, ticket.UserId);
+            _dbContext.Add(newTicket);
             await _dbContext.SaveChangesAsync();
-            return ticket;
+            return newTicket;
         }
 
         public async Task<Ticket> UpdateTicketAsync(Ticket ticket, int id)

@@ -1,27 +1,29 @@
 ﻿#region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 
 #endregion
 
-namespace MovieTicket.Infra.Data.Context;
-
-public class ApplicationDbContext : DbContext
+namespace MovieTicket.Infra.Data.Context
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public class ApplicationDbContext : DbContext
     {
-    }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+            Database.EnsureCreatedAsync();
+        }
 
-    public DbSet<Movie> Movies { get; set; }
-    public DbSet<Ticket> Tickets { get; set; }
-    public DbSet<Session> Sessions { get; set; }
-    public DbSet<User> Users { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<User> Users { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        //modelBuilder.HasDefaultSchema("public");
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
     }
 }

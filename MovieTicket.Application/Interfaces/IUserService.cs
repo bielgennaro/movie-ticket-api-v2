@@ -4,17 +4,18 @@ using MovieTicket.Application.DTOs;
 
 #endregion
 
-namespace MovieTicket.Application.Interfaces;
-
-public interface IUserService
+namespace MovieTicket.Application.Interfaces
 {
-    Task<IEnumerable<UserDto>> GetUsers();
+    public interface IUserService
+    {
+        Task<IEnumerable<UserDto>> GetUsers();
 
-    Task<UserDto> GetUserById(int id);
+        Task<UserDto> GetUserById(int id);
 
-    Task<UserDto> AddUser(UserDto userDto);
+        Task<UserDto> AddUser(UserDtoRequest userDto);
 
-    Task UpdateUser(UserDto userDto, int id);
+        Task UpdateUser(UserDtoRequest userDto, int id);
 
-    Task RemoveUser(int id);
+        Task RemoveUser(int id);
+    }
 }

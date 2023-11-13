@@ -1,7 +1,7 @@
 #region
 
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -13,12 +13,10 @@ namespace MovieTicket.Infra.DataApi.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly PasswordHasher<User> _passwordHashService;
 
-        public UserRepository(ApplicationDbContext dbContext, PasswordHasher<User> passwordHashService)
+        public UserRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            _passwordHashService = passwordHashService;
         }
 
         public async Task<IList<User>> GetUsersAsync()
@@ -33,10 +31,10 @@ namespace MovieTicket.Infra.DataApi.Repositories
 
         public async Task<User> InsertUserAsync(User user)
         {
-            _dbContext.Users.Add(user);
-            var hashedPassword = _passwordHashService.HashPassword(user, user.Password);
+            var newUser = new User(user.Email, user.Password, user.IsAdmin);
+            _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
-            return user;
+            return newUser;
         }
 
         public async Task UpdateUserAsync(User user, int id)

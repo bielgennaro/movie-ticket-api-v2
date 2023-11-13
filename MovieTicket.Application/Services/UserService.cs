@@ -1,6 +1,7 @@
 ﻿#region
 
 using AutoMapper;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Domain.Entities;
@@ -35,7 +36,7 @@ namespace MovieTicket.Application.Services
             return userDto;
         }
 
-        public async Task<UserDto> AddUser(UserDto userDto)
+        public async Task<UserDto> AddUser(UserDtoRequest userDto)
         {
             var user = _mapper.Map<User>(userDto);
             var newUser = await _userRepository.InsertUserAsync(user);
@@ -43,7 +44,7 @@ namespace MovieTicket.Application.Services
             return newUserDto;
         }
 
-        public async Task UpdateUser(UserDto userDto, int id)
+        public async Task UpdateUser(UserDtoRequest userDto, int id)
         {
             var user = _mapper.Map<User>(userDto);
             await _userRepository.UpdateUserAsync(user, id);

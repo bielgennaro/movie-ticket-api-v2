@@ -4,17 +4,18 @@ using MovieTicket.Application.DTOs;
 
 #endregion
 
-namespace MovieTicket.Application.Interfaces;
-
-public interface ISessionService
+namespace MovieTicket.Application.Interfaces
 {
-    Task<IEnumerable<SessionDto>> GetSessions();
+    public interface ISessionService
+    {
+        Task<IEnumerable<SessionDto>> GetSessions();
 
-    Task<SessionDto> GetSessionById(int id);
+        Task<SessionDto> GetSessionById(int id);
 
-    Task<SessionDto> CreateSession(SessionDto sessionDto);
+        Task<SessionDtoRequest> CreateSession(SessionDtoRequest sessionDto);
 
-    Task UpdateSession(SessionDto sessionDto, int id);
+        Task UpdateSession(SessionDtoRequest sessionDto, int id);
 
-    Task DeleteSession(int id);
+        Task DeleteSession(int id);
+    }
 }

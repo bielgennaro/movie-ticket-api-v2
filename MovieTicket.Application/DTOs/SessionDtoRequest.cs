@@ -1,15 +1,9 @@
-﻿#region
-
 using System.ComponentModel.DataAnnotations;
-
-#endregion
 
 namespace MovieTicket.Application.DTOs
 {
-    public class SessionDto
+    public class SessionDtoRequest
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Please enter a room")]
         [MinLength(3)]
         [MaxLength(100)]

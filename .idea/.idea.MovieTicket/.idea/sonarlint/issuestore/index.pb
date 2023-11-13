@@ -25,12 +25,6 @@ _
 /MovieTicket.Infra.IoC/DependencyInjectionApi.cs,b\4\b43fcf260cfdacc2b0762fe7e1d49c14bf991ea6
 a
 1MovieTicket.Infra/Context/ApplicationDbContext.cs,8\c\8c80eae192c9574768ca340a8ddfbb5894995272
-O
-MovieTicket.Api/Models/Login.cs,4\d\4d9c46fc434c98e85a4cfe8fddc828f07d050786
-S
-#MovieTicket.Api/Models/UserToken.cs,b\5\b5ec02782da4a34383ceec19f6de609ea8ae2d5e
-R
-"MovieTicket.Api/Models/Register.cs,1\0\10bb2cfee8dd7d59f15d6ed6b101bc88f9af88e1
 J
 MovieTicket.Api/Program.cs,8\7\877c02a8e686605f7b160a46d50d5900afb5ae1a
 Y
@@ -75,5 +69,5 @@ T
 $MovieTicket.Domain/Entities/Movie.cs,8\8\88a2a9986163f5ec995ca3a00996ffcb6746931a
 b
 2MovieTicket.Infra/Repositories/TicketRepository.cs,7\e\7e4af454e04b3259035dd7f38e14915b04426fa7
-X
-(MovieTicket.Api/Security/PasswordHash.cs,0\2\02b550fedf6040651710a4063ff729c0fd5cd22a
+V
+&MovieTicket.Domain/Entities/Session.cs,6\6\661ea091d9740b2d2d923ff0fc01d26e53ab6e70

@@ -4,62 +4,51 @@ using MovieTicket.Domain.Validation;
 
 #endregion
 
-namespace MovieTicket.Domain.Entities;
-
-public class Session : Entity
+namespace MovieTicket.Domain.Entities
 {
-    public Session(string room, int availableTickets, DateTime date, decimal price, int movieId)
+    public class Session : Entity
     {
-        ValidateDomain(room, availableTickets, price, movieId);
-        Date = date;
-    }
+        public Session(string room, int availableTickets, DateTime date, decimal price, int movieId)
+        {
+            ValidateDomain(room, availableTickets, price, movieId);
+            Date = date;
+        }
 
-    public Session(int id, string room, int availableTickets, DateTime date, decimal price, int movieId)
-    {
-        ValidateDomain(room, availableTickets, price, movieId);
-        Date = date;
-        DomainExceptionValidation.When(id <= 0, "Invalid Id value");
-        Id = id;
-        MovieId = movieId;
-    }
+        public Session(int id, string room, int availableTickets, DateTime date, decimal price, int movieId)
+        {
+            ValidateDomain(room, availableTickets, price, movieId);
+            Date = date;
+            DomainExceptionValidation.When(id <= 0, "Invalid Id value");
+            Id = id;
+            MovieId = movieId;
+        }
 
-    public string Room { get; set; }
-    public int AvailableTickets { get; set; }
-    public DateTime Date { get; set; }
-    public decimal Price { get; set; }
+        public string Room { get; set; }
+        public int AvailableTickets { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
 
-    public int MovieId { get; set; }
-    public Movie Movie { get; }
+        public int MovieId { get; set; }
+        public Movie Movie { get; }
 
-    public void Update(string room, int availableTickets, DateTime date, decimal price, int movieId)
-    {
-        ValidateDomain(room, availableTickets, price, movieId);
-        Date = date;
-    }
+        private void ValidateDomain(string room, int availableTickets, decimal price, int movieId)
+        {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(room),
+                "Invalid room. Room is required");
 
-    private void ValidateDomain(string room, int availableTickets, decimal price, int movieId)
-    {
-        DomainExceptionValidation.When(string.IsNullOrEmpty(room),
-            "Invalid room. Room is required");
+            DomainExceptionValidation.When(availableTickets < 0,
+                "Invalid available tickets. Available tickets must be greater than or equal to zero");
 
-        DomainExceptionValidation.When(room.Length < 2,
-            "Invalid room. Too short, minimum 2 characters");
+            DomainExceptionValidation.When(price < 0,
+                "Invalid price. Price must be greater than or equal to zero");
 
-        DomainExceptionValidation.When(room.Length > 2,
-            "Invalid room. Too long, maximum 2 characters");
+            DomainExceptionValidation.When(movieId < 0,
+                "Invalid movie id. Movie id is required");
 
-        DomainExceptionValidation.When(availableTickets < 0,
-            "Invalid available tickets. Available tickets must be greater than or equal to zero");
-
-        DomainExceptionValidation.When(price < 0,
-            "Invalid price. Price must be greater than or equal to zero");
-
-        DomainExceptionValidation.When(movieId < 0,
-            "Invalid movie id. Movie id is required");
-
-        MovieId = movieId;
-        Room = room;
-        AvailableTickets = availableTickets;
-        Price = price;
+            MovieId = movieId;
+            AvailableTickets = availableTickets;
+            Price = price;
+            Room = room;
+        }
     }
 }
