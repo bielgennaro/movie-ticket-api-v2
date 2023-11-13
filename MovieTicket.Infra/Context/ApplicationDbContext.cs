@@ -11,9 +11,7 @@ namespace MovieTicket.Infra.Data.Context
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-            Database.EnsureCreatedAsync();
-        }
+        {}
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
