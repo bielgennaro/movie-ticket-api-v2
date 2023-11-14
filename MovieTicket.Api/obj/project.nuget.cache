@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "tumG0PIa8r14slaGno3Fk+cp8F1injY5cbY+3Olu/3tV8ahnQY+xyvjsKNAeOPnFyuWxLVIggSNje8TtDC1jFw==",
-  "success": true,
+  "dgSpecHash": "GNToieltWtylrau1An6k+AWrmxBbkHBK7aacgS2KaCU5MFXKM7X6M2f0Df7ZOCiMDioltftqmfcy5G11z3ebEA==",
+  "success": false,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\biel\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
@@ -243,5 +243,15 @@
     "C:\\Users\\biel\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.NETCore.App.Host.win-x64 with version (= 2.1.14)\r\n  - Found 140 version(s) in nuget.org [ Nearest version: 3.0.0-preview5-27626-15 ]\r\n  - Found 0 version(s) in Microsoft Visual Studio Offline Packages\r\n  - Found 0 version(s) in C:\\Program Files\\dotnet\\library-packs",
+      "libraryId": "Microsoft.NETCore.App.Host.win-x64",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }
