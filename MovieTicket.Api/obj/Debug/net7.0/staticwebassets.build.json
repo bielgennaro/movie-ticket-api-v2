@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "nlZ8z1yUfuatwiPjXFGmSPMF2Oh/a/sxIXOMYWAf0Ws=",
+  "Source": "MovieTicket.WebApi",
+  "BasePath": "_content/MovieTicket.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,3 @@
+C:\MovieTicket\MovieTicket.Domain\bin\Release\net7.0\publish\MovieTicket.Domain.dll
+C:\MovieTicket\MovieTicket.Domain\bin\Release\net7.0\publish\MovieTicket.Domain.deps.json
+C:\MovieTicket\MovieTicket.Domain\bin\Release\net7.0\publish\MovieTicket.Domain.pdb

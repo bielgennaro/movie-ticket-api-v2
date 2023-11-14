@@ -76,7 +76,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPut("update/{int:id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(MovieDtoRequest movieDto, int id)
         {
             try
@@ -92,7 +92,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpDelete("delete/{int:id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Remove(int id)
         {
             try

@@ -28,7 +28,6 @@ namespace MovieTicket.WebApi
                 {
                     options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
                     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                    options.JsonSerializerOptions.IgnoreNullValues = true;
                 });
 
 
@@ -57,7 +56,7 @@ namespace MovieTicket.WebApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                c.ConfigObject.DisplayRequestDuration = true;
+                c.DisplayRequestDuration();
                 c.DefaultModelsExpandDepth(-1);
             });
 
@@ -71,7 +70,12 @@ namespace MovieTicket.WebApi
             app.UseStaticFiles();
 
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

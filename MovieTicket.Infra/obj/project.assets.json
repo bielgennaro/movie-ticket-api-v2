@@ -1170,16 +1170,6 @@
             "rid": "win"
           }
         }
-      },
-      "MovieTicket.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/MovieTicket.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MovieTicket.Domain.dll": {}
-        }
       }
     }
   },
@@ -3135,11 +3125,6 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "MovieTicket.Domain/1.0.0": {
-      "type": "project",
-      "path": "../MovieTicket.Domain/MovieTicket.Domain.csproj",
-      "msbuildProject": "../MovieTicket.Domain/MovieTicket.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3148,7 +3133,6 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.13",
-      "MovieTicket.Domain >= 1.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11"
     ]
   },
@@ -3184,11 +3168,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj": {
-              "projectPath": "C:\\MovieTicket\\MovieTicket.Domain\\MovieTicket.Domain.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
