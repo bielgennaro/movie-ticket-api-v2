@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "I89sfneZn1CT6WUJ59ke2WFW7YkJd1HltXQdD/G83MRtUIK9sBCsfZgi0yMUR0GeT89bPWM5URQY80+Puf68Yw==",
+  "dgSpecHash": "CJCyXfmNrpskD9+sCI05TO9PQXkVYJplnPcjsp0791xUGa50qKqabwS+g1z5rxFTt3TGkMrPvsoQxdoDkIP58A==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
   "expectedPackageFiles": [
@@ -115,6 +115,7 @@
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\7.0.11\\microsoft.visualstudio.web.codegeneration.7.0.11.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\7.0.11\\microsoft.visualstudio.web.codegeneration.core.7.0.11.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\7.0.11\\microsoft.visualstudio.web.codegeneration.design.7.0.11.nupkg.sha512",

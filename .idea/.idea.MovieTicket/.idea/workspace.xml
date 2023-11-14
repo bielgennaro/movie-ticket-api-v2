@@ -13,6 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be7ae0d-047d-483d-af53-9c1b8eb6b8ad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MovieTicket/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MovieTicket/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/MovieTicket/FileContentIndex/24471585-7813-421f-81b1-8f2a900fb395.vsidx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/MovieTicket/FileContentIndex/26d0dd13-d639-4dce-84e9-cbd26e4ef90c.vsidx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/MovieTicket/FileContentIndex/9f445762-9276-4035-b4f5-4b081aa3b84b.vsidx" beforeDir="false" />
@@ -21,7 +22,8 @@
       <change beforePath="$PROJECT_DIR$/.vs/MovieTicket/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/MovieTicket/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/movieticket.metadata.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/movieticket.metadata.v7.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/movieticket.projects.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/movieticket.projects.v7.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/Controller/SessionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/Controller/SessionsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/Migrations/20231114014647_Socorro.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/Migrations/20231114014647_Socorro.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Application/Dtos/SessionDtoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Application/Dtos/SessionDtoRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Application/Interfaces/ISessionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Application/Interfaces/ISessionService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Application/Mappings/DomainToDtoMappingProfile.cs" beforeDir="false" />
@@ -33,22 +35,13 @@
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Domain/Entities/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Infra.Data/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Infra.Data/Repositories/UserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Infra.IoC/DependencyInjectionApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.Infra.IoC/DependencyInjectionApi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/MovieTicket.WebApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/bin/Release/net7.0/MovieTicket.WebApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/MovieTicket.WebApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/MovieTicket.WebApi.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/MovieTicket.WebApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/ref/MovieTicket.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/ref/MovieTicket.WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/refint/MovieTicket.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/Release/net7.0/refint/MovieTicket.WebApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieTicket.Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/MovieTicket.Api/obj/rider.project.restore.info" afterDir="false" />
