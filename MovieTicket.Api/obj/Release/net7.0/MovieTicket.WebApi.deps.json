@@ -8,11 +8,17 @@
     ".NETCoreApp,Version=v7.0": {
       "MovieTicket.WebApi/1.0.0": {
         "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
           "Microsoft.AspNetCore.OpenApi": "7.0.13",
+          "Microsoft.EntityFrameworkCore.Design": "7.0.13",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.13",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.4",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.11",
-          "MovieTicket.Infra.IoC": "1.0.0",
           "Newtonsoft.Json": "13.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "Swashbuckle.AspNetCore": "6.5.0",
           "Swashbuckle.AspNetCore.Swagger": "6.5.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.5.0"
@@ -1492,6 +1498,7 @@
           }
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.19.4": {},
       "Microsoft.VisualStudio.Web.CodeGeneration/7.0.11": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -2666,43 +2673,6 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
-      },
-      "MovieTicket.Application/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "12.0.1",
-          "MovieTicket.Domain": "1.0.0"
-        },
-        "runtime": {
-          "MovieTicket.Application.dll": {}
-        }
-      },
-      "MovieTicket.Domain/1.0.0": {
-        "runtime": {
-          "MovieTicket.Domain.dll": {}
-        }
-      },
-      "MovieTicket.Infra.Data/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
-          "Microsoft.EntityFrameworkCore.Design": "7.0.13",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
-          "MovieTicket.Domain": "1.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11"
-        },
-        "runtime": {
-          "MovieTicket.Infra.Data.dll": {}
-        }
-      },
-      "MovieTicket.Infra.IoC/1.0.0": {
-        "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "MovieTicket.Application": "1.0.0",
-          "MovieTicket.Domain": "1.0.0",
-          "MovieTicket.Infra.Data": "1.0.0"
-        },
-        "runtime": {
-          "MovieTicket.Infra.IoC.dll": {}
-        }
       }
     }
   },
@@ -3488,6 +3458,13 @@
       "sha512": "sha512-N4KeF3cpcm1PUHym1RmakkzfkEv3GRMyofVv40uXsQhCQeglr2OHNcUk2WOG51AKpGO8ynGpo9M/kFXSzghwug==",
       "path": "microsoft.sqlserver.server/1.0.0",
       "hashPath": "microsoft.sqlserver.server.1.0.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.19.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aKxpRAUIxDrnSnyr7xJWGixOBgsB7Z4oHpWRkpRzzq04kfze4mN7944gRc4X9H2U5KG3A/btF74kavkO8KXqCg==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.19.4",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/7.0.11": {
       "type": "package",
@@ -4377,26 +4354,6 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
-    },
-    "MovieTicket.Application/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MovieTicket.Domain/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MovieTicket.Infra.Data/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MovieTicket.Infra.IoC/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }
