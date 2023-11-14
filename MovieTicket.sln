@@ -13,13 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.WebApi", "Movie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Infra.IoC", "MovieTicket.Infra.IoC\MovieTicket.Infra.IoC.csproj", "{0745266C-0128-4ADA-B5F3-6EB55BC51B85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTicket.Domain.Tests", "MovieTicket.Tests\MovieTicket.Domain.Tests.csproj", "{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3ADE3469-9997-4275-9EDC-C2496E42EAB0}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,18 +33,14 @@ Global
 		{D8379808-F860-42A3-B4E6-474CE9348172}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{CC8CF947-7C44-4CB3-B65E-E5CA8CD7F9BD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{0745266C-0128-4ADA-B5F3-6EB55BC51B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0745266C-0128-4ADA-B5F3-6EB55BC51B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0745266C-0128-4ADA-B5F3-6EB55BC51B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0745266C-0128-4ADA-B5F3-6EB55BC51B85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6B6D13F-3C26-4AF8-BEEB-B8CE3235BEB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
