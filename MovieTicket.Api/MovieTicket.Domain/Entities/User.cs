@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace MovieTicket.Domain.Entities
 {
-    public sealed class User : Entity
+    public sealed class User
     {
         [JsonConstructor]
         public User(string email, string password, bool isAdmin)
@@ -17,6 +17,7 @@ namespace MovieTicket.Domain.Entities
             IsAdmin = isAdmin;
         }
 
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; }

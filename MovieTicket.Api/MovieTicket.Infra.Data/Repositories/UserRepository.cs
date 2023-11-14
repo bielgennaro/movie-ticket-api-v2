@@ -6,9 +6,10 @@ using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
 
+
 #endregion
 
-namespace MovieTicket.Infra.DataApi.Repositories
+namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {

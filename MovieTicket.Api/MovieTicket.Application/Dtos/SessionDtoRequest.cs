@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MovieTicket.Application.DTOs
+namespace MovieTicket.WebApi.MovieTicket.Application.Dtos
 {
     public class SessionDtoRequest
     {

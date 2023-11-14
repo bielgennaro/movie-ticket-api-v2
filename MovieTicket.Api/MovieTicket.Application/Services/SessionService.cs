@@ -6,6 +6,7 @@ using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
+using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 

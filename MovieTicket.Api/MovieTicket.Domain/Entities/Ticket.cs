@@ -1,6 +1,6 @@
 ﻿namespace MovieTicket.Domain.Entities
 {
-    public class Ticket : Entity
+    public class Ticket
     {
         public Ticket(int sessionId, int userId)
         {
@@ -8,6 +8,7 @@
             UserId = userId;
         }
 
+        public int Id { get; set; }
         public int SessionId { get; set; }
         public Session Session { get; }
 

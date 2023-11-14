@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
+using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -38,7 +39,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpGet("{int:id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<SessionDto>> GetSessionById(int id)
         {
             try
@@ -76,7 +77,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpPut("update/{int:id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateSession(SessionDtoRequest sessionDto, int id)
         {
             try
@@ -92,7 +93,7 @@ namespace MovieTicket.API.Controllers
             }
         }
 
-        [HttpDelete("delete/{int:id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteSession(int id)
         {
             try

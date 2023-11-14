@@ -6,7 +6,7 @@ using MovieTicket.Domain.Validation;
 
 namespace MovieTicket.Domain.Entities
 {
-    public sealed class Movie : Entity
+    public sealed class Movie
     {
         public Movie(string gender, string synopsis, string title, string director, string bannerUrl)
         {
@@ -20,6 +20,7 @@ namespace MovieTicket.Domain.Entities
             Id = id;
         }
 
+        public int Id { get; set; }
         public string Gender { get; set; }
         public string Synopsis { get; set; }
         public string Title { get; set; }

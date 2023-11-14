@@ -6,7 +6,7 @@ using MovieTicket.Domain.Validation;
 
 namespace MovieTicket.Domain.Entities
 {
-    public class Session : Entity
+    public class Session
     {
         public Session(string room, int availableTickets, DateTime date, decimal price, int movieId)
         {
@@ -23,6 +23,7 @@ namespace MovieTicket.Domain.Entities
             MovieId = movieId;
         }
 
+        public int Id { get; set; }
         public string Room { get; set; }
         public int AvailableTickets { get; set; }
         public DateTime Date { get; set; }

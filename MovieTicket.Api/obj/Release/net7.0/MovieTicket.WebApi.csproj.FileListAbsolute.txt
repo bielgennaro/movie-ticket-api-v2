@@ -1,3 +1,10 @@
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.csproj.AssemblyReference.cache
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.AssemblyInfoInputs.cache
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.AssemblyInfo.cs
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.csproj.CoreCompileInputs.cache
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\appsettings.Development.json
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\appsettings.json
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\MovieTicket.WebApi.exe
@@ -241,13 +248,6 @@ C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\runtimes\win\lib\net6.0\System
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.csproj.AssemblyReference.cache
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.AssemblyInfoInputs.cache
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.AssemblyInfo.cs
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.csproj.CoreCompileInputs.cache
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cs
-C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\staticwebassets\msbuild.MovieTicket.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\staticwebassets\msbuild.build.MovieTicket.WebApi.props
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\staticwebassets\msbuild.buildMultiTargeting.MovieTicket.WebApi.props
