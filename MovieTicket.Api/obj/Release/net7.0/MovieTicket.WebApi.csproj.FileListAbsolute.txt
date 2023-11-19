@@ -9,6 +9,7 @@ C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\AutoMapper.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Azure.Core.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Azure.Identity.dll
+C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\BCrypt.Net-Core.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Humanizer.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -263,4 +264,3 @@ C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\refint\MovieTicket.WebApi.dll
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.pdb
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.genruntimeconfig.cache
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\ref\MovieTicket.WebApi.dll
-C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\BCrypt.Net-Core.dll
