@@ -26,7 +26,7 @@ namespace MovieTicket.Domain.Entities
         public int Id { get; set; }
         public string Room { get; set; }
         public int AvailableTickets { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         public decimal Price { get; set; }
 
         public int MovieId { get; set; }

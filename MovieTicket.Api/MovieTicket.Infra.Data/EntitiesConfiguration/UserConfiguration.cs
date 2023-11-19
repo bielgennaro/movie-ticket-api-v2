@@ -26,6 +26,9 @@ namespace MovieTicket.Infra.Data.EntitiesConfiguration
 
             builder.Property(u => u.IsAdmin)
                 .HasColumnName("is_admin");
+
+            builder.Property(u => u.PasswordHash)
+                .HasColumnName("password_hash");
         }
     }
 }

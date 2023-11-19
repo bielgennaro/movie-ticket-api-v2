@@ -19,6 +19,9 @@ namespace MovieTicket.Infra.Data.EntitiesConfiguration
 
             builder.Property(t => t.Id).HasColumnName("id");
 
+            builder.Property(t => t.SessionDateTime)
+                .HasColumnName("session_date_time");
+
             builder.HasOne(t => t.Session)
                 .WithMany()
                 .HasForeignKey(t => t.SessionId)

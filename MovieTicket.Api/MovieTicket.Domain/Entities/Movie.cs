@@ -67,9 +67,6 @@ namespace MovieTicket.Domain.Entities
             DomainExceptionValidation.When(string.IsNullOrEmpty(bannerUrl),
                 "Invalid banner url. Banner url is required");
 
-            DomainExceptionValidation.When(bannerUrl.Length > 255,
-                "Invalid banner url. Too long, maximum 255 characters");
-
             Gender = gender;
             Synopsis = synopsis;
             Title = title;

@@ -106,6 +106,10 @@ namespace MovieTicket.WebApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("SessionDateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("session_date_time");
+
                     b.Property<int>("SessionId")
                         .HasColumnType("integer");
 
@@ -143,6 +147,10 @@ namespace MovieTicket.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("password");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text")
+                        .HasColumnName("password_hash");
 
                     b.HasKey("Id");
 

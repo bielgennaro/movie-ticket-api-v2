@@ -33,7 +33,6 @@ namespace MovieTicket.Application.DTOs
 
         [Required(ErrorMessage = "Please enter a banner url")]
         [MinLength(3)]
-        [MaxLength(255)]
         [DataType(DataType.Url)]
         public string BannerUrl { get; set; }
     }

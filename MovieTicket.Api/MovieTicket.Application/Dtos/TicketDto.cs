@@ -1,5 +1,7 @@
 ﻿#region
 
+using Humanizer;
+
 using System.ComponentModel.DataAnnotations;
 
 #endregion
@@ -17,5 +19,7 @@ namespace MovieTicket.Application.DTOs
         [Required(ErrorMessage = "Please enter a user id")]
         [Display(Name = "User Id")]
         public int UserId { get; set; }
+
+        public DateTime SessionDateTime { get; } = DateTime.UtcNow;
     }
 }

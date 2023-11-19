@@ -1,5 +1,8 @@
 ﻿#region
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using AutoMapper;
 
 using MovieTicket.Application.DTOs;
@@ -39,6 +42,7 @@ namespace MovieTicket.Application.Services
         public async Task<UserDto> AddUser(UserDtoRequest userDto)
         {
             var user = _mapper.Map<User>(userDto);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
             var newUser = await _userRepository.InsertUserAsync(user);
             var newUserDto = _mapper.Map<UserDto>(newUser);
             return newUserDto;
@@ -47,6 +51,12 @@ namespace MovieTicket.Application.Services
         public async Task UpdateUser(UserDtoRequest userDto, int id)
         {
             var user = _mapper.Map<User>(userDto);
+
+            if (!string.IsNullOrEmpty(userDto.Password))
+            {
+                user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+            }
+
             await _userRepository.UpdateUserAsync(user, id);
         }
 

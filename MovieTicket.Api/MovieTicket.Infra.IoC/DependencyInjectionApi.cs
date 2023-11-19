@@ -21,7 +21,7 @@ namespace MovieTicket.Infra.IoC
             IConfiguration configuration)
         {
             services.AddDbContextPool<ApplicationDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("FloConnection"), b =>
+                options.UseNpgsql(configuration.GetConnectionString("ProdConnection"), b =>
                     b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IMovieRepository, MovieRepository>();

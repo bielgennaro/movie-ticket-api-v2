@@ -1,11 +1,15 @@
 #region
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using BCrypt.Net;
+
 using Microsoft.EntityFrameworkCore;
 
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
-
 
 #endregion
 
@@ -32,7 +36,8 @@ namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
 
         public async Task<User> InsertUserAsync(User user)
         {
-            var newUser = new User(user.Email, user.Password, user.IsAdmin);
+            var hashPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            var newUser = new User(user.Email, hashPassword, user.IsAdmin);
             _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
             return newUser;
@@ -44,8 +49,12 @@ namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
 
             if (existingUser != null)
             {
-                existingUser.Password = user.Password;
                 existingUser.Email = user.Email;
+
+                if (!string.IsNullOrEmpty(user.Password))
+                {
+                    existingUser.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                }
 
                 await _dbContext.SaveChangesAsync();
             }

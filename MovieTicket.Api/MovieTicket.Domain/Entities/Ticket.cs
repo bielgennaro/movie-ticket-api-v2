@@ -14,5 +14,6 @@
 
         public int UserId { get; set; }
         public User User { get; }
+        public DateTime SessionDateTime { get; set; } = DateTime.UtcNow;
     }
 }

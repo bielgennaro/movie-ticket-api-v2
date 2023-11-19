@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CJCyXfmNrpskD9+sCI05TO9PQXkVYJplnPcjsp0791xUGa50qKqabwS+g1z5rxFTt3TGkMrPvsoQxdoDkIP58A==",
+  "dgSpecHash": "IpZFnydmaWdABFgayjbhAljk6xiN0E9fvrGNRtzE0pvkLsY8oEdoEGdi37NFDizZB1tUcfuVCnCuzND/e0Nuqg==",
   "success": true,
   "projectFilePath": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\biel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\biel\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\biel\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

@@ -2,6 +2,7 @@
 
 using MovieTicket.Domain.Validation;
 
+using System.Security.Policy;
 using System.Text.Json.Serialization;
 
 #endregion
@@ -17,10 +18,13 @@ namespace MovieTicket.Domain.Entities
             IsAdmin = isAdmin;
         }
 
+        public User() { }
+
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
+        public string? PasswordHash { get; set; }
 
         public void ValidateDomain(string email, string password)
         {
@@ -35,9 +39,6 @@ namespace MovieTicket.Domain.Entities
 
             DomainExceptionValidation.When(password.Length < 8,
                 "Invalid password. Too short, minimum 8 characters");
-
-            DomainExceptionValidation.When(password.Length > 16,
-                "Invalid password. Too long, maximum 16 characters");
 
             Email = email;
             Password = password;
