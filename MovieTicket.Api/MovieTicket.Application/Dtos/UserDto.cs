@@ -1,7 +1,6 @@
 ﻿#region
 
 using System.ComponentModel.DataAnnotations;
-using System.Security.Policy;
 
 #endregion
 
@@ -24,6 +23,5 @@ namespace MovieTicket.Application.DTOs
         public required string Password { get; set; }
 
         [Required] public bool IsAdmin { get; set; }
-
     }
 }

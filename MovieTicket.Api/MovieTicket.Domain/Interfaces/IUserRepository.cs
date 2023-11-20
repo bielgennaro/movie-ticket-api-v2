@@ -14,6 +14,8 @@ namespace MovieTicket.Domain.Interfaces
 
         Task<User> InsertUserAsync(User user);
 
+        Task<User> AuthenticateUserAsync(User user);
+
         Task UpdateUserAsync(User user, int id);
 
         Task<User> DeleteUserAsync(User user);

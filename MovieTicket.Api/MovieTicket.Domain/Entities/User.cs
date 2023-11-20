@@ -1,9 +1,7 @@
 #region
 
-using MovieTicket.Domain.Validation;
-
-using System.Security.Policy;
 using System.Text.Json.Serialization;
+using MovieTicket.Domain.Validation;
 
 #endregion
 
@@ -18,7 +16,9 @@ namespace MovieTicket.Domain.Entities
             IsAdmin = isAdmin;
         }
 
-        public User() { }
+        public User()
+        {
+        }
 
         public int Id { get; set; }
         public string Email { get; set; }

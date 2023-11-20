@@ -1,12 +1,6 @@
 #region
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using BCrypt.Net;
-
 using Microsoft.EntityFrameworkCore;
-
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -36,12 +30,21 @@ namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
 
         public async Task<User> InsertUserAsync(User user)
         {
-            var hashPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            var newUser = new User(user.Email, hashPassword, user.IsAdmin);
-            _dbContext.Users.Add(newUser);
+            var generatedSalt = BCrypt.Net.BCrypt.GenerateSalt();
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password, generatedSalt);
+            user.PasswordHash = hashedPassword;
+            _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync();
-            return newUser;
+            return user;
         }
+
+        public async Task<User> AuthenticateUserAsync(User user)
+        {
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            return existingUser;
+        }
+
 
         public async Task UpdateUserAsync(User user, int id)
         {
@@ -52,9 +55,7 @@ namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
                 existingUser.Email = user.Email;
 
                 if (!string.IsNullOrEmpty(user.Password))
-                {
                     existingUser.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                }
 
                 await _dbContext.SaveChangesAsync();
             }

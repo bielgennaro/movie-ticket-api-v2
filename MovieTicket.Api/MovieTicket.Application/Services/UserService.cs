@@ -1,14 +1,11 @@
 ﻿#region
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 using AutoMapper;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
+using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -44,8 +41,21 @@ namespace MovieTicket.Application.Services
             var user = _mapper.Map<User>(userDto);
             user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
             var newUser = await _userRepository.InsertUserAsync(user);
+
+
             var newUserDto = _mapper.Map<UserDto>(newUser);
             return newUserDto;
+        }
+
+        public async Task<UserDto> AuthenticateUser(UserDtoLoginRequest userDto)
+        {
+            var user = _mapper.Map<User>(userDto);
+            var existingUser = await _userRepository.AuthenticateUserAsync(user);
+
+            if (existingUser == null) return null;
+
+            var userDtoResponse = _mapper.Map<UserDto>(existingUser);
+            return userDtoResponse;
         }
 
         public async Task UpdateUser(UserDtoRequest userDto, int id)
@@ -53,9 +63,7 @@ namespace MovieTicket.Application.Services
             var user = _mapper.Map<User>(userDto);
 
             if (!string.IsNullOrEmpty(userDto.Password))
-            {
                 user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
-            }
 
             await _userRepository.UpdateUserAsync(user, id);
         }

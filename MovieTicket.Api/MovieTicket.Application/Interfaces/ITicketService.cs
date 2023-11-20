@@ -1,7 +1,6 @@
 ﻿#region
 
 using MovieTicket.Application.DTOs;
-using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 

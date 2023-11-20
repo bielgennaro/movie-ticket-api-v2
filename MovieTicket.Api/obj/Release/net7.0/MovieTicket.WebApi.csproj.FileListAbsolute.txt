@@ -264,3 +264,4 @@ C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\refint\MovieTicket.WebApi.dll
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.pdb
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\MovieTicket.WebApi.genruntimeconfig.cache
 C:\MovieTicket\MovieTicket.Api\obj\Release\net7.0\ref\MovieTicket.WebApi.dll
+C:\MovieTicket\MovieTicket.Api\bin\Release\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

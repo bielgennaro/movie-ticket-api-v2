@@ -1,7 +1,5 @@
 ﻿#region
 
-using Humanizer;
-
 using System.ComponentModel.DataAnnotations;
 
 #endregion

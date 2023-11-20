@@ -1,9 +1,9 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
-
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
+using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -88,6 +88,29 @@ namespace MovieTicket.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error updating user with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpPost("auth")]
+        public async Task<ActionResult<UserDto>> AuthenticateUser(UserDtoLoginRequest userDto)
+        {
+            try
+            {
+                var user = await _userService.AuthenticateUser(userDto);
+
+                if (user == null)
+                {
+                    _logger.LogInformation($"User with email {userDto.Email} not found.");
+                    return NotFound();
+                }
+
+                _logger.LogInformation("Usuário autenticado com sucesso.");
+                return Ok($"Usuário {userDto.Email} autenticado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving user with email {userDto.Email}.");
                 return StatusCode(500, "Internal Server Error");
             }
         }

@@ -1,7 +1,6 @@
 ﻿#region
 
 using Microsoft.EntityFrameworkCore;
-
 using MovieTicket.Domain.Entities;
 
 #endregion
@@ -11,7 +10,8 @@ namespace MovieTicket.Infra.Data.Context
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {}
+        {
+        }
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Ticket> Tickets { get; set; }

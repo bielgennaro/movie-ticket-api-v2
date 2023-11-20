@@ -1,10 +1,8 @@
 ﻿#region
 
-using Microsoft.OpenApi.Models;
-
-using MovieTicket.Infra.IoC;
-
 using System.Text.Json;
+using Microsoft.OpenApi.Models;
+using MovieTicket.Infra.IoC;
 
 #endregion
 
