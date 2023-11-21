@@ -29,6 +29,9 @@ namespace MovieTicket.Application.Mappings
             CreateMap<Session, SessionDtoRequest>()
                 .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
+            CreateMap<Session, SessionDtoRegisterResponse>()
+                .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
             CreateMap<User, UserDtoRequest>()
                 .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
