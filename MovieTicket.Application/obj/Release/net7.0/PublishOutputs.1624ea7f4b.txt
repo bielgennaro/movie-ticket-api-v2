@@ -1,6 +1,0 @@
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\MovieTicket.Application.dll
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\MovieTicket.Application.deps.json
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\MovieTicket.Application.pdb
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\AutoMapper.dll
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\MovieTicket.Domain.dll
-C:\MovieTicket\MovieTicket.Application\bin\Release\net7.0\publish\MovieTicket.Domain.pdb
