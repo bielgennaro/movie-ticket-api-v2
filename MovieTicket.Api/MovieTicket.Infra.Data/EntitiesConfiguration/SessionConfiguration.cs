@@ -19,14 +19,7 @@ namespace MovieTicket.Infra.Data.EntitiesConfiguration
 
             builder.Property(s => s.Id).HasColumnName("id");
 
-            builder.Property(s => s.Room).HasColumnName("room");
-
             builder.Property(s => s.Date).HasColumnName("date");
-
-            builder.Property(s => s.Price)
-                .HasColumnName("price")
-                .HasColumnType("decimal(18,2)")
-                .HasPrecision(18, 2);
 
             builder.Property(s => s.AvailableTickets).HasColumnName("available_tickets");
 

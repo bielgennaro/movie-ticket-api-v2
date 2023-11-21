@@ -80,16 +80,6 @@ namespace MovieTicket.WebApi.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("price");
-
-                    b.Property<string>("Room")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("room");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
@@ -147,10 +137,6 @@ namespace MovieTicket.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("password");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("text")
-                        .HasColumnName("password_hash");
 
                     b.HasKey("Id");
 

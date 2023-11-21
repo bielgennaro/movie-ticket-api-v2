@@ -31,7 +31,7 @@ namespace MovieTicket.Infra.Data.Repositories
 
         public async Task<Session> InsertSessionAsync(Session session)
         {
-            var newSession = new Session(session.Room, session.AvailableTickets, session.Date, session.Price,
+            var newSession = new Session(session.AvailableTickets, session.Date,
                 session.MovieId);
             _dbContext.Sessions.Add(newSession);
             await _dbContext.SaveChangesAsync();
@@ -46,8 +46,6 @@ namespace MovieTicket.Infra.Data.Repositories
             {
                 existingSession.AvailableTickets = session.AvailableTickets;
                 existingSession.MovieId = session.MovieId;
-                existingSession.Price = session.Price;
-                existingSession.Room = session.Room;
 
                 await _dbContext.SaveChangesAsync();
             }

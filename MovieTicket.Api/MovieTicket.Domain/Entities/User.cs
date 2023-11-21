@@ -2,6 +2,8 @@
 
 using MovieTicket.Domain.Validation;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 #endregion
@@ -22,9 +24,15 @@ namespace MovieTicket.Domain.Entities
         }
 
         public int Id { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
+
+        [NotMapped]
         public string? PasswordHash { get; set; }
 
         public void ValidateDomain(string email, string password)

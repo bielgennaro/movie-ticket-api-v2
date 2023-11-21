@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj": {}
+    "C:\\movie-ticket-api-v2\\MovieTicket.Api\\MovieTicket.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj": {
+    "C:\\movie-ticket-api-v2\\MovieTicket.Api\\MovieTicket.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
+        "projectUniqueName": "C:\\movie-ticket-api-v2\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
         "projectName": "MovieTicket.WebApi",
-        "projectPath": "C:\\MovieTicket\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
-        "packagesPath": "C:\\Users\\biel\\.nuget\\packages\\",
-        "outputPath": "C:\\MovieTicket\\MovieTicket.Api\\obj\\",
+        "projectPath": "C:\\movie-ticket-api-v2\\MovieTicket.Api\\MovieTicket.WebApi.csproj",
+        "packagesPath": "C:\\Users\\ziron\\.nuget\\packages\\",
+        "outputPath": "C:\\movie-ticket-api-v2\\MovieTicket.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\biel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ziron\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

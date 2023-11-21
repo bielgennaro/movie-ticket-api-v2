@@ -68,7 +68,7 @@ namespace MovieTicket.API.Controllers
             {
                 var newSession = await _sessionService.CreateSession(sessionDto);
                 _logger.LogInformation($"Session created successfully with ID {newSession.MovieId}.");
-                return CreatedAtAction(nameof(GetSessionById), new { id = newSession.MovieId }, newSession);
+                return CreatedAtAction(nameof(GetSessionById), new { Movie = sessionDto.Movie.Id, sessionDto.Movie.Title }, newSession);
             }
             catch (Exception ex)
             {

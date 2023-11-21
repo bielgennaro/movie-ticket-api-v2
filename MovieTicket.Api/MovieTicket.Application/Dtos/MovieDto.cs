@@ -13,6 +13,7 @@ namespace MovieTicket.Application.DTOs
         [Required(ErrorMessage = "Please enter a gender")]
         [MinLength(3)]
         [MaxLength(100)]
+        [Display(Name = "Gender")]
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter a synopsis")]
@@ -24,15 +25,18 @@ namespace MovieTicket.Application.DTOs
         [Required(ErrorMessage = "Please enter a title")]
         [MinLength(3)]
         [MaxLength(100)]
+        [Display(Name = "Title")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please enter a director")]
         [MinLength(3)]
         [MaxLength(100)]
+        [Display(Name = "Description")]
         public string Director { get; set; }
 
         [Required(ErrorMessage = "Please enter a banner url")]
-        [DataType(DataType.Url)]
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Banner Url")]
         public string BannerUrl { get; set; }
     }
 }

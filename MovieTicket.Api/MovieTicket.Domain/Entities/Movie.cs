@@ -2,6 +2,8 @@
 
 using MovieTicket.Domain.Validation;
 
+using System.ComponentModel.DataAnnotations;
+
 #endregion
 
 namespace MovieTicket.Domain.Entities
@@ -25,6 +27,8 @@ namespace MovieTicket.Domain.Entities
         public string Synopsis { get; set; }
         public string Title { get; set; }
         public string Director { get; set; }
+
+        [DataType(DataType.ImageUrl)]
         public string BannerUrl { get; set; }
 
         public void Update(string gender, string synopsis, string title, string director, string bannerUrl)
