@@ -20,7 +20,7 @@ namespace MovieTicket.WebApi.MovieTicket.Application.Dtos
         [Required(ErrorMessage = "Please enter a date")]
         [Display(Name = "Date")]
         [DataType(DataType.DateTime)]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         [Required(ErrorMessage = "Please enter a price")]
         [Display(Name = "Price")]

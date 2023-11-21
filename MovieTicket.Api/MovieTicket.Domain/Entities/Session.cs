@@ -32,7 +32,7 @@ namespace MovieTicket.Domain.Entities
 
         [Display(Name = "Date")]
         [DataType(DataType.Time)]
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateTime Date { get; set; };
 
         [Display(Name = "Movie Id")]
         public int MovieId { get; set; }
