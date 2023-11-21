@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Application.Mappings;
 using MovieTicket.Application.Services;

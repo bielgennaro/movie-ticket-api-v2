@@ -1,15 +1,10 @@
-﻿#region
+﻿using MovieTicket.Application.DTOs;
 
-using MovieTicket.Application.DTOs;
-
-#endregion
 
 namespace MovieTicket.Application.Interfaces
 {
     public interface ITicketService
     {
-        Task<IEnumerable<TicketDto>> GetTickets();
-
         Task<TicketDto> GetTicketById(int id);
 
         Task<TicketDto> CreateTicket(TicketDtoRequest ticketDto);
@@ -17,5 +12,11 @@ namespace MovieTicket.Application.Interfaces
         Task UpdateTicket(TicketDtoRequest ticketDto, int id);
 
         Task DeleteTicket(int id);
+
+        Task<IEnumerable<TicketDto>> GetTicketsByUserIdAsync(int userId);
+
+        Task<IEnumerable<TicketDto>> GetTicketsBySessionIdAsync(int sessionId);
+
+        Task<IEnumerable<TicketDto>> GetTicketsByUserIdAndSessionIdAsync(int userId, int sessionId);
     }
 }

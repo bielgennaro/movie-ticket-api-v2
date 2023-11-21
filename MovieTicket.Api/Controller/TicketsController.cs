@@ -1,6 +1,7 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 
@@ -19,22 +20,6 @@ namespace MovieTicket.API.Controllers
         {
             _ticketService = ticketService;
             _logger = logger;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTickets()
-        {
-            try
-            {
-                var tickets = await _ticketService.GetTickets();
-                _logger.LogInformation("Tickets retrieved successfully.");
-                return Ok(tickets);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving tickets.");
-                return StatusCode(500, "Internal Server Error");
-            }
         }
 
         [HttpGet("{id}")]
@@ -103,6 +88,54 @@ namespace MovieTicket.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error deleting ticket with ID {id}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTicketsByUserId(int userId)
+        {
+            try
+            {
+                var tickets = await _ticketService.GetTicketsByUserIdAsync(userId);
+                _logger.LogInformation($"Tickets for user with ID {userId} retrieved successfully.");
+                return Ok(tickets);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving tickets for user with ID {userId}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet("session/{sessionId}")]
+        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTicketsBySessionId(int sessionId)
+        {
+            try
+            {
+                var tickets = await _ticketService.GetTicketsBySessionIdAsync(sessionId);
+                _logger.LogInformation($"Tickets for session with ID {sessionId} retrieved successfully.");
+                return Ok(tickets);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving tickets for session with ID {sessionId}.");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet("user/{userId}/session/{sessionId}")]
+        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTicketsByUserIdAndSessionId(int userId, int sessionId)
+        {
+            try
+            {
+                var tickets = await _ticketService.GetTicketsByUserIdAndSessionIdAsync(userId, sessionId);
+                _logger.LogInformation($"Tickets for user with ID {userId} and session with ID {sessionId} retrieved successfully.");
+                return Ok(tickets);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving tickets for user with ID {userId} and session with ID {sessionId}.");
                 return StatusCode(500, "Internal Server Error");
             }
         }

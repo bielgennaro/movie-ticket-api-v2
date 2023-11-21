@@ -1,11 +1,11 @@
 ﻿#region
 
 using AutoMapper;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
-using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -47,7 +47,7 @@ namespace MovieTicket.Application.Services
             return newUserDto;
         }
 
-        public async Task<UserDto> AuthenticateUser(UserDtoLoginRequest userDto)
+        public async Task<UserDto> AuthenticateUser(UserDtoRequest userDto)
         {
             var user = _mapper.Map<User>(userDto);
             var existingUser = await _userRepository.AuthenticateUserAsync(user);

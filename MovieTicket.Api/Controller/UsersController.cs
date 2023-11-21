@@ -1,9 +1,9 @@
 ﻿#region
 
 using Microsoft.AspNetCore.Mvc;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
-using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -93,7 +93,7 @@ namespace MovieTicket.API.Controllers
         }
 
         [HttpPost("auth")]
-        public async Task<ActionResult<UserDto>> AuthenticateUser(UserDtoLoginRequest userDto)
+        public async Task<ActionResult<UserDto>> AuthenticateUser(UserDtoRequest userDto)
         {
             try
             {
@@ -106,7 +106,12 @@ namespace MovieTicket.API.Controllers
                 }
 
                 _logger.LogInformation("Usuário autenticado com sucesso.");
-                return Ok($"Usuário {userDto.Email} autenticado com sucesso.");
+                return Ok(new
+                {
+                    user.Id,
+                    user.Email,
+                    user.IsAdmin,
+                });
             }
             catch (Exception ex)
             {

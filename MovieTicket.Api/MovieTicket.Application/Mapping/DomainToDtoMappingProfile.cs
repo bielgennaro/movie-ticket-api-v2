@@ -1,6 +1,7 @@
 ﻿#region
 
 using AutoMapper;
+
 using MovieTicket.Application.DTOs;
 using MovieTicket.Domain.Entities;
 using MovieTicket.WebApi.MovieTicket.Application.Dtos;
@@ -38,6 +39,9 @@ namespace MovieTicket.Application.Mappings
                 .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
             CreateMap<User, UserDtoLoginRequest>()
+                .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<User, UserDtoLoginResponse>()
                 .ReverseMap().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

@@ -1,7 +1,8 @@
 #region
 
-using System.Text.Json.Serialization;
 using MovieTicket.Domain.Validation;
+
+using System.Text.Json.Serialization;
 
 #endregion
 

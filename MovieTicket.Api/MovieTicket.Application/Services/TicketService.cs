@@ -1,12 +1,9 @@
-﻿#region
+﻿using AutoMapper;
 
-using AutoMapper;
 using MovieTicket.Application.DTOs;
 using MovieTicket.Application.Interfaces;
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
-
-#endregion
 
 namespace MovieTicket.Application.Services
 {
@@ -19,12 +16,6 @@ namespace MovieTicket.Application.Services
         {
             _ticketRepository = ticketRepository;
             _mapper = mapper;
-        }
-
-        public async Task<IEnumerable<TicketDto>> GetTickets()
-        {
-            var tickets = await _ticketRepository.GetTicketsAsync();
-            return _mapper.Map<IEnumerable<TicketDto>>(tickets);
         }
 
         public async Task<TicketDto> GetTicketById(int id)
@@ -50,6 +41,24 @@ namespace MovieTicket.Application.Services
         {
             var ticket = await _ticketRepository.GetTicketByIdAsync(id);
             if (ticket != null) await _ticketRepository.DeleteTicketAsync(ticket);
+        }
+
+        public async Task<IEnumerable<TicketDto>> GetTicketsByUserIdAsync(int userId)
+        {
+            var tickets = await _ticketRepository.GetTicketsByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<TicketDto>>(tickets);
+        }
+
+        public async Task<IEnumerable<TicketDto>> GetTicketsBySessionIdAsync(int sessionId)
+        {
+            var tickets = await _ticketRepository.GetTicketsBySessionIdAsync(sessionId);
+            return _mapper.Map<IEnumerable<TicketDto>>(tickets);
+        }
+
+        public async Task<IEnumerable<TicketDto>> GetTicketsByUserIdAndSessionIdAsync(int userId, int sessionId)
+        {
+            var tickets = await _ticketRepository.GetTicketsByUserIdAndSessionIdAsync(userId, sessionId);
+            return _mapper.Map<IEnumerable<TicketDto>>(tickets);
         }
     }
 }

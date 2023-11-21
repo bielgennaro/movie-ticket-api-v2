@@ -1,6 +1,7 @@
 #region
 
 using Microsoft.EntityFrameworkCore;
+
 using MovieTicket.Domain.Entities;
 using MovieTicket.Domain.Interfaces;
 using MovieTicket.Infra.Data.Context;
@@ -40,11 +41,10 @@ namespace MovieTicket.WebApi.MovieTicket.Infra.Data.Repositories
 
         public async Task<User> AuthenticateUserAsync(User user)
         {
-            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            var authenticate = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
 
-            return existingUser;
+            return authenticate;
         }
-
 
         public async Task UpdateUserAsync(User user, int id)
         {

@@ -1,7 +1,6 @@
 ﻿#region
 
 using MovieTicket.Application.DTOs;
-using MovieTicket.WebApi.MovieTicket.Application.Dtos;
 
 #endregion
 
@@ -15,7 +14,7 @@ namespace MovieTicket.Application.Interfaces
 
         Task<UserDto> AddUser(UserDtoRequest userDto);
 
-        Task<UserDto> AuthenticateUser(UserDtoLoginRequest userDto);
+        Task<UserDto> AuthenticateUser(UserDtoRequest userDto);
 
         Task UpdateUser(UserDtoRequest userDto, int id);
 

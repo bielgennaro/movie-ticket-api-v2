@@ -8,6 +8,8 @@ namespace MovieTicket.Application.DTOs
 {
     public class UserDtoRequest
     {
+        public int Id { get; }
+
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Please enter a email")]
         [MinLength(3)]
@@ -20,6 +22,8 @@ namespace MovieTicket.Application.DTOs
         [DataType(DataType.Password)]
         public required string Password { get; set; }
 
-        [Required] public bool IsAdmin { get; set; }
+        [Required]
+        public bool IsAdmin { get; set; }
+
     }
 }
