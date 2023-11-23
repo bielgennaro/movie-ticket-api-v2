@@ -19,6 +19,6 @@ namespace MovieTicket.Application.DTOs
         public int UserId { get; set; }
 
         [Display(Name = "Session Date")]
-        public DateTime SessionDateTime { get; } = DateTime.UtcNow;
+        public DateTime SessionDateTime { get; }
     }
 }

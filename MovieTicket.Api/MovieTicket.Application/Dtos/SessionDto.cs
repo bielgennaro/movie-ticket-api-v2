@@ -16,8 +16,7 @@ namespace MovieTicket.Application.DTOs
 
         [Required(ErrorMessage = "Please enter a date")]
         [Display(Name = "Date")]
-        [DataType(DataType.Time)]
-        public DateTime Date { get; set; } = DateTime.Now;
+        public string Date { get; set; }
 
         [Required(ErrorMessage = "Please enter a movie id")]
         [Display(Name = "Movie Id")]

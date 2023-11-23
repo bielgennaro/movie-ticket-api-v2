@@ -2,6 +2,8 @@
 
 using MovieTicket.Domain.Entities;
 
+using Newtonsoft.Json;
+
 using System.ComponentModel.DataAnnotations;
 
 #endregion
@@ -28,7 +30,5 @@ namespace MovieTicket.WebApi.MovieTicket.Application.Dtos
         [Required(ErrorMessage = "Please enter a movie id")]
         [Display(Name = "Movie Id")]
         public int MovieId { get; set; }
-
-        public Movie Movie { get; set; }
     }
 }
